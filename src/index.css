@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .main-title {
+    @apply text-[32px]/[39px];
+  }
+
+  .btn-purple {
+    @apply h-[37] w-[84] rounded-[40px] bg-purple px-16 py-8 font-noto text-sm text-white;
+  }
+}
