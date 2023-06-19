@@ -12,6 +12,7 @@ import {
 import Login from './router/Login';
 import ErrorPage from './router/ErrorPage';
 import App from './App';
+import Header from './components/mainPage/Header';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <RecoilRoot>
+      <Header />
       <RouterProvider router={router} />
     </RecoilRoot>
   </React.StrictMode>,
