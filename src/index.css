@@ -10,4 +10,11 @@
   .btn-purple {
     @apply h-[37] w-[84] rounded-[40px] bg-purple px-16 py-8 font-noto text-sm text-white;
   }
+  .btn-small {
+    @apply m-1 flex h-[21] w-[65] rounded-full bg-purple px-4 py-2 text-sm text-white;
+  }
+
+  .tag {
+    @apply mr-2 w-[74px] rounded-xl bg-beige-dark px-[8px] py-[1.5px];
+  }
 }
