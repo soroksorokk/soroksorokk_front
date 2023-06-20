@@ -14,6 +14,10 @@ export default {
         gray: '#999999',
         'beige-dark': '#F6F4F1',
       },
+      backgroundImage: {
+        upward: 'url("/images/sample/upArrow.svg")',
+        downward: 'url("/images/sample/downArrow.svg")',
+      },
       fontSize: {},
     },
   },
