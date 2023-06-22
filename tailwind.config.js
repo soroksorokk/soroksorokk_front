@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const plugin = require('tailwindcss/plugin');
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -20,8 +23,26 @@ export default {
       fontSize: {},
       boxShadow: {
         basic: '0px 4px 8px rgba(41, 41, 41, 0.08)',
+        light: '0px 4px 4px rgba(0, 0, 0, 0.25);',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          // IE and Edge
+          '-ms-overflow-style': 'none',
+
+          // Firefox
+          'scrollbar-width': 'none',
+
+          // Safari and Chrome
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        },
+      });
+    }),
+  ],
 };
