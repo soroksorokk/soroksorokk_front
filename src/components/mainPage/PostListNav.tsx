@@ -13,6 +13,18 @@ const PostListNav = ({
     setIsCategoryShow(!isCategoryShow);
   };
 
+  /**
+   *
+   * @param emoji type.tsx의 enum을 타입으로 사용함
+   * @param desc 이모지마다 들어가는 설명
+   *
+   * 메인 페이지에서 카테고리를 눌렀을 때(isCategoryShow === true)
+   * onMouseOver의 콜백함수로 handleChangeEmoji를 설정하고 인자로 emoji와 desc을 받아서
+   * categoryEmojis state를 저장한다
+   * 그리고 메인 페이지에서 카테고리를 닫을 때(isCategoryShow === false)
+   * categoryEmojis state에 저장된 emoji와 desc을 카테고리란에 보여준다
+   *
+   */
   const handleChangeEmoji = (emoji: CategoryEmoji, desc: string) => {
     if (isCategoryShow && setCategoryEmojis) {
       setCategoryEmojis({ feel: emoji, desc: desc });
