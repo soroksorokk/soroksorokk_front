@@ -1,6 +1,4 @@
-// 따로 빼놓을 함수들 보관하는 곳~
-// 쿼리 함수도 여기 넣을 수 있을듯?
-
+/* 메인 페이지에서 보여질 오늘 날짜를 리턴하는 함수 */
 export const getTodayDate = (): string => {
   const today = new Date();
   const todayStrArray = today.toDateString().split(' ').splice(1);
