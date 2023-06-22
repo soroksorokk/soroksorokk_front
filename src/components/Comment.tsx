@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ReplyComment from './ReplyComment';
 const Comment = () => {
   return (
     <div className="flex w-[100%] flex-row  ">
@@ -9,7 +9,7 @@ const Comment = () => {
           className=" h-[46px] w-[46px] rounded-full border object-cover"
         />
       </div>
-      <div className="w-[75%]">
+      <div className="w-[85%] ">
         <div className="m-2 flex flex-row ">
           <p className="m-1 font-semibold">닉네임</p>
           <p className="m-1 font-normal text-gray">2023.06.20</p>
@@ -20,6 +20,8 @@ const Comment = () => {
           <p>2</p>
           <button className="m-2">답글</button>
         </div>
+
+        <ReplyComment />
       </div>
     </div>
   );
