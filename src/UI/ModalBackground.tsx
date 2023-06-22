@@ -1,5 +1,4 @@
 import React from 'react';
-import useModal from '../hook/useModal';
 
 export interface ModalBackgroundProps {
   onClose: () => void;
