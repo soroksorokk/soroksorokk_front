@@ -10,11 +10,11 @@ import { RegisterProps } from '../../type/type';
 export interface SignUpModalProps {
   title?: string;
   confirmText?: string;
-  handleClose?: () => void;
 }
 
 const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
   const { hideModal } = useModal();
+  // react-hook-form 을 사용하기 위해 useForm에 있는 속성들을 구조분해할당으로 가져옴
   const {
     register,
     handleSubmit,
@@ -37,6 +37,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     console.log('data', data);
   };
 
+  // 패스워드 입력과 패스워드 더블체크를 위해 패스워드 입력값을 계속 추적하는 것(e.target.value랑 같음).
   const pwd = watch('password', '');
   const pwdCheck = watch('passwordCheck', '');
 
