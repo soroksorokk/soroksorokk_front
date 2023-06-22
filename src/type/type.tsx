@@ -36,8 +36,6 @@ export interface RegisterProps {
   nickName: string;
 }
 
-// export interface
-
 // enum
 
 export enum CategoryEmoji {
