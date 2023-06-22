@@ -3,16 +3,20 @@ import { ReactComponent as Logo } from '../../assets/logo.svg';
 import useModal from '../../hook/useModal';
 
 function Header() {
-  const { showModal, hideModal } = useModal();
+  const { showModal } = useModal();
 
+  /**
+   * useModal에서 showModal의 인자로 받는 modalType과 modalProps를 작성해
+   * 로그인을 클릭하면 modal state가 변경되면서 Global modal에서 설정한
+   * modal type에 따라 해당 컴포넌트가 렌더링 되고
+   * modal props도 같이 넘겨짐
+   */
   const handleLoginModal = () => {
     showModal({
       modalType: 'LoginModal',
       modalProps: {
         title: '로그인',
         confirmText: '로그인',
-        handleClose: () => hideModal(),
-        handleConfirm: () => hideModal(),
       },
     });
   };
@@ -23,8 +27,6 @@ function Header() {
       modalProps: {
         title: '회원가입',
         confirmText: '완료',
-        handleClose: () => hideModal(),
-        handleConfirm: () => hideModal(),
       },
     });
   };
