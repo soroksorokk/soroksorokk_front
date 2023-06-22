@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 const Toggle = () => {
   const [toggleOn, setToggleOn] = useState(false);
 
+  /**
+   * toggleOn의 값(true, false)에 따라서 className이 달라지게 설정함
+   */
   const handleToggle = () => {
     setToggleOn(!toggleOn);
   };
