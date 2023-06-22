@@ -6,6 +6,10 @@ import { isDetailPostOpenState } from '../../store/isDetailPostOpenState';
 import { isNewPostState } from '../../store/isNewPostState';
 
 const PostCard = () => {
+  /**
+   * 임시로 utils에 있는 함수를 가져옴.
+   * 하지만 사용자의 post date값을 가져와서 바꿀 예정임
+   */
   const postingDate = getTodayDate();
 
   const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
@@ -13,6 +17,10 @@ const PostCard = () => {
   );
   const [isNewPost, setIsNewPost] = useRecoilState(isNewPostState);
 
+  /**
+   * 포스트 카드를 클릭하면 detailPostOpen이 true로 설정되면서 열림
+   * 이전에 글쓰기 버튼을 눌러 isNewPost가 false가 되게 함
+   */
   const handleDetailPostClick = () => {
     setIsDetailPostOpen(!isDetailPostOpen);
     if (isNewPost) {
