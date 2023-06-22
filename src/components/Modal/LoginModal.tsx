@@ -14,10 +14,12 @@ export interface LoginModalProps {
 const LoginModal = ({ title, confirmText }: LoginModalProps) => {
   const { hideModal } = useModal();
 
+  //useModal에서 빼온 hideModal을 사용해 모달백그라운드를 누르면 닫히게 설정함
   const onClose = () => {
     hideModal();
   };
 
+  // form 태그의 특성에 따라 새로고침을 막기 위해 e.preventDefault 설정함
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
