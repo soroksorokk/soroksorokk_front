@@ -39,11 +39,10 @@ export interface RegisterProps {
 // enum
 
 export enum CategoryEmoji {
-  angry = '😠',
-  happy = '🥰',
-  sad = '😭',
-  calm = '😌',
-  delight = '🤩',
-  depressed = '🥺',
+  angry = '😠', // 화남
+  happy = '🥰', // 행복
+  sad = '😭', // 슬픔
+  calm = '😌', // 평온
+  exciting = '🤩', // 신남
+  depressed = '🥺', // 감동
 }
-
