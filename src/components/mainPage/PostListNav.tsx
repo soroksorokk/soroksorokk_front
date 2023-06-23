@@ -89,7 +89,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.delight, '듣기 좋은 노래')
+                handleChangeEmoji(CategoryEmoji.exciting, '듣기 좋은 노래')
               }
             >
               🤩
