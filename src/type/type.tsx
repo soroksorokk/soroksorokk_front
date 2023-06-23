@@ -46,3 +46,4 @@ export enum CategoryEmoji {
   delight = '🤩',
   depressed = '🥺',
 }
+
