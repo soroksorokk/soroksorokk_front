@@ -2,13 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    @apply text-[2rem] font-bold;
+  }
+  h2 {
+    @apply text-[1.5rem] font-bold;
+  }
+  h3 {
+    @apply text-[1.17rem] font-bold;
+  }
+  h4 {
+    @apply text-[1rem] font-bold;
+  }
+  h5 {
+    @apply text-[0.83rem] font-bold;
+  }
+  h5 {
+    @apply text-[0.67rem] font-bold;
+  }
+}
+
 @layer components {
-  .main-title {
-    @apply text-[32px]/[39px];
+  .header-text {
+    @apply cursor-pointer font-bold;
   }
 
   .btn-purple {
-    @apply h-[37] w-[84] rounded-[40px] bg-purple px-16 py-8 font-noto text-sm text-white;
+    @apply h-[2.8125rem] w-full rounded-[2.5rem] bg-purple py-3 font-noto text-sm text-white;
+  }
+
+  .btn-white {
+    @apply h-[2.8125rem] w-[20rem] rounded-[2.5rem] bg-white py-3 font-noto text-sm text-[#838383];
+  }
+
+  .post-title {
+    @apply font-noto text-[1.125rem] font-bold text-[#292929];
+  }
+
+  .toggle-container {
+    @apply relative h-[24px] w-[4.25rem] cursor-pointer rounded-2xl border-2 border-red bg-red text-white;
+  }
+
+  .toggle-container-checked {
+    @apply relative h-[24px] w-[4.25rem] cursor-pointer rounded-2xl border-2 border-[#051724] bg-[#051724] text-white;
+  }
+
+  .toggle-circle {
+    @apply absolute left-[0] h-5 w-5 rounded-full bg-white duration-700 ease-in-out;
+  }
+
+  .toggle-circle-checked {
+    @apply absolute left-[44px] h-5 w-5 rounded-full bg-white duration-700 ease-in-out;
+  }
+
+  .main-category {
+    @apply opacity-25;
+  }
+
+  .main-category-hover {
+    @apply opacity-100 duration-300 ease-in-out hover:scale-125;
+  }
+
+  .modal-background {
+    @apply fixed left-0 top-0 z-10 h-full w-full bg-[rgba(0,0,0,0.3)];
+  }
+
+  .modal-box {
+    @apply fixed left-1/2 top-1/2 h-auto w-[25rem] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] bg-white p-[2.5rem];
+  }
+
+  .btn-double-check {
+    @apply absolute bottom-6 right-0 top-[25%] h-[45%] w-[30%] rounded-3xl border-2 border-[.0625rem] border-[#9664FF] px-2 py-1 text-sm text-[#9157A8];
   }
   .btn-small {
     @apply m-1 flex h-[21] w-[65] rounded-full bg-purple px-4 py-2 text-sm text-white;
