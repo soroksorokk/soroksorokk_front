@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Profile from './components/Profile';
 import CommentList from './components/CommentList';
+import Follow from './components/follow';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         </button>
         <Profile />
         <CommentList />
+        <Follow />
       </div>
     </>
   );

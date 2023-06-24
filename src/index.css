@@ -14,6 +14,9 @@
     @apply m-1 flex h-[21] w-[65] rounded-full bg-purple px-4 py-2 text-sm text-white;
   }
 
+  .btn-follow {
+    @apply h-[31px] w-[70px] rounded-[23px] bg-purple px-4 py-[5px] text-sm font-normal text-white;
+  }
   .tag {
     @apply mr-2 w-[74px] rounded-xl bg-beige-dark px-[8px] py-[1.5px];
   }
