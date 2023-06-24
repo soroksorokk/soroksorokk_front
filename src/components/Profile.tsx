@@ -6,8 +6,7 @@ const Profile = () => {
       <div className=" box-border flex h-[638px] w-[430px] flex-col items-center rounded-[40px] bg-white">
         <header className="flex w-full flex-col border-b border-[#DCDCDC]">
           <h1
-            className="p-6 pb-3 text-3xl font-semibold "
-            style={{ paddingLeft: '14px' }}
+            className="p-6 pb-3 text-3xl font-semibold pl-[14px] "
           >
             프로필
           </h1>
