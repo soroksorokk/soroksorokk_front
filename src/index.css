@@ -75,4 +75,11 @@
   .btn-double-check {
     @apply absolute bottom-6 right-0 top-[25%] h-[45%] w-[30%] rounded-3xl border-2 border-[.0625rem] border-[#9664FF] px-2 py-1 text-sm text-[#9157A8];
   }
+  .btn-small {
+    @apply m-1 flex h-[21] w-[65] rounded-full bg-purple px-4 py-2 text-sm text-white;
+  }
+
+  .tag {
+    @apply mr-2 w-[74px] rounded-xl bg-beige-dark px-[8px] py-[1.5px];
+  }
 }
