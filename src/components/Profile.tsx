@@ -1,15 +1,21 @@
 import React from 'react';
+import useModal from '../hook/useModal';
 
 const Profile = () => {
+  const { showModal } = useModal();
+  const handleFollowModal = () => {
+    showModal({
+      modalType: 'FollowModal',
+      modalProps: {
+        title: '팔로우',
+      },
+    });
+  };
   return (
     <div className="flex p-4 ">
       <div className=" box-border flex h-[638px] w-[430px] flex-col items-center rounded-[40px] bg-white">
         <header className="flex w-full flex-col border-b border-[#DCDCDC]">
-          <h1
-            className="p-6 pb-3 text-3xl font-semibold pl-[14px] "
-          >
-            프로필
-          </h1>
+          <h1 className="p-6 pb-3 pl-[14px] text-3xl font-semibold ">프로필</h1>
         </header>
         <div className="flex w-full flex-col items-center py-6">
           <img
@@ -17,11 +23,15 @@ const Profile = () => {
             className=" border-1 mb-6 h-64 w-64 rounded-full object-cover"
           />
           <div>
-            <button className="m-3">팔로우20</button>
-            <button className="text-purple">팔로워10</button>
+            <button className="m-3" onClick={handleFollowModal}>
+              팔로우20
+            </button>
+            <button className="text-purple" onClick={handleFollowModal}>
+              팔로워10
+            </button>
           </div>
           <div className="flex flex-row">
-            <button className="btn-small">게시글 보기</button>
+            {/* <button className="btn-small">게시글 보기</button> */}
 
             <button className="btn-small">이미지 제거</button>
             <button className="btn-small bg-beige-dark text-gray">
