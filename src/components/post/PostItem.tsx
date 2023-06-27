@@ -32,7 +32,7 @@ const PostItem = ({ ...post }: PostItemProps) => {
           <img className="mr-2" src="/images/sample/play_icon.svg" />
           {postArtist} - {postSong}
         </div>
-        <div className="flex h-[400px] w-[400px] items-center justify-center overflow-hidden rounded-2xl">
+        <div className="flex h-[25rem] w-[25rem] items-center justify-center overflow-hidden rounded-2xl">
           <img className="h-full w-full " src={postImg} />
         </div>
       </div>
