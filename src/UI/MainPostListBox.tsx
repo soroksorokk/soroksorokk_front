@@ -7,7 +7,7 @@ import { isDetailPostOpenState } from '../store/isDetailPostOpenState';
 import { ChildrenProps } from '../type/type';
 import Subtitle from './Subtitle';
 import { useNavigate } from 'react-router-dom';
-import PostItem from '../components/post/postItem';
+import PostItem from '../components/post/PostItem';
 
 const MainPageBox = ({ children }: ChildrenProps) => {
   const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
@@ -45,7 +45,7 @@ const MainPageBox = ({ children }: ChildrenProps) => {
           <Music width={40} height={40} />
         </div>
       </div>
-      <div className="flex h-full w-[59.125rem] flex-wrap rounded-[40px] bg-white px-[29px] py-[42px]">
+      <div className="flex h-full w-[59.125rem] flex-wrap rounded-[2.5rem] bg-white px-[1.8125rem] py-[2.625rem]">
         {children}
       </div>
       {isDetailPostOpen && (
