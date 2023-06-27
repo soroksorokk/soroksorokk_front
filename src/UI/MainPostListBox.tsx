@@ -45,7 +45,7 @@ const MainPageBox = ({ children }: ChildrenProps) => {
           <Music width={40} height={40} />
         </div>
       </div>
-      <div className="flex h-full w-[59.125rem] flex-wrap rounded-[2.5rem] bg-white px-[1.8125rem] py-[2.625rem]">
+      <div className="flex h-screen w-[59.125rem] flex-wrap overflow-y-auto rounded-[2.5rem] bg-white px-[1.8125rem] py-[2.625rem] scrollbar-hide">
         {children}
       </div>
       {isDetailPostOpen && (
