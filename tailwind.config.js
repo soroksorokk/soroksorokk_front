@@ -20,6 +20,10 @@ export default {
         tag: '#F1EEEA',
         red: '#FF4040',
       },
+      backgroundImage: {
+        upward: 'url("/images/sample/upArrow.svg")',
+        downward: 'url("/images/sample/downArrow.svg")',
+      },
       fontSize: {},
       boxShadow: {
         basic: '0px 4px 8px rgba(41, 41, 41, 0.08)',
