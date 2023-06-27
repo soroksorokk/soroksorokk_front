@@ -22,14 +22,24 @@ function App() {
     <>
       <MainLayout>
         <MainPostListBox>
-          <PostListHeader />
-          <PostListNav
-            isCategoryShow={isCategoryShow}
-            setIsCategoryShow={setIsCategoryShow}
-            categoryEmojis={categoryEmojis}
-            setCategoryEmojis={setCategoryEmojis}
-          />
+          <div className="sticky -top-[2.8125rem] z-10 w-full bg-white">
+            <PostListHeader />
+            <PostListNav
+              isCategoryShow={isCategoryShow}
+              setIsCategoryShow={setIsCategoryShow}
+              categoryEmojis={categoryEmojis}
+              setCategoryEmojis={setCategoryEmojis}
+            />
+          </div>
           <PostCardBox>
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
             <PostCard />
           </PostCardBox>
         </MainPostListBox>
