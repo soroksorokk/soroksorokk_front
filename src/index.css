@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  h1 {
-    @apply text-[2rem] font-bold;
+  body {
+    @apply text-sm;
   }
   h2 {
     @apply text-[1.5rem] font-bold;
@@ -81,6 +81,9 @@
 
   .btn-follow {
     @apply h-[31px] w-[70px] rounded-[23px] bg-purple px-4 py-[5px] text-sm font-normal text-white;
+  }
+  .btn-unfollow {
+    @apply min-w-[30px]  rounded-[23px] bg-beige px-4 py-1 text-sm font-normal text-purple;
   }
   .tag {
     @apply mr-2 w-[74px] rounded-xl bg-beige-dark px-[8px] py-[1.5px];
