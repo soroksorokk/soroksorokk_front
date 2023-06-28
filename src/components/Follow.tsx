@@ -11,7 +11,8 @@ const Follow = () => {
       <div className=" my-2 flex flex-row justify-between">
         <div className="flew-row flex">
           <img
-            src="/images/sample/soondoo.jpeg"
+            src="/assets/soondoo.jpeg"
+            alt="img"
             className="m-2 h-9 w-9 rounded-full"
           />
           <div className="flex flex-col">
@@ -31,7 +32,8 @@ const Follow = () => {
       <div className="my-2 flex flex-row justify-between ">
         <div className="flew-row flex">
           <img
-            src="/images/sample/soondoo.jpeg"
+            src="/assets/soondoo.jpeg"
+            alt="img"
             className="m-2 h-9 w-9 rounded-full"
           />
           <div className="flex flex-col">

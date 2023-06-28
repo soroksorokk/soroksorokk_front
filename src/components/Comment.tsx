@@ -5,7 +5,8 @@ const Comment = () => {
     <div className="flex w-[100%] flex-row  ">
       <div className="flex w-[15%] justify-end">
         <img
-          src="/images/sample/soondoo.jpeg"
+          src="/assets/soondoo.jpeg"
+          alt="profile_img"
           className=" h-[46px] w-[46px] rounded-full border object-cover"
         />
       </div>
@@ -16,7 +17,7 @@ const Comment = () => {
         </div>
         <p className="m-1">최고최고 짱짱 </p>
         <div className="flx-row flex items-center">
-          <button className="h-7 w-7 bg-[url('/images/sample/thumbsUp.svg')]"></button>
+          <button className="h-7 w-7 bg-[url('/assets/thumbsUp.svg')]"></button>
           <p>2</p>
           <button className="m-2">답글</button>
         </div>
