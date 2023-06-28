@@ -5,15 +5,13 @@ const Profile = () => {
     <div className="flex p-4 ">
       <div className=" box-border flex h-[638px] w-[430px] flex-col items-center rounded-[40px] bg-white">
         <header className="flex w-full flex-col border-b border-[#DCDCDC]">
-          <h1
-            className="p-6 pb-3 text-3xl font-semibold pl-[14px] "
-          >
+          <h1 className="p-6 pb-3 pl-[.875rem] text-3xl font-semibold ">
             프로필
           </h1>
         </header>
         <div className="flex w-full flex-col items-center py-6">
           <img
-            src="images/sample/soondoo.jpeg"
+            src="/assets/soondoo.jpeg"
             className=" border-1 mb-6 h-64 w-64 rounded-full object-cover"
           />
           <div>

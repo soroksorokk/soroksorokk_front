@@ -32,7 +32,7 @@ const PostListNav = ({
   };
 
   return (
-    <div className="relative flex h-full w-full justify-between py-[17px]">
+    <div className="relative flex w-full justify-between py-[1.0625rem]">
       <div
         onClick={handleCategoryClick}
         className="flex h-[2.25rem] w-[12.625rem] cursor-pointer items-center justify-center rounded-[1.5rem] bg-beige text-sm"
@@ -57,7 +57,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.angry, '속풀리는 노래')
+                handleChangeEmoji(CategoryEmoji.angry, '듣기 좋은 노래')
               }
             >
               😠
@@ -73,7 +73,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.sad, '슬픔 날릴 노래')
+                handleChangeEmoji(CategoryEmoji.sad, '듣기 좋은 노래')
               }
             >
               😭
