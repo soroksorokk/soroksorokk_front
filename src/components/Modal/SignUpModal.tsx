@@ -1,7 +1,6 @@
 import React from 'react';
 import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
-import { ReactComponent as CloseBtn } from '../../../public/assets/closeBtn.svg';
 import Button from '../../UI/Button';
 import TermsOfUse from './TermsOfUse';
 import { useForm } from 'react-hook-form';
