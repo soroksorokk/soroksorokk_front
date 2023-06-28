@@ -71,7 +71,7 @@ const PostCard = () => {
           <div className="flex w-[45%] items-center justify-around">
             <img
               alt="profile_image"
-              className="bg-red-500 h-[2.125rem] w-[2.125rem] rounded-full"
+              className="h-[2.125rem] w-[2.125rem] rounded-full"
             />
             <span className="text-sm text-[#B4B4B4]">by</span>
             <span>닉네임</span>
