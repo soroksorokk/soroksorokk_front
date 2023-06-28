@@ -135,7 +135,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
                 maxLength: 10,
               })}
             />
-            <Button className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-2 border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]">
+            <Button className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]">
               중복확인
             </Button>
             <p>{errors.nickName?.message}</p>
