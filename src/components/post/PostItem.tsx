@@ -29,7 +29,7 @@ const PostItem = ({ ...post }: PostItemProps) => {
     <div className="mt-4 p-4">
       <div className="relative flex justify-center ">
         <div className="absolute left-[50%] top-[-3%] z-10 flex translate-x-[-50%] rounded-full bg-white px-2 py-2 shadow-2xl">
-          <img className="mr-2" src="/images/sample/play_icon.svg" />
+          <img className="mr-2" src="/assets/play_icon.svg" />
           {postArtist} - {postSong}
         </div>
         <div className="flex h-[25rem] w-[25rem] items-center justify-center overflow-hidden rounded-2xl">
