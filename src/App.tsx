@@ -22,7 +22,7 @@ function App() {
     <>
       <MainLayout>
         <MainPostListBox>
-          <div className="sticky -top-[2.8125rem] z-10 w-full bg-white">
+          <div className="sticky -top-[2.6rem] h-[6.25rem] w-full bg-white px-[1.8125rem]">
             <PostListHeader />
             <PostListNav
               isCategoryShow={isCategoryShow}
@@ -32,6 +32,7 @@ function App() {
             />
           </div>
           <PostCardBox>
+            <PostCard />
             <PostCard />
             <PostCard />
             <PostCard />
