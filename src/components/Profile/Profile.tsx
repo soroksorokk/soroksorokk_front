@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useRef, useState } from 'react';
 import Button from '../../UI/Button';
-import defaultImage from '../../../public/assets/defaultImage.svg';
+import defaultImage from '../../../public/assets/defaultImage.jpg';
 const Profile = () => {
   const [imgFile, setImgFile] = useState<string>();
   // const imgRef = useRef<HTMLInputElement | null>();
@@ -40,12 +40,12 @@ const Profile = () => {
             {imgFile ? (
               <img
                 src={imgFile}
-                className=" mb-6 h-64 w-64 rounded-full object-cover"
+                className=" mb-6 h-64 w-64 overflow-hidden rounded-full object-cover"
                 onError={handleOnError}
               />
             ) : (
               <img
-                className="  mb-6 h-64 w-64 rounded-full bg-[#ebebeb] object-cover"
+                className="  mb-6 h-64 w-64 overflow-hidden  rounded-full object-cover"
                 src={defaultImage}
               />
             )}
