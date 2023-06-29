@@ -16,10 +16,10 @@
     @apply text-[1.17rem] font-bold;
   }
   h4 {
-    @apply text-[1rem] font-bold;
+    @apply text-[1rem]  font-medium;
   }
   h5 {
-    @apply text-[0.83rem] font-bold;
+    @apply text-[0.83rem] font-semibold;
   }
   h5 {
     @apply text-[0.67rem] font-bold;
@@ -90,5 +90,12 @@
   }
   .tag {
     @apply mr-2 w-[4.625rem] rounded-xl bg-beige-dark px-[.5rem] py-[.0938rem];
+  }
+
+  .write-input {
+    @apply mb-2 block w-full border-b-[.0625rem] border-beige-dark px-2 py-4 transition-colors ease-in  focus:border-purple;
+  }
+  .write-img {
+    @apply absolute left-0 top-0 h-full w-full object-cover;
   }
 }
