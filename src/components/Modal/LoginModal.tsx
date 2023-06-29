@@ -1,7 +1,6 @@
 import React from 'react';
 import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
-import { ReactComponent as CloseBtn } from '../../assets/closeBtn.svg';
 import Button from '../../UI/Button';
 import { ReactComponent as GoogleLogin } from '../../assets/googleIcon.svg';
 import { ReactComponent as GitHubLogin } from '../../assets/githubIcon.svg';
@@ -28,7 +27,8 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
     <ModalBackground onClose={onClose}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
         <div className="flex justify-end">
-          <CloseBtn
+          <img
+            src="/assets/closeBtn.svg"
             width={23}
             height={23}
             onClick={onClose}

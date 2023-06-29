@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply text-sm;
+  }
   h1 {
     @apply text-[2rem] font-bold;
   }
@@ -41,11 +44,11 @@
   }
 
   .toggle-container {
-    @apply relative h-[24px] w-[4.25rem] cursor-pointer rounded-2xl border-2 border-red bg-red text-white;
+    @apply relative h-[1.5rem] w-[4.25rem] cursor-pointer rounded-2xl border-2 border-red bg-red text-white;
   }
 
   .toggle-container-checked {
-    @apply relative h-[24px] w-[4.25rem] cursor-pointer rounded-2xl border-2 border-[#051724] bg-[#051724] text-white;
+    @apply relative h-[1.5rem] w-[4.25rem] cursor-pointer rounded-2xl border-2 border-[#051724] bg-[#051724] text-white;
   }
 
   .toggle-circle {
@@ -53,7 +56,7 @@
   }
 
   .toggle-circle-checked {
-    @apply absolute left-[44px] h-5 w-5 rounded-full bg-white duration-700 ease-in-out;
+    @apply absolute left-[2.75rem] h-5 w-5 rounded-full bg-white duration-700 ease-in-out;
   }
 
   .main-category {
@@ -80,9 +83,12 @@
   }
 
   .btn-follow {
-    @apply h-[31px] w-[70px] rounded-[23px] bg-purple px-4 py-[5px] text-sm font-normal text-white;
+    @apply h-[1.9375rem] w-[4.375rem] rounded-[1.4375rem] bg-purple px-4 py-[.3125rem] text-sm font-normal text-white;
+  }
+  .btn-unfollow {
+    @apply min-w-[1.875rem]  rounded-[1.4375rem] bg-beige px-4 py-1 text-sm font-normal text-purple;
   }
   .tag {
-    @apply mr-2 w-[74px] rounded-xl bg-beige-dark px-[8px] py-[1.5px];
+    @apply mr-2 w-[4.625rem] rounded-xl bg-beige-dark px-[.5rem] py-[.0938rem];
   }
 }

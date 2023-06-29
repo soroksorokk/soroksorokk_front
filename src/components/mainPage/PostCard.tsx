@@ -45,7 +45,7 @@ const PostCard = () => {
           </h1>
           <div>🥰</div>
         </div>
-        <p className="mt-2 line-clamp-3 max-h-[80px] w-full break-words font-noto font-normal leading-tight text-[#292929]">
+        <p className="mt-2 line-clamp-3 max-h-[5rem] w-full break-words font-noto font-normal leading-tight text-[#292929]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam totam
           harum accusamus eveniet beatae, porro esse vitae a doloribus sit
           expedita enim nostrum obcaecati quam voluptatum doloremque asperiores
@@ -53,13 +53,13 @@ const PostCard = () => {
         </p>
         <div className="mt-[1.5rem] flex items-center justify-between">
           <div className="flex w-9/12 gap-x-1">
-            <div className="flex h-[24px] w-[60px] items-center justify-center rounded-[20px] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
+            <div className="flex h-[1.5rem] w-[3.75rem] items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
               #태그
             </div>
-            <div className="flex h-[24px] w-[60px] items-center justify-center rounded-[20px] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
+            <div className="flex h-[1.5rem] w-[3.75rem] items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
               #태그
             </div>
-            <div className="flex h-[24px] w-[60px] items-center justify-center rounded-[20px] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
+            <div className="flex h-[1.5rem] w-[3.75rem] items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
               #태그
             </div>
           </div>
@@ -71,7 +71,7 @@ const PostCard = () => {
           <div className="flex w-[45%] items-center justify-around">
             <img
               alt="profile_image"
-              className="bg-red-500 h-[34px] w-[34px] rounded-full"
+              className="h-[2.125rem] w-[2.125rem] rounded-full"
             />
             <span className="text-sm text-[#B4B4B4]">by</span>
             <span>닉네임</span>

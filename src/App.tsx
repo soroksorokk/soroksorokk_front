@@ -7,6 +7,7 @@ import PostListNav from './components/mainPage/PostListNav';
 import PostCard from './components/mainPage/PostCard';
 import PostCardBox from './components/mainPage/PostCardBox';
 import { CategoryEmoji } from '../src/type/type';
+import Comment
 function App() {
   const [isCategoryShow, setIsCategoryShow] = useState(false);
   const [categoryEmojis, setCategoryEmojis] = useState<{
@@ -21,14 +22,25 @@ function App() {
     <>
       <MainLayout>
         <MainPostListBox>
-          <PostListHeader />
-          <PostListNav
-            isCategoryShow={isCategoryShow}
-            setIsCategoryShow={setIsCategoryShow}
-            categoryEmojis={categoryEmojis}
-            setCategoryEmojis={setCategoryEmojis}
-          />
+          <div className="sticky -top-[2.6rem] h-[6.25rem] w-full bg-white px-[1.8125rem]">
+            <PostListHeader />
+            <PostListNav
+              isCategoryShow={isCategoryShow}
+              setIsCategoryShow={setIsCategoryShow}
+              categoryEmojis={categoryEmojis}
+              setCategoryEmojis={setCategoryEmojis}
+            />
+          </div>
           <PostCardBox>
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
             <PostCard />
           </PostCardBox>
         </MainPostListBox>
