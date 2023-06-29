@@ -1,5 +1,5 @@
 import React from 'react';
-import useModal from '../hook/useModal';
+import useModal from '../../hook/useModal';
 
 const Profile = () => {
   const { showModal } = useModal();
