@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { SyntheticEvent, useRef, useState } from 'react';
 import Button from '../../UI/Button';
-
+import defaultImage from '../../../public/assets/defaultImage.svg';
 const Profile = () => {
   const [imgFile, setImgFile] = useState<string>();
   // const imgRef = useRef<HTMLInputElement | null>();
@@ -21,6 +21,12 @@ const Profile = () => {
     }
   };
 
+  const handleRemoveImage = () => {
+    setImgFile('');
+  };
+  const handleOnError = (event: SyntheticEvent<HTMLImageElement, Event>) => {
+    event.currentTarget.src = defaultImage;
+  };
   return (
     <div className="flex p-4 ">
       <div className=" box-border flex h-[39.875rem] w-[26.875rem] flex-col items-center rounded-[2.5rem] bg-white">
@@ -31,10 +37,18 @@ const Profile = () => {
         </header>
         <div className="flex w-full flex-col items-center py-6">
           <label htmlFor="profileImg">
-            <img
-              src={imgFile}
-              className=" mb-6 h-64 w-64 rounded-full border-2 object-cover"
-            />
+            {imgFile ? (
+              <img
+                src={imgFile}
+                className=" mb-6 h-64 w-64 rounded-full object-cover"
+                onError={handleOnError}
+              />
+            ) : (
+              <img
+                className="  mb-6 h-64 w-64 rounded-full bg-[#ebebeb] object-cover"
+                src={defaultImage}
+              />
+            )}
           </label>
           <input
             id="profileImg"
@@ -50,7 +64,9 @@ const Profile = () => {
           </div>
           <div className="flex flex-row">
             <Button className={'btn-small'}>게시글 보기</Button>
-            <Button className={'btn-small'}>이미지 제거</Button>
+            <Button onClick={handleRemoveImage} className={'btn-small'}>
+              이미지 제거
+            </Button>
             <Button className={'btn-small bg-beige-dark text-gray'}>
               이미지 수정
             </Button>
