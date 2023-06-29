@@ -5,15 +5,14 @@ const Comment = () => {
   const today = new Date().toDateString().slice(4, -4);
 
   return (
-    <div className="flex w-[100%] flex-row  ">
-      <div className="flex w-[15%] justify-end">
-        <img
-          src="/assets/soondoo.jpeg"
-          alt="profile_img"
-          className=" h-[2.875rem] w-[2.875rem] rounded-full border object-cover"
-        />
-      </div>
-      <div className="w-[85%] ">
+    <div className=" my-3 flex w-[100%] flex-row  ">
+      <img
+        src="/assets/soondoo.jpeg"
+        alt="profile_img"
+        className=" h-[2.875rem] w-[2.875rem] rounded-full border object-cover"
+      />
+
+      <div>
         <div className="m-2 flex flex-row ">
           <p className="m-1 font-semibold">닉네임</p>
           <p className="m-1 font-normal text-gray">{today}</p>

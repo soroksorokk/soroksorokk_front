@@ -16,7 +16,7 @@ const ReplyComment = () => {
             className="flex w-[6.25rem] cursor-pointer flex-row items-center"
             onClick={() => onClickMoreCommentButton()}
           >
-            <img src="assets/upArrow.svg" className="h-4 w-4" />
+            <img src="assets/downArrow.svg" className="h-4 w-4" />
             <p className="m-2 font-bold text-purple">답글</p>
             <p className=" font-bold text-purple">2개</p>
           </div>
@@ -26,7 +26,7 @@ const ReplyComment = () => {
               onClick={() => onClickMoreCommentButton()}
               className="flex cursor-pointer flex-row items-center "
             >
-              <img src="/assets/downArrow.svg" />
+              <img src="/assets/upArrow.svg" />
 
               <p className="m-2 font-bold text-purple">답글</p>
               <p className=" font-bold text-purple">2개</p>
