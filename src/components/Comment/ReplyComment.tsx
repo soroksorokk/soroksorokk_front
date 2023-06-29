@@ -21,8 +21,11 @@ const ReplyComment = () => {
             <p className=" font-bold text-purple">2개</p>
           </div>
         ) : (
-          <div onClick={() => onClickMoreCommentButton()}>
-            <div className="flex flex-row items-center ">
+          <div>
+            <div
+              onClick={() => onClickMoreCommentButton()}
+              className="flex cursor-pointer flex-row items-center "
+            >
               <button className="h-4 w-4 bg-downward bg-center bg-no-repeat" />
 
               <p className="m-2 font-bold text-purple">답글</p>
