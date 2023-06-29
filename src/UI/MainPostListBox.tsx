@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactComponent as Home } from '../assets/homeIcon.svg';
 import { ReactComponent as Music } from '../assets/musicIcon.svg';
 import PostDetailPage from './PostDetailPage';
@@ -6,7 +5,6 @@ import { useRecoilState } from 'recoil';
 import { isDetailPostOpenState } from '../store/isDetailPostOpenState';
 import { ChildrenProps } from '../type/type';
 import Subtitle from './Subtitle';
-import { useNavigate } from 'react-router-dom';
 import PostItem from '../components/post/PostItem';
 
 const MainPageBox = ({ children }: ChildrenProps) => {
@@ -45,7 +43,7 @@ const MainPageBox = ({ children }: ChildrenProps) => {
           <Music width={40} height={40} />
         </div>
       </div>
-      <div className="flex h-screen w-[59.125rem] flex-wrap overflow-y-auto rounded-[2.5rem] bg-white py-[2.625rem] scrollbar-hide">
+      <div className="flex h-screen w-[59.125rem] flex-col overflow-y-auto rounded-[2.5rem] bg-white py-[2.625rem] scrollbar-hide">
         {children}
       </div>
       {isDetailPostOpen && (
@@ -66,7 +64,7 @@ const MainPageBox = ({ children }: ChildrenProps) => {
               onClick={() => {
                 alert('dkd');
               }}
-              isLoggin={true}
+              isLogin={true}
             />
             <div>
               <section>
