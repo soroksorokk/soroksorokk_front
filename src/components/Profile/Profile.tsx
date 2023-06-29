@@ -1,41 +1,55 @@
-import React from 'react';
-import useModal from '../../hook/useModal';
+import React, { useRef, useState } from 'react';
 
 const Profile = () => {
-  const { showModal } = useModal();
-  const handleFollowModal = () => {
-    showModal({
-      modalType: 'FollowModal',
-      modalProps: {
-        title: '팔로우',
-      },
-    });
+  const [imgFile, setImgFile] = useState<string>();
+  // const imgRef = useRef<HTMLInputElement | null>();
+  const handleChangeFile = (
+    event: React.ChangeEvent<EventTarget & HTMLInputElement>,
+  ) => {
+    const file = event?.target?.files?.[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        const result: string | ArrayBuffer | null = reader.result;
+        if (typeof result === 'string') {
+          setImgFile(result);
+        }
+      };
+    }
   };
   return (
     <div className="flex p-4 ">
-      <div className=" box-border flex h-[638px] w-[430px] flex-col items-center rounded-[40px] bg-white">
+      <div className=" box-border flex h-[39.875rem] w-[26.875rem] flex-col items-center rounded-[2.5rem] bg-white">
         <header className="flex w-full flex-col border-b border-[#DCDCDC]">
           <h1 className="p-6 pb-3 pl-[.875rem] text-3xl font-semibold ">
             프로필
           </h1>
         </header>
         <div className="flex w-full flex-col items-center py-6">
-          <img
-            src="/assets/soondoo.jpeg"
-            className=" border-1 mb-6 h-64 w-64 rounded-full object-cover"
+          <label htmlFor="profileImg">
+            <img
+              src={imgFile}
+              className=" mb-6 h-64 w-64 rounded-full border-2 object-cover"
+            />
+          </label>
+          <input
+            id="profileImg"
+            accept="image/*"
+            type="file"
+            onChange={handleChangeFile}
+            className="hidden"
           />
+
           <div>
-            <button className="m-3" onClick={handleFollowModal}>
-              팔로우20
-            </button>
-            <button className="text-purple" onClick={handleFollowModal}>
-              팔로워10
-            </button>
+            <button className="m-3">팔로우20</button>
+            <button className="text-purple">팔로워10</button>
           </div>
           <div className="flex flex-row">
-            {/* <button className="btn-small">게시글 보기</button> */}
-
+            <button className="btn-small">게시글 보기</button>
             <button className="btn-small">이미지 제거</button>
+
             <button className="btn-small bg-beige-dark text-gray">
               이미지 수정
             </button>
