@@ -16,7 +16,7 @@ const ReplyComment = () => {
             className="flex w-[6.25rem] cursor-pointer flex-row items-center"
             onClick={() => onClickMoreCommentButton()}
           >
-            <button className="h-4 w-4 bg-upward  bg-center bg-no-repeat" />
+            <img src="assets/upArrow.svg" className="h-4 w-4" />
             <p className="m-2 font-bold text-purple">답글</p>
             <p className=" font-bold text-purple">2개</p>
           </div>
@@ -26,7 +26,7 @@ const ReplyComment = () => {
               onClick={() => onClickMoreCommentButton()}
               className="flex cursor-pointer flex-row items-center "
             >
-              <button className="h-4 w-4 bg-downward bg-center bg-no-repeat" />
+              <img src="/assets/downArrow.svg" />
 
               <p className="m-2 font-bold text-purple">답글</p>
               <p className=" font-bold text-purple">2개</p>
@@ -46,7 +46,7 @@ const ReplyComment = () => {
                 </div>
                 <p className="m-1">최고최고 짱짱 </p>
                 <div className=" flx-row flex items-center">
-                  <button className="h-7 w-7 bg-[url('/assets/thumbsUp.svg')]"></button>
+                  <img src="/assets/thumbsUp.svg" className="h-7 w-7"></img>
                   <p>2</p>
                   <button className="m-2">답글</button>
                 </div>

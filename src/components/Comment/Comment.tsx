@@ -20,7 +20,7 @@ const Comment = () => {
         </div>
         <p className="m-1">최고최고 짱짱 </p>
         <div className="flx-row flex items-center">
-          <button className="h-7 w-7 bg-[url('/assets/thumbsUp.svg')]"></button>
+          <img src="/assets/thumbsUp.svg" className="h-7 w-7" />
           <p>2</p>
           <button className="m-2">답글</button>
         </div>
