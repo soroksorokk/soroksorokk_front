@@ -10,7 +10,7 @@ const Comment = () => {
         <img
           src="/assets/soondoo.jpeg"
           alt="profile_img"
-          className=" h-[46px] w-[46px] rounded-full border object-cover"
+          className=" h-[2.875rem] w-[2.875rem] rounded-full border object-cover"
         />
       </div>
       <div className="w-[85%] ">

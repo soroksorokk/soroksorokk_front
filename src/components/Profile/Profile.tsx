@@ -3,7 +3,7 @@ import React from 'react';
 const Profile = () => {
   return (
     <div className="flex p-4 ">
-      <div className=" box-border flex h-[638px] w-[430px] flex-col items-center rounded-[40px] bg-white">
+      <div className=" box-border flex h-[39.875rem] w-[26.875rem] flex-col items-center rounded-[2.5rem] bg-white">
         <header className="flex w-full flex-col border-b border-[#DCDCDC]">
           <h1 className="p-6 pb-3 pl-[.875rem] text-3xl font-semibold ">
             프로필
