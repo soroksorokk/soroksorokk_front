@@ -21,8 +21,8 @@ export default {
         red: '#FF4040',
       },
       backgroundImage: {
-        upward: 'url("/images/sample/upArrow.svg")',
-        downward: 'url("/images/sample/downArrow.svg")',
+        upward: 'url("/assets/upArrow.svg")',
+        downward: 'url("/assets/downArrow.svg")',
       },
       fontSize: {},
       boxShadow: {

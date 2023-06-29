@@ -7,7 +7,7 @@ import { isDetailPostOpenState } from '../store/isDetailPostOpenState';
 import { ChildrenProps } from '../type/type';
 import Subtitle from './Subtitle';
 import { useNavigate } from 'react-router-dom';
-import PostItem from '../components/post/postItem';
+import PostItem from '../components/post/PostItem';
 
 const MainPageBox = ({ children }: ChildrenProps) => {
   const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
@@ -21,7 +21,7 @@ const MainPageBox = ({ children }: ChildrenProps) => {
   const dummyData = [
     {
       id: 1,
-      postImg: '/images/sample/soondoo.jpeg',
+      postImg: '/assets/soondoo.jpeg',
       postArtist: '정우',
       postSong: '뭐든 될 수 있을 거야',
       postDate: new Date().getDate(),
@@ -45,7 +45,7 @@ const MainPageBox = ({ children }: ChildrenProps) => {
           <Music width={40} height={40} />
         </div>
       </div>
-      <div className="flex h-full w-[59.125rem] flex-wrap rounded-[40px] bg-white px-[29px] py-[42px]">
+      <div className="flex h-screen w-[59.125rem] flex-wrap overflow-y-auto rounded-[2.5rem] bg-white py-[2.625rem] scrollbar-hide">
         {children}
       </div>
       {isDetailPostOpen && (
@@ -57,7 +57,7 @@ const MainPageBox = ({ children }: ChildrenProps) => {
                   <img
                     onClick={handleCloseDetailPost}
                     className="flex w-[1.1em] cursor-pointer"
-                    src="/images/sample/arrow-left.svg"
+                    src="/assets/arrow-left.svg"
                   />
                   feed
                 </span>
