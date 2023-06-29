@@ -21,7 +21,6 @@ const Comment = () => {
           <p>2</p>
           <button className="m-2">답글</button>
         </div>
-
         <ReplyComment />
       </div>
     </div>
