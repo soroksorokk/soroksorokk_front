@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
+import Button from '../../UI/Button';
 
 const Profile = () => {
   const [imgFile, setImgFile] = useState<string>();
   // const imgRef = useRef<HTMLInputElement | null>();
-  const handleChangeFile = (
+  const handleChangeImage = (
     event: React.ChangeEvent<EventTarget & HTMLInputElement>,
   ) => {
     const file = event?.target?.files?.[0];
@@ -19,6 +20,7 @@ const Profile = () => {
       };
     }
   };
+
   return (
     <div className="flex p-4 ">
       <div className=" box-border flex h-[39.875rem] w-[26.875rem] flex-col items-center rounded-[2.5rem] bg-white">
@@ -38,7 +40,7 @@ const Profile = () => {
             id="profileImg"
             accept="image/*"
             type="file"
-            onChange={handleChangeFile}
+            onChange={handleChangeImage}
             className="hidden"
           />
 
@@ -47,12 +49,11 @@ const Profile = () => {
             <button className="text-purple">팔로워10</button>
           </div>
           <div className="flex flex-row">
-            <button className="btn-small">게시글 보기</button>
-            <button className="btn-small">이미지 제거</button>
-
-            <button className="btn-small bg-beige-dark text-gray">
+            <Button className={'btn-small'}>게시글 보기</Button>
+            <Button className={'btn-small'}>이미지 제거</Button>
+            <Button className={'btn-small bg-beige-dark text-gray'}>
               이미지 수정
-            </button>
+            </Button>
           </div>
           <div className="mb-2 mt-2 flex w-full flex-col items-start px-8 ">
             <div className=" mb-2 flex w-[100%] flex-row justify-between">
