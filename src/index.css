@@ -86,12 +86,12 @@
   }
 
   .btn-follow {
-    @apply h-[1.9375rem] w-[4.375rem] rounded-[1.4375rem] bg-purple px-4 py-[.3125rem] text-sm font-normal text-white;
+    @apply h-[1.9375rem] w-[4.375rem] rounded-[1.4375rem] bg-purple px-3 py-[.3125rem] text-sm font-normal text-white;
   }
   .btn-unfollow {
     @apply min-w-[1.875rem]  rounded-[1.4375rem] bg-beige px-4 py-1 text-sm font-normal text-purple;
   }
   .tag {
-    @apply mr-2 w-[4.625rem] rounded-xl bg-beige-dark px-[.5rem] py-[.0938rem];
+    @apply mr-2 w-[4.625rem] rounded-xl bg-beige-dark px-[.5rem] py-[.0938rem] text-purple;
   }
 }
