@@ -1,8 +1,7 @@
 import React from 'react';
 import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
-// import { ReactComponent as CloseBtn } from '/assets/closeBtn.svg'
-// ;
+
 import { ReactComponent as CloseBtn } from '../../../public/assets/closeBtn.svg';
 interface FollowModalProps {
   title?: string;
