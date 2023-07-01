@@ -1,9 +1,33 @@
 import React, { SyntheticEvent, useRef, useState } from 'react';
 import Button from '../../UI/Button';
 import defaultImage from '../../../public/assets/defaultImage.jpg';
+import useModal from '../../hook/useModal';
+
 const Profile = () => {
   const [imgFile, setImgFile] = useState<string>();
-  // const imgRef = useRef<HTMLInputElement | null>();
+  const [isEdit, setIsEdit] = useState<boolean>(true);
+  const [nickName, setNickName] = useState<string>('닉네임');
+  const [tag, setTag] = useState<string>('tag');
+  const [introduction, setIntroduction] =
+    useState<string>('난 슬플때 노래를 듣지');
+  const { showModal } = useModal();
+  const nickNameRef = useRef<HTMLInputElement>(null);
+  const tagRef = useRef<HTMLInputElement>(null);
+  const introductionRef = useRef<HTMLInputElement>(null);
+  const handleFollwModal = () => {
+    showModal({
+      modalType: 'FollowModal',
+      modalProps: { title: '팔로우' },
+    });
+  };
+  const handleConfirmModal = () =>
+    showModal({
+      modalType: 'ConfirmModal',
+      modalProps: {
+        message: '변경 사항을 저장하시겠습니까?',
+        confirmText: handleSaveEditedProfile,
+      },
+    });
   const handleChangeImage = (
     event: React.ChangeEvent<EventTarget & HTMLInputElement>,
   ) => {
@@ -19,6 +43,12 @@ const Profile = () => {
         }
       };
     }
+  };
+  const handleEditButton = () => {
+    setIsEdit(!isEdit);
+  };
+  const handleSaveEditedProfile = () => {
+    setIsEdit(!isEdit);
   };
 
   const handleRemoveImage = () => {
@@ -59,36 +89,101 @@ const Profile = () => {
           />
 
           <div>
-            <button className="m-3">팔로우20</button>
-            <button className="text-purple">팔로워10</button>
+            <button className="m-3" onClick={handleFollwModal}>
+              팔로우20
+            </button>
+            <button onClick={handleFollwModal} className="text-purple">
+              팔로워10
+            </button>
           </div>
           <div className="flex flex-row">
-            <Button className={'btn-small'}>게시글 보기</Button>
-            <Button onClick={handleRemoveImage} className={'btn-small'}>
-              이미지 제거
-            </Button>
-            <Button className={'btn-small bg-beige-dark text-gray'}>
-              이미지 수정
-            </Button>
+            {isEdit ? (
+              <Button className={'btn-small'}>게시글 보기</Button>
+            ) : (
+              <>
+                <Button onClick={handleRemoveImage} className={'btn-small'}>
+                  이미지 제거
+                </Button>
+                <label htmlFor="profileImg">
+                  <Button className={'btn-small bg-beige-dark text-gray'}>
+                    이미지 수정
+                  </Button>
+                </label>
+              </>
+            )}
           </div>
           <div className="mb-2 mt-2 flex w-full flex-col items-start px-8 ">
             <div className=" mb-2 flex w-[100%] flex-row justify-between">
-              <h2 className="font-bold">닉네임</h2>
+              {isEdit ? (
+                <h2 className="text-xl font-bold ">{nickName}</h2>
+              ) : (
+                <input
+                  className=" flex border px-1 text-xl font-bold text-gray placeholder:text-sm placeholder:font-normal placeholder:text-gray"
+                  placeholder="닉네임을 입력해주세요"
+                  defaultValue={nickName}
+                  ref={nickNameRef}
+                />
+              )}
               {/* 내 프로필 수정 버튼 */}
-              <button className="flex align-top text-gray underline">
-                수정
-              </button>
+              <div>
+                {isEdit ? (
+                  <button
+                    onClick={handleEditButton}
+                    className="flex align-top text-gray underline"
+                  >
+                    수정
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleConfirmModal}
+                    className="flex align-top text-gray underline"
+                  >
+                    완료
+                  </button>
+                )}
+              </div>
             </div>
+
             <div className="flex flex-row">
-              <div className="tag">
-                <p className="w-full text-purple">#tag</p>
-              </div>
-              <div className="tag">
-                <p className="w-full text-purple">#tag</p>
-              </div>
+              {isEdit ? (
+                <>
+                  <div className="tag">
+                    <p className="w-full">#{tag}</p>
+                  </div>
+
+                  <div className="tag">
+                    <p className="w-full">#tag</p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="tag">
+                    <input
+                      className=" tag placeholder:gray h-full w-full text-gray "
+                      defaultValue={tag}
+                      ref={tagRef}
+                    />
+                  </div>
+                  <div className="tag">
+                    <input
+                      className="tag w-full text-gray "
+                      defaultValue={tag}
+                    />
+                  </div>
+                </>
+              )}
             </div>
             <h2 className="my-2 font-bold">한줄소개</h2>
-            <div className="mb-6"> 나는 슬플 때 노래를 듣지</div>
+            {isEdit ? (
+              <div className="mb-6"> {introduction}</div>
+            ) : (
+              <input
+                className="place:holder:text-gray mb-6 border text-gray"
+                defaultValue={introduction}
+                placeholder="한줄 소개를 입력해주세요"
+                ref={introductionRef}
+              />
+            )}
           </div>
         </div>
       </div>
