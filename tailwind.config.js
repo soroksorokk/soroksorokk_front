@@ -30,6 +30,19 @@ export default {
         light: '0px 4px 4px rgba(0, 0, 0, 0.25);',
       },
     },
+    screens: {
+      mobile: '320px',
+      // => @media (min-width: 320px)
+
+      tablet: '640px',
+      // => @media (min-width: 640px)
+
+      notebook: '1024px',
+      // => @media (min-width: 1024px)
+
+      desktop: '1280px',
+      // => @media (min-width: 1280px)
+    },
   },
   plugins: [
     plugin(function ({ addUtilities }) {
