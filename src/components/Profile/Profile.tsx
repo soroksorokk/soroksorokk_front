@@ -14,12 +14,14 @@ const Profile = () => {
   const nickNameRef = useRef<HTMLInputElement>(null);
   const tagRef = useRef<HTMLInputElement>(null);
   const introductionRef = useRef<HTMLInputElement>(null);
+
   const handleFollwModal = () => {
     showModal({
       modalType: 'FollowModal',
       modalProps: { title: '팔로우' },
     });
   };
+
   const handleConfirmModal = () =>
     showModal({
       modalType: 'ConfirmModal',
@@ -65,27 +67,30 @@ const Profile = () => {
             프로필
           </h1>
         </header>
+
         <div className="flex w-full flex-col items-center py-6">
-          <label htmlFor="profileImg">
-            {imgFile ? (
-              <img
-                src={imgFile}
-                className=" mb-6 h-64 w-64 overflow-hidden rounded-full object-cover"
-                onError={handleOnError}
-              />
-            ) : (
+          {imgFile ? (
+            <img
+              src={imgFile}
+              className="  mb-6 block h-64 w-64 overflow-hidden rounded-full object-cover "
+            />
+          ) : (
+            <label htmlFor="profileImg">
               <img
                 className="  mb-6 h-64 w-64 overflow-hidden  rounded-full object-cover"
+                onError={handleOnError}
                 src={defaultImage}
               />
-            )}
-          </label>
+            </label>
+          )}
+
           <input
             id="profileImg"
             accept="image/*"
             type="file"
             onChange={handleChangeImage}
             className="hidden"
+            disabled={isEdit}
           />
 
           <div>
