@@ -36,13 +36,13 @@ export interface RegisterProps {
   nickName: string;
 }
 
-export interface editorDataType {
+export interface EditorDataType {
   file?: string | null;
   artist?: string;
   song?: string;
   feel?: [];
   title?: string;
-  tag?: [];
+  tags: string[];
   content?: string;
 }
 

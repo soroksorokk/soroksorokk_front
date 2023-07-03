@@ -35,6 +35,10 @@
     @apply h-[2.8125rem] w-full rounded-[2.5rem] bg-purple py-3 font-noto text-sm text-white;
   }
 
+  .btn-beige {
+    @apply h-[2.8125rem] w-full rounded-[2.5rem] bg-beige py-3 font-noto text-sm text-purple;
+  }
+
   .btn-white {
     @apply h-[2.8125rem] w-[20rem] rounded-[2.5rem] bg-white py-3 font-noto text-sm text-[#838383];
   }
@@ -97,5 +101,8 @@
   }
   .write-img {
     @apply absolute left-0 top-0 h-full w-full object-cover;
+  }
+  .tag-input {
+    @apply inline-block max-w-[4.25rem] rounded-full bg-beige px-2 py-1 text-xs;
   }
 }
