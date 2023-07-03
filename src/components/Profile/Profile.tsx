@@ -92,15 +92,6 @@ const Profile = () => {
             className="hidden"
             disabled={isEdit}
           />
-
-          <div>
-            <button className="m-3" onClick={handleFollwModal}>
-              팔로우20
-            </button>
-            <button onClick={handleFollwModal} className="text-purple">
-              팔로워10
-            </button>
-          </div>
           <div className="flex flex-row">
             {isEdit ? (
               <Button className={'btn-small'}>게시글 보기</Button>
@@ -109,14 +100,18 @@ const Profile = () => {
                 <Button onClick={handleRemoveImage} className={'btn-small'}>
                   이미지 제거
                 </Button>
-                <label htmlFor="profileImg">
-                  <Button className={'btn-small bg-beige-dark text-gray'}>
-                    이미지 수정
-                  </Button>
-                </label>
               </>
             )}
           </div>
+          <div>
+            <button className="m-3" onClick={handleFollwModal}>
+              팔로우20
+            </button>
+            <button onClick={handleFollwModal} className="text-purple">
+              팔로워10
+            </button>
+          </div>
+
           <div className="mb-2 mt-2 flex w-full flex-col items-start px-8 ">
             <div className=" mb-2 flex w-[100%] flex-row justify-between">
               {isEdit ? (
