@@ -29,9 +29,13 @@ const PostListHeader = () => {
 
   return (
     <div className="mt-2 flex w-full items-center justify-between">
-      <h1>오늘의 음악</h1>
+      <h1 className="mobile_xs:text-3xl mobile_sm:text-3xl">오늘의 음악</h1>
       <div className="flex items-center justify-between text-lg font-semibold">
-        <div className="px-4 ">{currentDate}</div>
+        <div className="px-4 ">
+          <span className="mobile_xs:hidden mobile_sm:hidden">
+            {currentDate}
+          </span>
+        </div>
         <Link to="/newPost/:id">
           <PostBtn
             width={40}
