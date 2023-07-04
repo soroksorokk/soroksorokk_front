@@ -31,16 +31,19 @@ export default {
       },
     },
     screens: {
-      mobile: '320px',
-      // => @media (min-width: 320px)
+      mobile_xs: { min: '320px', max: '359px' },
+      // => @media (min-width: 320px and max-width: 359px)
 
-      tablet: '640px',
-      // => @media (min-width: 640px)
+      mobile_sm: { min: '360px', max: '767px' },
+      // => @media (min-width: 320px and max-width: 767px)
 
-      notebook: '1024px',
-      // => @media (min-width: 1024px)
+      tablet: { min: '768px', max: '1023px' },
+      // => @media (min-width: 640px and max-width: 1023px)
 
-      desktop: '1280px',
+      notebook: { min: '1024px', max: '1279px' },
+      // => @media (min-width: 1024px and max-width: 1279px)
+
+      desktop: { min: '1280px' },
       // => @media (min-width: 1280px)
     },
   },
