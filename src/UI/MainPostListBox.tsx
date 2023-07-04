@@ -36,16 +36,22 @@ const MainPageBox = ({ children }: ChildrenProps) => {
   ];
 
   return (
-    <div className="flex">
-      <div className="flex w-1/6 flex-col items-center justify-start bg-transparent px-10">
-        <div className="mt-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-purple shadow-light">
+    <div className="flex w-full justify-center">
+      <div className="desktop:main-left-iconbar mobile_xs:hidden mobile_sm:hidden tablet:hidden notebook:hidden">
+        <div className="mt-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-purple shadow-light desktop:h-[4.3125rem] desktop:w-[4.3125rem]">
           <Home width={40} height={40} />
         </div>
-        <div className="my-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-white shadow-light">
+        <div className="my-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-white shadow-light desktop:h-[4.3125rem] desktop:w-[4.3125rem]">
           <Music width={40} height={40} />
         </div>
       </div>
-      <div className="flex h-screen w-[59.125rem] flex-wrap overflow-y-auto rounded-[2.5rem] bg-white py-[2.625rem] scrollbar-hide">
+      <div
+        className={`mx-5 flex h-screen ${
+          isDetailPostOpen
+            ? 'tablet:w-[20rem] notebook:w-[32rem] desktop:w-[50rem]'
+            : 'mobile_xs:w-[23rem] mobile_sm:w-[25rem] tablet:w-[30rem] notebook:w-[45rem] desktop:w-[59.125rem]'
+        } flex-wrap overflow-y-auto rounded-[2.5rem] bg-white py-[2.625rem] scrollbar-hide `}
+      >
         {children}
       </div>
       {isDetailPostOpen && (
