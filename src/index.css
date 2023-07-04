@@ -91,4 +91,7 @@
   .tag {
     @apply mr-2 w-[4.625rem] rounded-xl bg-beige-dark px-[.5rem] py-[.0938rem];
   }
+  .main-left-iconbar {
+    @apply desktop:flex desktop:w-[10%] desktop:flex-col desktop:items-center desktop:justify-start desktop:bg-transparent;
+  }
 }
