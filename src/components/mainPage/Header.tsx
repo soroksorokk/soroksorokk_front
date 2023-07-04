@@ -32,7 +32,7 @@ function Header() {
   };
 
   return (
-    <header className="flex h-[7.1875rem] w-full flex-row items-center justify-between bg-beige px-[10.0625rem] py-[2.2188rem]">
+    <header className="flex h-[7.1875rem] w-full flex-row items-center justify-between px-[10.0625rem] py-[2.2188rem]">
       <div className="flex cursor-pointer justify-between">
         <Logo width={19} height={22} />
         <span className="ml-[.75rem] font-inter text-[1.3125rem] font-semibold">
