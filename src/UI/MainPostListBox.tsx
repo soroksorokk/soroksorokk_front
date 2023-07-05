@@ -6,7 +6,7 @@ import { useRecoilState } from 'recoil';
 import { isDetailPostOpenState } from '../store/isDetailPostOpenState';
 import { ChildrenProps } from '../type/type';
 import Subtitle from './Subtitle';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PostItem from '../components/post/PostItem';
 
 const MainPageBox = ({ children }: ChildrenProps) => {
@@ -39,7 +39,9 @@ const MainPageBox = ({ children }: ChildrenProps) => {
     <div className="flex w-full justify-center">
       <div className="desktop:main-left-iconbar mobile_xs:hidden mobile_sm:hidden tablet:hidden notebook:hidden">
         <div className="mt-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-purple shadow-light desktop:h-[4.3125rem] desktop:w-[4.3125rem]">
-          <Home width={40} height={40} />
+          <Link to={'/'}>
+            <Home width={40} height={40} />
+          </Link>
         </div>
         <div className="my-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-white shadow-light desktop:h-[4.3125rem] desktop:w-[4.3125rem]">
           <Music width={40} height={40} />
