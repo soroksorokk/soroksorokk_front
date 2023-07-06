@@ -16,7 +16,6 @@ const PostListHeader = () => {
     isDetailPostOpenState,
   );
   const [isNewPost, setIsNewPost] = useRecoilState(isNewPostState);
-
   /**
    * 글쓰기 버튼을 누르면 isNewPost가 true가 됨
    * 만약 포스트카드가 눌려 디테일 포스트가 보인다면(true인 상태)
@@ -28,24 +27,29 @@ const PostListHeader = () => {
   };
 
   return (
-    <div className="mt-2 flex w-full items-center justify-between">
-      <h1 className="mobile_xs:text-3xl mobile_sm:text-3xl">오늘의 음악</h1>
-      <div className="flex items-center justify-between text-lg font-semibold">
-        <div className="px-4 ">
-          <span className="mobile_xs:hidden mobile_sm:hidden">
-            {currentDate}
-          </span>
-        </div>
-        <Link to="/newPost/:id">
-          <PostBtn
-            width={40}
-            height={40}
-            className="cursor-pointer"
-            onClick={handleNewPostClick}
-          />
-        </Link>
+    <>
+      <div className="mb-5 flex justify-end tablet:hidden notebook:hidden desktop:hidden">
+        <span>{currentDate}</span>
       </div>
-    </div>
+      <div className="mt-1 flex w-full items-center justify-between">
+        <h1 className="mobile_xs:text-2xl mobile_sm:text-2xl">오늘의 음악</h1>
+        <div className="flex items-center justify-between text-lg font-semibold">
+          <div className="px-4 ">
+            <span className="mobile_xs:hidden mobile_sm:hidden">
+              {currentDate}
+            </span>
+          </div>
+          <Link to="/newPost/:id">
+            <PostBtn
+              width={40}
+              height={40}
+              className="cursor-pointer"
+              onClick={handleNewPostClick}
+            />
+          </Link>
+        </div>
+      </div>
+    </>
   );
 };
 
