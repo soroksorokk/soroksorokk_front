@@ -29,14 +29,14 @@ const PostListHeader = () => {
   return (
     <>
       <div className="mb-5 flex justify-end tablet:hidden notebook:hidden desktop:hidden">
-        <span>{currentDate}</span>
+        <span>{`${currentDate.day} ${currentDate.month} ${currentDate.year}`}</span>
       </div>
       <div className="mt-1 flex w-full items-center justify-between">
         <h1 className="mobile_xs:text-2xl mobile_sm:text-2xl">오늘의 음악</h1>
         <div className="flex items-center justify-between text-lg font-semibold">
           <div className="px-4 ">
             <span className="mobile_xs:hidden mobile_sm:hidden">
-              {currentDate}
+              {`${currentDate.day} ${currentDate.month} ${currentDate.year}`}
             </span>
           </div>
           <Link to="/newPost/:id">

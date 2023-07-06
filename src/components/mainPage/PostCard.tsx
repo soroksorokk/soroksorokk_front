@@ -117,7 +117,7 @@ const PostCard = () => {
               </span>
             </div>
           </div>
-          <div className="mobile_xs:hidden mobile_sm:hidden">{postingDate}</div>
+          <div className="mobile_xs:hidden mobile_sm:hidden">{`${postingDate.month} ${postingDate.month} ${postingDate.year}`}</div>
         </div>
       </div>
     </div>
