@@ -30,6 +30,22 @@ export default {
         light: '0px 4px 4px rgba(0, 0, 0, 0.25);',
       },
     },
+    screens: {
+      mobile_xs: { min: '320px', max: '359px' },
+      // => @media (min-width: 320px and max-width: 359px)
+
+      mobile_sm: { min: '360px', max: '767px' },
+      // => @media (min-width: 320px and max-width: 767px)
+
+      tablet: { min: '768px', max: '1023px' },
+      // => @media (min-width: 640px and max-width: 1023px)
+
+      notebook: { min: '1024px', max: '1279px' },
+      // => @media (min-width: 1024px and max-width: 1279px)
+
+      desktop: { min: '1280px' },
+      // => @media (min-width: 1280px)
+    },
   },
   plugins: [
     plugin(function ({ addUtilities }) {

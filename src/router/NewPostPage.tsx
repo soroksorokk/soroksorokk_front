@@ -2,18 +2,10 @@ import MainLayout from '../UI/MainLayout';
 import MainPageBox from '../UI/MainPostListBox';
 import Subtitle from '../UI/Subtitle';
 import TextEditor from '../components/editor/TextEditor';
+import { getTodayDate } from '../utils/utils';
 
 const NewPostPage = () => {
-  const date = new Date();
-
-  const todayDate = {
-    year: date.getFullYear(),
-    day: date.getDate(),
-    month: date.toLocaleString('en-US', { month: 'short' }),
-  };
-
-  const { year, day, month } = todayDate;
-  console.log(todayDate);
+  const dayText = getTodayDate();
 
   return (
     <>
@@ -21,7 +13,7 @@ const NewPostPage = () => {
         <MainPageBox>
           <Subtitle
             leftText={'작성중...'}
-            rightText={`${month}, ${day} ${year}`}
+            rightText={`${dayText.month}, ${dayText.day} ${dayText.year}`}
           />
           <TextEditor />
         </MainPageBox>

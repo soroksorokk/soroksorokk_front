@@ -72,7 +72,7 @@
   }
 
   .modal-background {
-    @apply fixed left-0 top-0 z-10 h-full w-full bg-[rgba(0,0,0,0.3)];
+    @apply fixed left-0 top-0 z-50 h-full w-full bg-[rgba(0,0,0,0.3)];
   }
 
   .modal-box {
@@ -107,5 +107,8 @@
   }
   .tag-input {
     @apply inline-block max-w-[4.25rem] rounded-full bg-beige px-2 py-1 text-xs;
+  }
+  .main-left-iconbar {
+    @apply desktop:flex desktop:w-[10%] desktop:flex-col desktop:items-center desktop:justify-start desktop:bg-transparent;
   }
 }

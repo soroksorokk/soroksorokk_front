@@ -19,11 +19,14 @@ function App() {
     desc: '듣기 좋은 노래',
   });
 
+  console.log(import.meta.env.VITE_APP_PUBLIC_KEY);
+  // env 사용하는 방법
+
   return (
     <>
       <MainLayout>
         <MainPostListBox>
-          <div className="sticky -top-[2.6rem] h-[6.25rem] w-full bg-white px-[1.8125rem]">
+          <div className="sticky -top-[2.6rem] z-10 h-[6.25rem] w-full bg-white px-[1.8125rem] mobile_xs:h-[8rem]">
             <PostListHeader />
             <PostListNav
               isCategoryShow={isCategoryShow}
@@ -33,10 +36,6 @@ function App() {
             />
           </div>
           <PostCardBox>
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
             <PostCard />
             <PostCard />
             <PostCard />

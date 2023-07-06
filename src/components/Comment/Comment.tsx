@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import ReplyComment from './ReplyComment';
+import { getTodayDate } from '../../utils/utils';
 const Comment = () => {
   const [isComment, setIsComment] = useState(true);
-  const today = new Date().toDateString().slice(4, -4);
 
+  const replyDate = getTodayDate();
   return (
     <div className="flex w-[100%] flex-col  ">
       <div className="flex flex-row">
@@ -14,7 +15,7 @@ const Comment = () => {
         <div className="flex w-[85%] flex-col">
           <div className="m-2 flex flex-row ">
             <p className="m-1 font-semibold">닉네임</p>
-            <p className="m-1 font-normal text-gray">{today}</p>
+            <p className="m-1 font-normal text-gray">{`${replyDate.year} ${replyDate.month} ${replyDate.day}`}</p>
           </div>
           <p className="m-1">최고최고 짱짱 </p>
           <div className=" flx-row flex items-center">

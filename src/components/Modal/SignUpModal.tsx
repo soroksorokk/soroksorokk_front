@@ -123,7 +123,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
               id="nickName"
               type="text"
               minLength={2}
-              maxLength={10}
+              maxLength={8}
               className="placeholder:placeholder:text=[#909090] w-full border-b-[.0625rem] border-[#909090] p-4 text-sm outline-none focus:border-[#9664FF]"
               placeholder="닉네임을 입력해주세요"
               {...register('nickName', {

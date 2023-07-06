@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { getTodayDate } from '../../utils/utils';
 import { ReactComponent as Scrap } from '../../assets/scrapIcon.svg';
 import { useRecoilState } from 'recoil';
@@ -6,16 +6,16 @@ import { isDetailPostOpenState } from '../../store/isDetailPostOpenState';
 import { isNewPostState } from '../../store/isNewPostState';
 
 const PostCard = () => {
+  const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
+    isDetailPostOpenState,
+  );
+  const [isNewPost, setIsNewPost] = useRecoilState(isNewPostState);
+  const [scrap, setScrap] = useState(false);
   /**
    * 임시로 utils에 있는 함수를 가져옴.
    * 하지만 사용자의 post date값을 가져와서 바꿀 예정임
    */
   const postingDate = getTodayDate();
-
-  const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
-    isDetailPostOpenState,
-  );
-  const [isNewPost, setIsNewPost] = useRecoilState(isNewPostState);
 
   /**
    * 포스트 카드를 클릭하면 detailPostOpen이 true로 설정되면서 열림
@@ -28,55 +28,96 @@ const PostCard = () => {
     }
   };
 
+  const handleScrapClick = () => {
+    setScrap(!scrap);
+    // 눌렀을 때 로그인 했는지 여부 판단 -> 로그인이 안 되어있다면 로그인으로 넘어감
+    // 로그인이 되어있고 scrap을 눌렀다면 scrap이 true로 변함
+    // 그리고 해당 사용자의 scrap 배열에 해당 글의 id가 추가됨
+    // 다시 누른다면 scrap이 false, 해당 사용자의 scrap 배열에 해당 글의 id가 제거됨
+  };
+
   return (
-    <div
-      onClick={handleDetailPostClick}
-      className="h-[24.5rem] w-full cursor-pointer overflow-hidden rounded-2xl shadow-basic hover:shadow-[0px_0px_10px_3px_rgba(150,100,255,0.8)]"
-    >
+    <div className="h-[24.5rem] w-full overflow-hidden rounded-2xl shadow-basic hover:shadow-[0px_0px_10px_3px_rgba(150,100,255,0.8)]">
       <img
-        className="h-2/5 w-full"
+        className="h-2/5 w-full cursor-pointer"
         src="https://i.namu.wiki/i/w11dbZZeomJI4bD3_KItw3vq7tgglcM1YQA_xHULxMsixPpY1S7KcB8WrEFhJNuSuejiiQkicGKMH12JvpUqBQ.webp"
-        alt="bg"
+        alt="post-image"
+        onClick={handleDetailPostClick}
       />
       <div className="p-[1.125rem]">
-        <div className="flex justify-between ">
+        <div
+          className="flex cursor-pointer justify-between"
+          onClick={handleDetailPostClick}
+        >
           <h1 className="post-title w-7/8 truncate">
-            용기가 필요할 땐 이노래를...
+            용기가 필요할 땐 이노래를 추천
           </h1>
           <div>🥰</div>
         </div>
-        <p className="mt-2 line-clamp-3 max-h-[5rem] w-full break-words font-noto font-normal leading-tight text-[#292929]">
+        <p
+          onClick={handleDetailPostClick}
+          className="mt-2 line-clamp-3 max-h-[5rem] w-full cursor-pointer break-words font-noto font-normal leading-tight text-[#292929]"
+        >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam totam
           harum accusamus eveniet beatae, porro esse vitae a doloribus sit
           expedita enim nostrum obcaecati quam voluptatum doloremque asperiores
           pariatur ducimus.
         </p>
         <div className="mt-[1.5rem] flex items-center justify-between">
-          <div className="flex w-9/12 gap-x-1">
-            <div className="flex h-[1.5rem] w-[3.75rem] items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
-              #태그
+          <div className="flex w-[80%] gap-x-1 overflow-x-scroll whitespace-nowrap scrollbar-hide">
+            <div className="flex h-[1.5rem] w-auto items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
+              <span>#태그dsdasasdsa</span>
             </div>
-            <div className="flex h-[1.5rem] w-[3.75rem] items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
-              #태그
+            <div className="flex h-[1.5rem] w-auto items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
+              <span>#태그sdsad</span>
             </div>
-            <div className="flex h-[1.5rem] w-[3.75rem] items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
-              #태그
+            <div className="flex h-[1.5rem] w-auto items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
+              <span>#태그</span>
             </div>
           </div>
           <div>
-            <Scrap className="cursor-pointer" />
+            <Scrap
+              onClick={handleScrapClick}
+              className="cursor-pointer"
+              fill={scrap ? '#fc2c03' : '#D5CDC2'}
+            />
           </div>
         </div>
-        <div className="align-center mt-[1rem] flex items-center justify-between">
-          <div className="flex w-[45%] items-center justify-around">
+        <div className="align-center mt-[2rem] flex items-center justify-between">
+          <div
+            className={`relative flex w-[45%] items-center mobile_xs:w-[100%] mobile_sm:w-[100%]  ${
+              isDetailPostOpen ? 'gap-x-2' : 'gap-x-1'
+            }`}
+          >
             <img
+              src="assets/soondoo.jpeg"
               alt="profile_image"
-              className="h-[2.125rem] w-[2.125rem] rounded-full"
+              className={` object-fit absolute
+                ${
+                  isDetailPostOpen
+                    ? 'h-[1.5rem] w-[1.5rem] rounded-full'
+                    : 'h-[2.125rem] w-[2.125rem] rounded-full'
+                }
+              `}
             />
-            <span className="text-sm text-[#B4B4B4]">by</span>
-            <span>닉네임</span>
+            <div
+              className={`${
+                isDetailPostOpen ? 'ml-[1.5rem]' : 'ml-[2.2rem]'
+              } flex `}
+            >
+              <span className="px-[.3125rem] text-sm text-[#B4B4B4]">by</span>
+              <span
+                className={
+                  isDetailPostOpen
+                    ? 'tablet:w-[35%] notebook:w-[20%] desktop:w-[15%]'
+                    : 'mobile_xs:w-[35%] mobile_sm:w-[60%] tablet:w-[70%] notebook:w-[40%] desktop:w-[30%]'
+                }
+              >
+                닉네임ㄴㄴㄴㄴㄴㄴdsds
+              </span>
+            </div>
           </div>
-          <div>{postingDate}</div>
+          <div className="mobile_xs:hidden mobile_sm:hidden">{`${postingDate.month} ${postingDate.month} ${postingDate.year}`}</div>
         </div>
       </div>
     </div>
