@@ -107,13 +107,13 @@ const PostCard = () => {
             >
               <span className="px-[.3125rem] text-sm text-[#B4B4B4]">by</span>
               <span
-                className={`${
+                className={
                   isDetailPostOpen
                     ? 'tablet:w-[35%] notebook:w-[20%] desktop:w-[15%]'
                     : 'mobile_xs:w-[35%] mobile_sm:w-[60%] tablet:w-[70%] notebook:w-[40%] desktop:w-[30%]'
-                } truncate`}
+                }
               >
-                닉네임ㄴㄴㄴㄴㄴㄴsadsadasdsadsadsadsadsadsa
+                닉네임ㄴㄴㄴㄴㄴㄴdsds
               </span>
             </div>
           </div>
