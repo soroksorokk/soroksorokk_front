@@ -2,7 +2,7 @@ import React from 'react';
 
 const Follow = () => {
   return (
-    <div className="m-4 h-[418px] w-[420px] rounded-[40px] bg-white p-4">
+    <div className="m-4 h-[26.125rem] w-[26.25rem] rounded-[2.5rem] bg-white p-4">
       <header className="m-4 flex flex-row justify-between">
         <h1 className="text-2xl font-bold">팔로워</h1>
         <button>x</button>
