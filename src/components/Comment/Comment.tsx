@@ -1,13 +1,13 @@
 import React from 'react';
 import ReplyComment from './ReplyComment';
+
 const Comment = () => {
   return (
     <div className="flex w-[100%] flex-row  ">
       <div className="flex w-[15%] justify-end">
         <img
           src="/assets/soondoo.jpeg"
-          alt="profile_img"
-          className=" h-[46px] w-[46px] rounded-full border object-cover"
+          className=" h-[2.875rem] w-[2.875rem] rounded-full border object-cover"
         />
       </div>
       <div className="w-[85%] ">
@@ -21,7 +21,6 @@ const Comment = () => {
           <p>2</p>
           <button className="m-2">답글</button>
         </div>
-
         <ReplyComment />
       </div>
     </div>
@@ -29,3 +28,5 @@ const Comment = () => {
 };
 
 export default Comment;
+
+// 이미지업로드 버튼

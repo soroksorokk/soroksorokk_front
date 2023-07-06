@@ -5,11 +5,11 @@ const ReplyComment = () => {
   const onClickMoreCommentButton = () => {
     setIsComment(!isComment);
   };
-  console.log(isComment);
+
   return (
     <div className="flex w-[100%] flex-col ">
-      <div className="flex flex-row items-center">
-        <div>
+      <div className="w-[100%] ">
+        <div className="flex flex-row items-center">
           <button
             className="h-4 w-4 bg-upward  bg-center bg-no-repeat"
             onClick={() => onClickMoreCommentButton()}
@@ -18,11 +18,11 @@ const ReplyComment = () => {
           <p className=" font-bold text-purple">2개</p>
         </div>
       </div>
-      <div className="flex flex-row">
-        <div className="flex w-[15%] justify-end">
+      <div className=" flex flex-row">
+        <div className="flex justify-start">
           <img
             src="/assets/soondoo.jpeg"
-            className=" h-[46px] w-[46px] rounded-full border object-cover"
+            className=" h-[2.875rem] w-[2.875rem] rounded-full border object-cover"
           />
         </div>
         <div className="w-[85%] ">
