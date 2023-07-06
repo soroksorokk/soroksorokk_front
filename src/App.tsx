@@ -19,6 +19,9 @@ function App() {
     desc: '듣기 좋은 노래',
   });
 
+  console.log(import.meta.env.VITE_APP_PUBLIC_KEY);
+  // env 사용하는 방법
+
   return (
     <>
       <MainLayout>
