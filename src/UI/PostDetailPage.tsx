@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChildrenProps } from '../type/type';
 
 const PostDetailPage = ({ children }: ChildrenProps) => {

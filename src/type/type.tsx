@@ -36,6 +36,28 @@ export interface RegisterProps {
   nickName: string;
 }
 
+export interface EditorDataType {
+  file?: string | null;
+  artist?: string;
+  song?: string;
+  feel?: [];
+  title?: string;
+  tags: string[];
+  content?: string;
+}
+
+export interface feelDataType {
+  feel_id: number;
+  feel: CategoryEmoji;
+  desc: string;
+}
+export interface EmojiType {
+  key: number;
+  onClick: (id: number) => void;
+  emoji: feelDataType;
+  selectValue: number;
+}
+
 // enum
 
 export enum CategoryEmoji {

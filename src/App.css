@@ -17,3 +17,7 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+input {
+  outline: none;
+}
