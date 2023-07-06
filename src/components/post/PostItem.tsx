@@ -5,7 +5,7 @@ type PostItemProps = {
   postImg: string;
   postArtist: string;
   postSong: string;
-  postDate: number;
+  create_date: number;
   postWriterImg: string;
   postWritId: string;
   postTitle: string;
@@ -18,13 +18,19 @@ const PostItem = ({ ...post }: PostItemProps) => {
     postImg,
     postArtist,
     postSong,
-    postDate,
+    create_date,
     postWriterImg,
     postWritId,
     postTitle,
     postContent,
     postTag,
   } = { ...post };
+
+  const month = new Date(create_date).toLocaleString('en-US', {
+    month: 'short',
+  });
+  const date = new Date(create_date).getDate();
+
   return (
     <div className="mt-4 p-4">
       <div className="relative flex justify-center ">
@@ -44,8 +50,10 @@ const PostItem = ({ ...post }: PostItemProps) => {
           />
         </div>
         <div className="ml-3 grow text-xs">
-          <span>{postDate}</span>
-          <p className="font-bold">
+          <span className="font-bold">
+            {month}, {date}
+          </span>
+          <p className="mt-1 font-bold ">
             <span className=" text-slate-300">by</span> {postWritId}
           </p>
         </div>
