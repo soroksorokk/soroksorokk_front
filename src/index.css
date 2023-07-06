@@ -74,7 +74,10 @@
   .modal-box {
     @apply fixed left-1/2 top-1/2 h-auto w-[25rem] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] bg-white p-[2.5rem];
   }
-
+  .modal-follow-box {
+    @apply fixed left-1/2 top-1/2 
+  m-4 h-[418px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-[40px] bg-white p-4;
+  }
   .btn-double-check {
     @apply absolute bottom-6 right-0 top-[25%] h-[45%] w-[30%] rounded-3xl border-2 border-[.0625rem] border-[#9664FF] px-2 py-1 text-sm text-[#9157A8];
   }
@@ -83,12 +86,12 @@
   }
 
   .btn-follow {
-    @apply h-[1.9375rem] w-[4.375rem] rounded-[1.4375rem] bg-purple px-4 py-[.3125rem] text-sm font-normal text-white;
+    @apply h-[1.9375rem] w-[4.375rem] rounded-[1.4375rem] bg-purple px-3 py-[.3125rem] text-sm font-normal text-white;
   }
   .btn-unfollow {
     @apply min-w-[1.875rem]  rounded-[1.4375rem] bg-beige px-4 py-1 text-sm font-normal text-purple;
   }
   .tag {
-    @apply mr-2 w-[4.625rem] rounded-xl bg-beige-dark px-[.5rem] py-[.0938rem];
+    @apply mr-2 w-[4.625rem] rounded-xl bg-beige-dark px-[.5rem] py-[.0938rem] text-purple;
   }
 }
