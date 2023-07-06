@@ -7,7 +7,6 @@ import PostListNav from './components/mainPage/PostListNav';
 import PostCard from './components/mainPage/PostCard';
 import PostCardBox from './components/mainPage/PostCardBox';
 import { CategoryEmoji } from '../src/type/type';
-import ConfirmModal from './components/Modal/ConfirmModal';
 
 function App() {
   const [isCategoryShow, setIsCategoryShow] = useState(false);
@@ -42,7 +41,6 @@ function App() {
           </PostCardBox>
         </MainPostListBox>
       </MainLayout>
-      <ConfirmModal title="타이틀" onClick={() => console.log('fdfd')} />
     </>
   );
 }
