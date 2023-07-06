@@ -7,6 +7,7 @@ import PostListNav from './components/mainPage/PostListNav';
 import PostCard from './components/mainPage/PostCard';
 import PostCardBox from './components/mainPage/PostCardBox';
 import { CategoryEmoji } from '../src/type/type';
+import ConfirmModal from './components/Modal/ConfirmModal';
 
 function App() {
   const [isCategoryShow, setIsCategoryShow] = useState(false);
@@ -22,7 +23,7 @@ function App() {
     <>
       <MainLayout>
         <MainPostListBox>
-          <div className="sticky -top-[2.6rem] h-[6.25rem] w-full bg-white px-[1.8125rem]">
+          <div className="sticky -top-[2.6rem] z-10 h-[6.25rem] w-full bg-white px-[1.8125rem] mobile_xs:h-[8rem]">
             <PostListHeader />
             <PostListNav
               isCategoryShow={isCategoryShow}
@@ -38,13 +39,10 @@ function App() {
             <PostCard />
             <PostCard />
             <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
           </PostCardBox>
         </MainPostListBox>
       </MainLayout>
+      <ConfirmModal title="타이틀" onClick={() => console.log('fdfd')} />
     </>
   );
 }
