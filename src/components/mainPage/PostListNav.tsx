@@ -32,7 +32,7 @@ const PostListNav = ({
   };
 
   return (
-    <div className="relative flex w-full justify-between py-[1.0625rem]">
+    <div className="relative flex w-full justify-between py-[1.0625rem] mobile_xs:py-3">
       <div
         onClick={handleCategoryClick}
         className="flex h-[2.25rem] w-auto cursor-pointer items-center justify-center rounded-[1.5rem] bg-beige px-[8px] mobile_xs:text-xs"
