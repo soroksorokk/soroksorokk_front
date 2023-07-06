@@ -36,7 +36,7 @@ const ReplyComment = () => {
               <div>
                 <img
                   src="/assets/soondoo.jpeg"
-                  className=" h-[2.875rem] w-[2.875rem] rounded-full border object-cover"
+                  className=" h-[2.875rem] w-[2.875rem] rounded-full  object-cover"
                 />
               </div>
               <div>

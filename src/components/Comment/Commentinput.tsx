@@ -8,7 +8,7 @@ const CommentInput = () => {
       <div className="flex flex-row items-center">
         <img
           src="/assets/soondoo.jpeg"
-          className="h-[2.25rem] w-[2.25rem] rounded-full"
+          className=" h-[2.875rem] w-[2.875rem] rounded-full border object-cover"
         />
         <div className=" flex w-[100%] flex-row items-center justify-between">
           <p className=" mx-2 text-2xl font-semibold">닉네임</p>
