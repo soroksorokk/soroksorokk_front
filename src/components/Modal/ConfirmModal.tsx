@@ -7,13 +7,15 @@ export interface ConfirmModalProps {
   message?: string;
   cancelText?: string;
   confirmText?: string;
+  onClick: () => void;
 }
 
 const ConfirmModal = ({
   title,
   message,
-  cancelText,
-  confirmText,
+  cancelText = '취소',
+  confirmText = '확인',
+  onClick,
 }: ConfirmModalProps) => {
   const { hideModal } = useModal();
 
@@ -21,19 +23,18 @@ const ConfirmModal = ({
     hideModal();
   };
 
-  const onConfirm = () => {
-    console.log('확인쓰');
-  };
+  // const onConfirm = () => {
+  //   console.log('확인쓰');
+  // };
 
   return (
     <ModalBackgound onClose={onClose}>
       <div className="modal-box">
         <div>{title}</div>
-        <div>{message}</div>
-      </div>
-      <div>
-        <button onClick={onClose}>{cancelText}</button>
-        <button onClick={onConfirm}>{confirmText}</button>
+        <div>
+          <button onClick={onClick}>{cancelText}</button>
+          <button onClick={onClick}>{confirmText}</button>
+        </div>
       </div>
     </ModalBackgound>
   );
