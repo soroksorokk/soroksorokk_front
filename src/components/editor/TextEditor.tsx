@@ -208,13 +208,12 @@ function TextEditor() {
       </section>
 
       <section className="mt-4 ">
-        {/* {editorRef && ( */}
         <Editor
           initialValue=" "
           placeholder="당신의 아티스트와 곡을 마음껏 자랑해주세요!"
           previewStyle="vertical"
           height="600px"
-          initialEditType={window.innerWidth === 400 ? 'markdown' : 'wysiwyg'}
+          initialEditType={window.innerWidth === 400 ? 'wysiwyg' : 'markdown'}
           useCommandShortcut={true}
           ref={editorRef}
           toolbarItems={[
@@ -224,7 +223,7 @@ function TextEditor() {
           ]}
           onChange={handleEditor}
         />
-        {/* )} */}
+
         <div className="mt-2 flex w-full justify-between py-2">
           <Button className="btn-beige max-w-[11.25rem]">작성취소</Button>
           <div className="flex ">
