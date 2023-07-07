@@ -84,41 +84,28 @@ const PostCard = () => {
           </div>
         </div>
         <div className="align-center mt-[2rem] flex items-center justify-between">
-          <div
-            className={`relative flex w-[45%] items-center mobile_xs:w-[100%] mobile_sm:w-[100%]  ${
-              isDetailPostOpen ? 'gap-x-2' : 'gap-x-1'
-            }`}
-          >
+          <div className="relative flex w-[45%] items-center mobile_xs:w-[100%] mobile_sm:w-[75%]">
             <img
               src="assets/soondoo.jpeg"
               alt="profile_image"
               className={` object-fit absolute
                 ${
                   isDetailPostOpen
-                    ? 'h-[1.5rem] w-[1.5rem] rounded-full'
-                    : 'h-[2.125rem] w-[2.125rem] rounded-full'
+                    ? 'h-[1.5rem] w-[1.5rem] rounded-full mobile_xs:h-[2rem] mobile_xs:w-[2rem] mobile_sm:h-[2.125rem] mobile_sm:w-[2.125rem] tablet:h-[2.125rem] tablet:w-[2.125rem] notebook:h-[2.125rem] notebook:w-[2.125rem]'
+                    : 'h-[2.125rem] w-[2.125rem] rounded-full mobile_xs:h-[2rem] mobile_xs:w-[2rem] '
                 }
               `}
             />
-            <div
-              className={`${
-                isDetailPostOpen ? 'ml-[1.5rem]' : 'ml-[2.2rem]'
-              } flex `}
-            >
+            <div className="absolute left-9 w-[12.5rem]">
               <span className="px-[.3125rem] text-sm text-[#B4B4B4]">by</span>
-              <span
-                className={
-                  isDetailPostOpen
-                    ? 'tablet:w-[35%] notebook:w-[20%] desktop:w-[15%]'
-                    : 'mobile_xs:w-[35%] mobile_sm:w-[60%] tablet:w-[70%] notebook:w-[40%] desktop:w-[30%]'
-                }
-              >
-                닉네임ㄴㄴㄴㄴㄴㄴdsds
-              </span>
+              <span>닉네임여덟글자만</span>
             </div>
           </div>
-          <div className="mobile_xs:hidden mobile_sm:hidden">{`${postingDate.month} ${postingDate.month} ${postingDate.year}`}</div>
+          <div className="flex justify-end mobile_xs:hidden">{`${postingDate.day} ${postingDate.month}`}</div>
         </div>
+      </div>
+      <div className="mt-1 flex justify-start px-[1.125rem] mobile_sm:hidden tablet:hidden notebook:hidden desktop:hidden">
+        <span>{`${postingDate.month} ${postingDate.day}`}</span>
       </div>
     </div>
   );
