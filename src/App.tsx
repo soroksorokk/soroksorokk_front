@@ -26,7 +26,7 @@ function App() {
     <>
       <MainLayout>
         <MainPostListBox>
-          <div className="sticky -top-[2.6rem] z-10 h-[6.25rem] w-full bg-white px-[1.8125rem] mobile_xs:h-[8rem]">
+          <div className="sticky -top-[2.6rem] z-10 h-[6.25rem] w-full bg-white px-[1.8125rem] mobile_xs:h-[8rem] mobile_sm:h-[8.5rem]">
             <PostListHeader />
             <PostListNav
               isCategoryShow={isCategoryShow}
@@ -45,8 +45,8 @@ function App() {
           </PostCardBox>
         </MainPostListBox>
       </MainLayout>
-      <CommentList />
-      <Profile />
+      {/* <CommentList />
+      <Profile /> */}
     </>
   );
 }
