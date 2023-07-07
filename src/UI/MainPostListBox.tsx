@@ -49,14 +49,14 @@ const MainPageBox = ({ children }: ChildrenProps) => {
       <div
         className={`mx-5 flex h-screen ${
           isDetailPostOpen
-            ? 'tablet:w-[20rem] notebook:w-[32rem] desktop:w-[50rem]'
-            : 'mobile_xs:w-[23rem] mobile_sm:w-[25rem] tablet:w-[30rem] notebook:w-[45rem] desktop:w-[59.125rem]'
+            ? 'tablet:w-[50%] notebook:w-[50%] desktop:w-[50%]'
+            : 'mobile_xs:w-[95%] mobile_sm:w-[95%] tablet:w-[90%] notebook:w-[80%] desktop:w-[70%]'
         } flex-wrap overflow-y-auto rounded-[2.5rem] bg-white py-[2.625rem] scrollbar-hide `}
       >
         {children}
       </div>
       {isDetailPostOpen && (
-        <div>
+        <div className="mobile_xs:hidden mobile_sm:hidden">
           <PostDetailPage onClose={handleCloseDetailPost}>
             <Subtitle
               leftText={
