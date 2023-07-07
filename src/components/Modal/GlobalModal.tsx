@@ -6,6 +6,7 @@ import ConfirmModal from './ConfirmModal';
 import LoginModal from './LoginModal';
 import SignUpModal from './SignUpModal';
 import FollowModal from './FollowModal';
+import MobileMenuModal from './MobileMenuModal';
 
 export const MODAL_TYPES = {
   ConfirmModal: 'ConfirmModal',
@@ -13,6 +14,7 @@ export const MODAL_TYPES = {
   LoginModal: 'LoginModal',
   SignUpModal: 'SignUpModal',
   FollowModal: 'FollowModal',
+  MobileMenuModal: 'MobileMenuModal',
 };
 
 const MODAL_COMPONENTS = {
@@ -21,6 +23,7 @@ const MODAL_COMPONENTS = {
   [MODAL_TYPES.LoginModal]: LoginModal,
   [MODAL_TYPES.SignUpModal]: SignUpModal,
   [MODAL_TYPES.FollowModal]: FollowModal,
+  [MODAL_TYPES.MobileMenuModal]: MobileMenuModal,
 };
 
 const GlobalModal = () => {
