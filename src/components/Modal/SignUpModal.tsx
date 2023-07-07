@@ -43,7 +43,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
   return (
     <ModalBackground onClose={onClose}>
       <div
-        className="modal-box h-[31.25rem] overflow-y-auto scroll-smooth scrollbar-hide"
+        className="modal-box h-[37.5rem] w-[30rem] overflow-y-auto scroll-smooth scrollbar-hide"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-end">
@@ -60,6 +60,13 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
           onSubmit={handleSubmit(onSubmitHandler)}
           className="flex flex-col "
         >
+          <label htmlFor="profile_img">프로필 이미지 추가하기</label>
+          <input
+            type="file"
+            id="profile_img"
+            accept="image/*"
+            className="hidden"
+          />
           <label htmlFor="email" className="pt-[1rem]">
             이메일
           </label>
@@ -74,7 +81,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
                 pattern: /^[A-Za-z]+$/i,
               })}
             />
-            <Button className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-2 border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]">
+            <Button className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]">
               중복확인
             </Button>
           </div>
