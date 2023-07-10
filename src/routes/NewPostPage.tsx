@@ -2,6 +2,7 @@ import MainLayout from '../UI/MainLayout';
 import MainPageBox from '../UI/MainPostListBox';
 import Subtitle from '../UI/Subtitle';
 import TextEditor from '../components/editor/TextEditor';
+import Header from '../components/mainPage/Header';
 import { getTodayDate } from '../utils/utils';
 
 const NewPostPage = () => {
@@ -9,6 +10,7 @@ const NewPostPage = () => {
 
   return (
     <>
+      <Header />
       <MainLayout>
         <MainPageBox>
           <Subtitle
