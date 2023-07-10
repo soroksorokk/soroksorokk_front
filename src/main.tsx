@@ -9,11 +9,9 @@ import {
   useRecoilState,
   useRecoilValue,
 } from 'recoil';
-import GlobalModal from './components/Modal/GlobalModal';
-import ErrorPage from './router/ErrorPage';
-import NewPostPage from './router/NewPostPage';
+import ErrorPage from './routes/ErrorPage';
+import NewPostPage from './routes/NewPostPage';
 import App from './App';
-import Header from './components/mainPage/Header';
 
 const router = createBrowserRouter([
   {
@@ -31,8 +29,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <RecoilRoot>
-      <GlobalModal />
-      <Header />
       <RouterProvider router={router} />
     </RecoilRoot>
   </React.StrictMode>,
