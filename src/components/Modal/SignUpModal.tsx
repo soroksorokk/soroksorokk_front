@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
 import Button from '../../UI/Button';
 import TermsOfUse from './TermsOfUse';
 import { useForm } from 'react-hook-form';
 import { RegisterProps } from '../../type/type';
+import useWidthResize from '../../hook/useWidthResize';
 
 export interface SignUpModalProps {
   title?: string;
@@ -12,6 +13,12 @@ export interface SignUpModalProps {
 }
 
 const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
+  const [profileImgSrc, setProfileImgSrc] = useState<string>('');
+  const [profileImgFile, setProfileImgFile] = useState<File | null>(null);
+  const imgRef = useRef<HTMLInputElement | null>(null);
+
+  const windowWidth = useWidthResize();
+
   const { hideModal } = useModal();
   // react-hook-form 을 사용하기 위해 useForm에 있는 속성들을 구조분해할당으로 가져옴
   const {
@@ -34,16 +41,41 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
 
   const onSubmitHandler = (data: RegisterProps) => {
     console.log('data', data);
+    if (!profileImgFile) return console.log('이미지가 없어유');
+    if (profileImgFile) {
+      console.log('서버에 보내는 로직 짜기');
+    }
   };
 
   // 패스워드 입력과 패스워드 더블체크를 위해 패스워드 입력값을 계속 추적하는 것(e.target.value랑 같음).
   const pwd = watch('password', '');
   const pwdCheck = watch('passwordCheck', '');
 
+  // 이미지 업로드 및 이미지 미리보기 함수
+  const handleProfileImg = () => {
+    if (!imgRef.current?.files) return;
+    const file = imgRef.current?.files[0];
+
+    if (file) {
+      let imgUrl = URL.createObjectURL(file);
+      setProfileImgFile(file);
+      setProfileImgSrc(imgUrl);
+    }
+  };
+
+  const handleRemoveProfile = () => {
+    setProfileImgFile(null);
+    setProfileImgSrc('');
+  };
+
   return (
     <ModalBackground onClose={onClose}>
       <div
-        className="modal-box h-[37.5rem] w-[30rem] overflow-y-auto scroll-smooth scrollbar-hide"
+        className={
+          windowWidth.width < 768
+            ? 'h-screen w-full overflow-y-auto bg-white p-[2.5rem] scrollbar-hide'
+            : 'modal-box h-[37.5rem] w-[30rem] overflow-y-auto scrollbar-hide'
+        }
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-end">
@@ -60,13 +92,37 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
           onSubmit={handleSubmit(onSubmitHandler)}
           className="flex flex-col "
         >
-          <label htmlFor="profile_img">프로필 이미지 추가하기</label>
-          <input
-            type="file"
-            id="profile_img"
-            accept="image/*"
-            className="hidden"
-          />
+          <div className="flex justify-center bg-no-repeat py-[1rem]">
+            <label
+              className="rounded-ful relative h-28 w-28 cursor-pointer"
+              htmlFor="profile_img"
+            >
+              <img
+                className="absolute h-28 w-28 rounded-full object-cover"
+                src={
+                  profileImgSrc ? profileImgSrc : `/assets/defaultProfile.png`
+                }
+                alt="profile-img"
+              />
+            </label>
+            <input
+              type="file"
+              id="profile_img"
+              accept="image/*"
+              className="hidden"
+              onChange={handleProfileImg}
+              ref={imgRef}
+            />
+          </div>
+
+          {profileImgSrc && (
+            <div className="flex justify-center text-rose-600">
+              <span onClick={handleRemoveProfile} className="cursor-pointer">
+                이미지 삭제
+              </span>
+            </div>
+          )}
+
           <label htmlFor="email" className="pt-[1rem]">
             이메일
           </label>
