@@ -4,6 +4,7 @@ import ModalBackground from '../../UI/ModalBackground';
 import Button from '../../UI/Button';
 import { ReactComponent as GoogleLogin } from '../../assets/googleIcon.svg';
 import { ReactComponent as GitHubLogin } from '../../assets/githubIcon.svg';
+import useWidthResize from '../../hook/useWidthResize';
 
 export interface LoginModalProps {
   title?: string;
@@ -12,6 +13,7 @@ export interface LoginModalProps {
 
 const LoginModal = ({ title, confirmText }: LoginModalProps) => {
   const { hideModal } = useModal();
+  const windowsWIdth = useWidthResize();
 
   //useModal에서 빼온 hideModal을 사용해 모달백그라운드를 누르면 닫히게 설정함
   const onClose = () => {
@@ -25,7 +27,14 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
 
   return (
     <ModalBackground onClose={onClose}>
-      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+      <div
+        className={
+          windowsWIdth.width < 768
+            ? 'h-screen w-full overflow-y-auto bg-white p-[4rem] scrollbar-hide'
+            : 'modal-box'
+        }
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex justify-end">
           <img
             src="/assets/closeBtn.svg"
