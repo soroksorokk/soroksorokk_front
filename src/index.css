@@ -44,7 +44,7 @@
   }
 
   .post-title {
-    @apply font-noto text-[1.125rem] font-bold text-[#292929];
+    @apply py-3 font-noto text-[1rem] font-bold leading-none -tracking-[.05rem] text-[#292929];
   }
 
   .toggle-container {
