@@ -3,6 +3,7 @@ import { ReactComponent as Logo } from '../../assets/logo.svg';
 import useModal from '../../hook/useModal';
 import useWidthResize from '../../hook/useWidthResize';
 import { ReactComponent as HamburgerMenu } from '../../assets/menu-hamburger-Icon.svg';
+import { Link } from 'react-router-dom';
 
 function Header() {
   const [menu, setMenu] = useState(false);
@@ -50,7 +51,7 @@ function Header() {
   return (
     <>
       {windowWidth.width < 768 ? (
-        <header className="flex h-[5rem] w-full flex-row items-center justify-between px-10 ">
+        <header className="flex h-[5rem] w-full flex-row items-center justify-between bg-beige px-10">
           <div>
             <HamburgerMenu
               width={50}
@@ -60,19 +61,22 @@ function Header() {
             />
           </div>
           <div className="flex cursor-pointer justify-between">
-            {/* <Logo width={19} height={22} /> */}
-            <span className="ml-[.75rem] font-noto text-[1.3125rem] font-semibold">
-              소록소록
-            </span>
+            <Link to={'/'}>
+              <span className="ml-[.75rem] font-noto text-[1.3125rem] font-semibold">
+                소록소록
+              </span>
+            </Link>
           </div>
         </header>
       ) : (
-        <header className="flex h-[7.1875rem] w-full flex-row items-center justify-between px-[10.0625rem] py-[2.2188rem] tablet:px-[4rem] notebook:px-[7rem]">
+        <header className="flex h-[7.1875rem] w-full flex-row items-center justify-between bg-beige px-[10.0625rem] py-[2.2188rem] tablet:px-[4rem] notebook:px-[7rem]">
           <div className="flex cursor-pointer justify-between">
             <Logo width={19} height={22} />
-            <span className="ml-[.75rem] font-inter text-[1.3125rem] font-semibold">
-              소록소록
-            </span>
+            <Link to={'/'}>
+              <span className="ml-[.75rem] font-inter text-[1.3125rem] font-semibold">
+                소록소록
+              </span>
+            </Link>
           </div>
           <div className="header-text flex justify-evenly font-inter text-[1.125rem] font-semibold">
             <p onClick={handleLoginModal}>로그인</p>
