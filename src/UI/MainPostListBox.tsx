@@ -8,7 +8,7 @@ import Subtitle from './Subtitle';
 import { Link } from 'react-router-dom';
 import PostItem from '../components/post/PostItem';
 
-const MainPageBox = ({ children }: ChildrenProps) => {
+const MainPostListBox = ({ children }: ChildrenProps) => {
   const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
     isDetailPostOpenState,
   );
@@ -47,16 +47,16 @@ const MainPageBox = ({ children }: ChildrenProps) => {
         </div>
       </div>
       <div
-        className={`mx-5 flex h-screen ${
+        className={`mx-5 flex h-screen mobile_xs:mx-[10px] mobile_sm:mx-[10px] tablet:mx-5 ${
           isDetailPostOpen
-            ? 'tablet:w-[20rem] notebook:w-[32rem] desktop:w-[50rem]'
-            : 'mobile_xs:w-[23rem] mobile_sm:w-[25rem] tablet:w-[30rem] notebook:w-[45rem] desktop:w-[59.125rem]'
+            ? 'tablet:w-[50%] notebook:w-[50%] desktop:w-[50%]'
+            : 'w-auto notebook:w-[80%] desktop:w-[70%]'
         } flex-wrap overflow-y-auto rounded-[2.5rem] bg-white py-[2.625rem] scrollbar-hide `}
       >
         {children}
       </div>
       {isDetailPostOpen && (
-        <div>
+        <div className="mobile_xs:hidden mobile_sm:hidden">
           <PostDetailPage onClose={handleCloseDetailPost}>
             <Subtitle
               leftText={
@@ -88,4 +88,4 @@ const MainPageBox = ({ children }: ChildrenProps) => {
     </div>
   );
 };
-export default MainPageBox;
+export default MainPostListBox;

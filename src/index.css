@@ -44,7 +44,7 @@
   }
 
   .post-title {
-    @apply font-noto text-[1.125rem] font-bold text-[#292929];
+    @apply py-3 font-noto text-[1rem] font-bold leading-none -tracking-[.05rem] text-[#292929];
   }
 
   .toggle-container {
@@ -109,6 +109,9 @@
     @apply inline-block max-w-[4.25rem] rounded-full bg-beige px-2 py-1 text-xs;
   }
   .main-left-iconbar {
-    @apply desktop:flex desktop:w-[10%] desktop:flex-col desktop:items-center desktop:justify-start desktop:bg-transparent;
+    @apply desktop:flex desktop:w-[5%] desktop:flex-col desktop:items-center desktop:justify-start desktop:bg-transparent;
+  }
+  .mobile-header {
+    @apply flex h-[7.1875rem] w-full flex-row items-center justify-between px-[10.0625rem] py-[2.2188rem];
   }
 }
