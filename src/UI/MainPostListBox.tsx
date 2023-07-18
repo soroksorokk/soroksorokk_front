@@ -7,6 +7,7 @@ import { ChildrenProps } from '../type/type';
 import Subtitle from './Subtitle';
 import { Link } from 'react-router-dom';
 import PostItem from '../components/post/PostItem';
+import Comment from '../components/comment/Comment';
 
 const MainPostListBox = ({ children }: ChildrenProps) => {
   const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
@@ -75,13 +76,14 @@ const MainPostListBox = ({ children }: ChildrenProps) => {
               }}
               isLogin={true}
             />
-            <div>
+            <div className="border-b border-black">
               <section>
                 {dummyData.map((post) => (
                   <PostItem key={post.id} {...post} />
                 ))}
               </section>
             </div>
+            <Comment />
           </PostDetailPage>
         </div>
       )}
