@@ -32,10 +32,10 @@ const PostListNav = ({
   };
 
   return (
-    <div className="relative flex w-full justify-between py-[1.0625rem]">
+    <div className="relative flex w-full justify-between py-[1.0625rem] mobile_xs:py-3">
       <div
         onClick={handleCategoryClick}
-        className="flex h-[2.25rem] w-[12.625rem] cursor-pointer items-center justify-center rounded-[1.5rem] bg-beige text-sm"
+        className="flex h-[2.25rem] w-auto cursor-pointer items-center justify-center rounded-[1.5rem] bg-beige px-[8px] mobile_xs:text-xs"
       >
         {!isCategoryShow && (
           <>
@@ -57,7 +57,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.angry, '듣기 좋은 노래')
+                handleChangeEmoji(CategoryEmoji.angry, '화날 떄 듣기 좋은 노래')
               }
             >
               😠
@@ -65,7 +65,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.happy, '듣기 좋은 노래')
+                handleChangeEmoji(CategoryEmoji.happy, '기쁠 때 듣기 좋은 노래')
               }
             >
               🥰
@@ -73,7 +73,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.sad, '듣기 좋은 노래')
+                handleChangeEmoji(CategoryEmoji.sad, '슬플 때 듣기 좋은 노래')
               }
             >
               😭
@@ -81,7 +81,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.calm, '듣기 좋은 노래')
+                handleChangeEmoji(CategoryEmoji.calm, '평온한 듣기 좋은 노래')
               }
             >
               😌
@@ -89,7 +89,10 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.exciting, '듣기 좋은 노래')
+                handleChangeEmoji(
+                  CategoryEmoji.exciting,
+                  '신나는 듣기 좋은 노래',
+                )
               }
             >
               🤩
@@ -97,7 +100,10 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.depressed, '듣기 좋은 노래')
+                handleChangeEmoji(
+                  CategoryEmoji.depressed,
+                  '감동적 듣기 좋은 노래',
+                )
               }
             >
               🥺
@@ -105,7 +111,7 @@ const PostListNav = ({
           </div>
         </div>
       )}
-      <div>
+      <div className="flex items-center">
         <Toggle />
       </div>
     </div>

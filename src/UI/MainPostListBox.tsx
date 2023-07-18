@@ -5,10 +5,11 @@ import { useRecoilState } from 'recoil';
 import { isDetailPostOpenState } from '../store/isDetailPostOpenState';
 import { ChildrenProps } from '../type/type';
 import Subtitle from './Subtitle';
+import { Link } from 'react-router-dom';
 import PostItem from '../components/post/PostItem';
 import Comment from '../components/comment/Comment';
 
-const MainPageBox = ({ children }: ChildrenProps) => {
+const MainPostListBox = ({ children }: ChildrenProps) => {
   const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
     isDetailPostOpenState,
   );
@@ -35,20 +36,28 @@ const MainPageBox = ({ children }: ChildrenProps) => {
   ];
 
   return (
-    <div className="flex">
-      <div className="flex w-1/6 flex-col items-center justify-start bg-transparent px-10">
-        <div className="mt-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-purple shadow-light">
-          <Home width={40} height={40} />
+    <div className="flex w-full justify-center">
+      <div className="desktop:main-left-iconbar mobile_xs:hidden mobile_sm:hidden tablet:hidden notebook:hidden">
+        <div className="mt-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-purple shadow-light desktop:h-[4.3125rem] desktop:w-[4.3125rem]">
+          <Link to={'/'}>
+            <Home width={40} height={40} />
+          </Link>
         </div>
-        <div className="my-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-white shadow-light">
+        <div className="my-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-white shadow-light desktop:h-[4.3125rem] desktop:w-[4.3125rem]">
           <Music width={40} height={40} />
         </div>
       </div>
-      <div className="flex h-screen w-[59.125rem] flex-col overflow-y-auto rounded-[2.5rem] bg-white py-[2.625rem] scrollbar-hide">
+      <div
+        className={`mx-5 flex h-screen mobile_xs:mx-[10px] mobile_sm:mx-[10px] tablet:mx-5 ${
+          isDetailPostOpen
+            ? 'tablet:w-[50%] notebook:w-[50%] desktop:w-[50%]'
+            : 'w-auto notebook:w-[80%] desktop:w-[70%]'
+        } flex-wrap overflow-y-auto rounded-[2.5rem] bg-white py-[2.625rem] scrollbar-hide `}
+      >
         {children}
       </div>
       {isDetailPostOpen && (
-        <div>
+        <div className="mobile_xs:hidden mobile_sm:hidden">
           <PostDetailPage onClose={handleCloseDetailPost}>
             <Subtitle
               leftText={
@@ -81,4 +90,4 @@ const MainPageBox = ({ children }: ChildrenProps) => {
     </div>
   );
 };
-export default MainPageBox;
+export default MainPostListBox;

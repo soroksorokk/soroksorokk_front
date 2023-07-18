@@ -84,7 +84,7 @@ const TermsOfUse = () => {
   const ageAgreeText = '본인은 만 14세 이상입니다.';
 
   return (
-    <div>
+    <div className="break-keep">
       <div className="my-6">
         <input
           type="checkbox"
