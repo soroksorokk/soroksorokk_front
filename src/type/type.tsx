@@ -30,9 +30,10 @@ export interface ButtonProps extends ChildrenProps {
 }
 
 export interface RegisterProps {
+  img: File | null;
   email: string;
   password: string;
-  passwordCheck: string;
+  // passwordCheck: string;
   nickName: string;
 }
 

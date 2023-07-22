@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Button from '../../UI/Button';
 import { ReactComponent as AgreeSign } from '../../assets/AgreeSign.svg';
+// import { useFormContext } from 'react-hook-form';
 
 const TermsOfUse = () => {
   /* 전체 동의 state */
   const [allAgree, setAllAgree] = useState(false);
+  // const { register } = useFormContext();
 
   /* 개별 동의 state */
   const [agree, setAgree] = useState({
@@ -93,7 +95,7 @@ const TermsOfUse = () => {
           className="hidden"
           checked={allAgree}
           onChange={handleAllAgreementCheck}
-        ></input>
+        />
         <label htmlFor="allAgree" className="flex cursor-pointer items-center">
           <AgreeSign
             className={`h-6 w-6 ${
@@ -112,7 +114,7 @@ const TermsOfUse = () => {
           className="hidden"
           checked={agree.termsAgree}
           onChange={handleAgreeCheck}
-        ></input>
+        />
         <label
           htmlFor="termsAgree"
           className="flex cursor-pointer items-center"

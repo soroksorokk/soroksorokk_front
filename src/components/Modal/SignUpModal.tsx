@@ -1,11 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
 import Button from '../../UI/Button';
 import TermsOfUse from './TermsOfUse';
-import { useForm } from 'react-hook-form';
+import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { RegisterProps } from '../../type/type';
 import useWidthResize from '../../hook/useWidthResize';
+import axios from 'axios';
 
 export interface SignUpModalProps {
   title?: string;
@@ -13,24 +14,24 @@ export interface SignUpModalProps {
 }
 
 const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
-  const [profileImgSrc, setProfileImgSrc] = useState<string>('');
+  const [profilePreview, setProfilePreview] = useState<string>('');
   const [profileImgFile, setProfileImgFile] = useState<File | null>(null);
-  const imgRef = useRef<HTMLInputElement | null>(null);
 
+  const BASE_URL = 'https://bigquann.shop';
   const windowWidth = useWidthResize();
 
   const { hideModal } = useModal();
-  // react-hook-form 을 사용하기 위해 useForm에 있는 속성들을 구조분해할당으로 가져옴
   const {
     register,
     handleSubmit,
-    watch,
+    setValue,
     formState: { errors },
   } = useForm<RegisterProps>({
     defaultValues: {
+      img: null,
       email: '',
       password: '',
-      passwordCheck: '',
+      // passwordCheck: '',
       nickName: '',
     },
   });
@@ -39,33 +40,60 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     hideModal();
   };
 
-  const onSubmitHandler = (data: RegisterProps) => {
+  const onSubmitHandler = async (data: RegisterProps) => {
     console.log('data', data);
-    if (!profileImgFile) return console.log('이미지가 없어유');
-    if (profileImgFile) {
-      console.log('서버에 보내는 로직 짜기');
+    try {
+      const formData = new FormData();
+
+      if (profileImgFile) {
+        formData.append('img', profileImgFile);
+      }
+      formData.append('email', data.email);
+      formData.append('password', data.password);
+      formData.append('nickName', data.nickName);
+
+      const entries = formData.entries();
+      for (const entry of entries) {
+        console.log(entry);
+      }
+
+      const response = await axios.post(
+        `${BASE_URL}/api/auth/sign-up`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            withCredentials: true,
+            'Access-Control-Allow-Origin': '*',
+          },
+        },
+      );
+      console.log('res', response);
+    } catch (error) {
+      console.log('error', error);
     }
   };
 
   // 패스워드 입력과 패스워드 더블체크를 위해 패스워드 입력값을 계속 추적하는 것(e.target.value랑 같음).
-  const pwd = watch('password', '');
-  const pwdCheck = watch('passwordCheck', '');
+  // const pwd = watch('password', '');
+  // const pwdCheck = watch('passwordCheck', '');
 
   // 이미지 업로드 및 이미지 미리보기 함수
-  const handleProfileImg = () => {
-    if (!imgRef.current?.files) return;
-    const file = imgRef.current?.files[0];
+  const handleProfileImg = (e: any) => {
+    if (!e.target.files) return;
+    const file = e.target.files[0];
 
     if (file) {
       let imgUrl = URL.createObjectURL(file);
       setProfileImgFile(file);
-      setProfileImgSrc(imgUrl);
+      setProfilePreview(imgUrl);
+      setValue('img', profileImgFile);
     }
   };
 
   const handleRemoveProfile = () => {
     setProfileImgFile(null);
-    setProfileImgSrc('');
+    setProfilePreview('');
   };
 
   return (
@@ -88,6 +116,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
           />
         </div>
         <h1 className="pt-[1rem]">{title}</h1>
+        {/* <FormProvider {...}> */}
         <form
           onSubmit={handleSubmit(onSubmitHandler)}
           className="flex flex-col "
@@ -95,27 +124,27 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
           <div className="flex justify-center bg-no-repeat py-[1rem]">
             <label
               className="rounded-ful relative h-28 w-28 cursor-pointer"
-              htmlFor="profile_img"
+              htmlFor="img"
             >
               <img
                 className="absolute h-28 w-28 rounded-full object-cover"
                 src={
-                  profileImgSrc ? profileImgSrc : `/assets/defaultProfile.png`
+                  profilePreview ? profilePreview : `/assets/defaultProfile.png`
                 }
-                alt="profile-img"
+                alt="img"
               />
             </label>
             <input
               type="file"
-              id="profile_img"
+              id="img"
               accept="image/*"
               className="hidden"
               onChange={handleProfileImg}
-              ref={imgRef}
+              // {...register('img')}
             />
           </div>
 
-          {profileImgSrc && (
+          {profilePreview && (
             <div className="flex justify-center text-rose-600">
               <span onClick={handleRemoveProfile} className="cursor-pointer">
                 이미지 삭제
@@ -134,7 +163,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
               placeholder="이메일을 입력해주세요"
               {...register('email', {
                 required: '이메일을 입력해주세요',
-                pattern: /^[A-Za-z]+$/i,
+                pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
               })}
             />
             <Button className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]">
@@ -157,7 +186,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
             })}
           />
           <p>{errors.password?.message}</p>
-          <label htmlFor="passwordCheck" className="pt-[1rem]">
+          {/* <label htmlFor="passwordCheck" className="pt-[1rem]">
             비밀번호 확인
           </label>
           <input
@@ -177,7 +206,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
           ) : null}
           {pwd.length > 7 && pwdCheck.length > 7 && pwd === pwdCheck ? (
             <p>비밀번호가 동일합니다</p>
-          ) : null}
+          ) : null} */}
           <label htmlFor="nickName" className="pt-[1rem]">
             닉네임
           </label>
@@ -205,12 +234,13 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
           </div>
           <div className="flex flex-col">
             <label className="pt-[1rem] ">이용약관 동의</label>
-            <TermsOfUse />
+            {/* <TermsOfUse /> */}
           </div>
           <div className="flex flex-col items-center justify-center">
             <Button className={'btn-purple' + ' mb-6'}>{confirmText}</Button>
           </div>
         </form>
+        {/* </FormProvider> */}
       </div>
     </ModalBackground>
   );
