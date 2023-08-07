@@ -4,6 +4,7 @@ import useModal from '../../hook/useModal';
 import useWidthResize from '../../hook/useWidthResize';
 import { ReactComponent as HamburgerMenu } from '../../assets/menu-hamburger-Icon.svg';
 import { Link } from 'react-router-dom';
+import useLoggedIn from '../../hook/useLoggedIn';
 
 function Header() {
   const [menu, setMenu] = useState(false);
@@ -18,6 +19,8 @@ function Header() {
    * 로그인을 클릭하면 modal state가 변경되면서 Global modal에서 설정한
    * modal type에 따라 해당 컴포넌트가 렌더링 되고 modal props도 같이 넘겨짐
    */
+
+  const isLoggedIn = useLoggedIn();
 
   const handleLoginModal = () => {
     showModal({
@@ -78,11 +81,18 @@ function Header() {
               </span>
             </Link>
           </div>
-          <div className="header-text flex justify-evenly font-inter text-[1.125rem] font-semibold">
-            <p onClick={handleLoginModal}>로그인</p>
-            <p className="cursor-default px-2 text-[#DCDCDC]">|</p>
-            <p onClick={handleSignUpModal}>회원가입</p>
-          </div>
+
+          {isLoggedIn ? (
+            <div className="header-text flex justify-evenly font-inter text-[1.125rem] font-semibold">
+              환영합니다
+            </div>
+          ) : (
+            <div className="header-text flex justify-evenly font-inter text-[1.125rem] font-semibold">
+              <p onClick={handleLoginModal}>로그인</p>
+              <p className="cursor-default px-2 text-[#DCDCDC]">|</p>
+              <p onClick={handleSignUpModal}>회원가입</p>
+            </div>
+          )}
         </header>
       )}
     </>
