@@ -7,7 +7,7 @@ import { ChildrenProps } from '../type/type';
 import Subtitle from './Subtitle';
 import { Link } from 'react-router-dom';
 import PostItem from '../components/post/PostItem';
-import Comment from '../components/comment/Comment';
+import Comment from '../components/Comment/Comment';
 
 const MainPostListBox = ({ children }: ChildrenProps) => {
   const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
@@ -36,9 +36,9 @@ const MainPostListBox = ({ children }: ChildrenProps) => {
   ];
 
   return (
-    <div className="flex w-full justify-center">
+    <div className="flex w-full justify-center bg-beige">
       <div className="desktop:main-left-iconbar mobile_xs:hidden mobile_sm:hidden tablet:hidden notebook:hidden">
-        <div className="mt-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-purple shadow-light desktop:h-[4.3125rem] desktop:w-[4.3125rem]">
+        <div className="mt-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-purple shadow-light desktop:h-[4.3125rem] desktop:w-[4rem]">
           <Link to={'/'}>
             <Home width={40} height={40} />
           </Link>
