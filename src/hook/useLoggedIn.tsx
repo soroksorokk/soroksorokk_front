@@ -5,17 +5,14 @@ import { redirect, useNavigate } from 'react-router-dom';
 
 const useLoggedIn = () => {
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(userState);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const getAccessToken = localStorage.getItem('userToken');
-    // const getRefreshToken = localStorage.getItem('refreshToken');
 
     if (getAccessToken) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
-      redirect('/');
     }
   }, [setIsLoggedIn]);
 
