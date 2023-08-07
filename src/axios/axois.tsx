@@ -1,14 +1,16 @@
 import axios from 'axios';
-// const basicApi = axios.create({
-//   baseURL: import.meta.env.VITE_APP_PUBLIC_KEY
-// })
 
-const instance = axios.create({
+export const publicApi = axios.create({
   baseURL: import.meta.env.VITE_APP_PUBLIC_KEY,
   headers: { 'Content-Type': 'application/json' },
 });
 
-instance.interceptors.request.use(
+export const privateApi = axios.create({
+  baseURL: import.meta.env.VITE_APP_PUBLIC_KEY,
+  headers: { 'Content-Type': 'application/json' },
+});
+
+privateApi.interceptors.request.use(
   function (config) {
     const token = localStorage.getItem('userToken');
 
@@ -29,7 +31,7 @@ instance.interceptors.request.use(
   },
 );
 
-instance.interceptors.response.use(
+privateApi.interceptors.response.use(
   function (response) {
     // 값이 정상적으로 들어왔을 때(200번대 응답)
     return response;
@@ -63,7 +65,7 @@ instance.interceptors.response.use(
               'authorization-refresh',
             ]),
           );
-          return await instance.request(originConfig);
+          return await privateApi.request(originConfig);
         }
       } catch (error) {
         console.log('토큰 갱신 에러');
@@ -74,5 +76,3 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-
-export default instance;
