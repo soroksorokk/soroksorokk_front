@@ -112,7 +112,7 @@ const PostListNav = ({
         </div>
       )}
       <div className="flex items-center">
-        <Toggle />
+        <Toggle leftText="최신글" rightText="인기글" />
       </div>
     </div>
   );
