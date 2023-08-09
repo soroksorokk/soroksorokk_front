@@ -266,7 +266,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
           </div>
           <div className="flex flex-col">
             <label className="pt-[1rem] ">이용약관 동의</label>
-            {/* <TermsOfUse /> */}
+            <TermsOfUse />
           </div>
           <div className="flex flex-col items-center justify-center">
             <Button className={'btn-purple' + ' mb-6'}>{confirmText}</Button>
