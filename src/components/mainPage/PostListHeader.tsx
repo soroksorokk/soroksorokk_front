@@ -30,7 +30,7 @@ const PostListHeader = () => {
    */
   const handleNewPostClick = () => {
     if (isLoggedIn) {
-      setIsNewPost(!isNewPost);
+      setIsNewPost(false);
       setIsDetailPostOpen(false);
       navigate('newPost/:postId');
     } else {
@@ -59,14 +59,12 @@ const PostListHeader = () => {
               {`${currentDate.day} ${currentDate.month} ${currentDate.year}`}
             </span>
           </div>
-          <Link to="/newPost/:id">
-            <PostBtn
-              width={40}
-              height={40}
-              className="cursor-pointer"
-              onClick={handleNewPostClick}
-            />
-          </Link>
+          <PostBtn
+            width={40}
+            height={40}
+            className="cursor-pointer"
+            onClick={handleNewPostClick}
+          />
         </div>
       </div>
     </>
