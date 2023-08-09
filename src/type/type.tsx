@@ -30,11 +30,13 @@ export interface ButtonProps extends ChildrenProps {
 }
 
 export interface RegisterProps {
-  img: File | null;
+  image: File | null;
   email: string;
   password: string;
-  // passwordCheck: string;
+  passwordCheck: string;
   nickName: string;
+  option1?: boolean;
+  option2?: boolean;
 }
 
 export interface EditorDataType {
@@ -59,6 +61,15 @@ export interface EmojiType {
   selectValue: number;
 }
 
+export interface ToggleWidth {
+  basic: string;
+  small: string;
+}
+
+export interface ToggleCircleMove {
+  basic: string;
+  short: string;
+}
 // enum
 
 export enum CategoryEmoji {
