@@ -4,7 +4,10 @@ import { ReactComponent as PostBtn } from '../../assets/writeBtn.svg';
 import { useRecoilState } from 'recoil';
 import { isDetailPostOpenState } from '../../store/isDetailPostOpenState';
 import { isNewPostState } from '../../store/isNewPostState';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import isLoggedInState from '../../store/isLoggedInState';
+import useLoggedIn from '../../hook/useLoggedIn';
+import useModal from '../../hook/useModal';
 
 const PostListHeader = () => {
   /**
@@ -16,14 +19,31 @@ const PostListHeader = () => {
     isDetailPostOpenState,
   );
   const [isNewPost, setIsNewPost] = useRecoilState(isNewPostState);
+  const { showModal } = useModal();
+  const isLoggedIn = useLoggedIn();
+  const navigate = useNavigate();
+
   /**
    * 글쓰기 버튼을 누르면 isNewPost가 true가 됨
    * 만약 포스트카드가 눌려 디테일 포스트가 보인다면(true인 상태)
    * false로 만들어주어 디테일 포스트를 닫히게 함
    */
   const handleNewPostClick = () => {
-    setIsNewPost(!isNewPost);
-    setIsDetailPostOpen(false);
+    if (isLoggedIn) {
+      setIsNewPost(false);
+      setIsDetailPostOpen(false);
+      navigate('newPost/:postId');
+    } else {
+      setIsDetailPostOpen(false);
+      setIsNewPost(false);
+      showModal({
+        modalType: 'LoginModal',
+        modalProps: {
+          title: '로그인',
+          confirmText: '로그인',
+        },
+      });
+    }
   };
 
   return (
@@ -39,14 +59,12 @@ const PostListHeader = () => {
               {`${currentDate.day} ${currentDate.month} ${currentDate.year}`}
             </span>
           </div>
-          <Link to="/newPost/:id">
-            <PostBtn
-              width={40}
-              height={40}
-              className="cursor-pointer"
-              onClick={handleNewPostClick}
-            />
-          </Link>
+          <PostBtn
+            width={40}
+            height={40}
+            className="cursor-pointer"
+            onClick={handleNewPostClick}
+          />
         </div>
       </div>
     </>

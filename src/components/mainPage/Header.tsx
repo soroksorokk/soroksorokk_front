@@ -3,10 +3,19 @@ import { ReactComponent as Logo } from '../../assets/logo.svg';
 import useModal from '../../hook/useModal';
 import useWidthResize from '../../hook/useWidthResize';
 import { ReactComponent as HamburgerMenu } from '../../assets/menu-hamburger-Icon.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useLoggedIn from '../../hook/useLoggedIn';
+import { ReactComponent as DownBtn } from '../../assets/triangleDownBtn.svg';
+import Toggle from './Toggle';
+import isLoggedInState from '../../store/isLoggedInState';
+import { useRecoilState } from 'recoil';
 
 function Header() {
+  const [mobileMenu, setMobileMenu] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
+
+  const navigate = useNavigate();
   const windowWidth = useWidthResize();
   /**
    * winddow 창의 width를 감지하는 커스텀 훅
@@ -18,6 +27,8 @@ function Header() {
    * 로그인을 클릭하면 modal state가 변경되면서 Global modal에서 설정한
    * modal type에 따라 해당 컴포넌트가 렌더링 되고 modal props도 같이 넘겨짐
    */
+
+  const LogIn = useLoggedIn();
 
   const handleLoginModal = () => {
     showModal({
@@ -39,13 +50,30 @@ function Header() {
     });
   };
 
-  const handleMenuClick = () => {
+  /**
+   * 모바일의 경우에 적용되는 메뉴 모달 핸들러
+   */
+  const handleMobileMenuClick = () => {
     showModal({
       modalType: 'MobileMenuModal',
       modalProps: {
-        onClick: () => setMenu(!menu),
+        onClick: () => setMobileMenu(!mobileMenu),
       },
     });
+  };
+
+  /**
+   * 모바일을 제외한 나머지에서 적용되는 메뉴 클릭 핸들러
+   */
+  const handleMenuClick = () => {
+    setMenu(!menu);
+  };
+
+  const handleLogOutClick = () => {
+    localStorage.removeItem('userToken');
+    setMenu(false);
+    setIsLoggedIn(false);
+    navigate('/');
   };
 
   return (
@@ -56,7 +84,7 @@ function Header() {
             <HamburgerMenu
               width={50}
               height={50}
-              onClick={handleMenuClick}
+              onClick={handleMobileMenuClick}
               className="cursor-pointer"
             />
           </div>
@@ -78,11 +106,37 @@ function Header() {
               </span>
             </Link>
           </div>
-          <div className="header-text flex justify-evenly font-inter text-[1.125rem] font-semibold">
-            <p onClick={handleLoginModal}>로그인</p>
-            <p className="cursor-default px-2 text-[#DCDCDC]">|</p>
-            <p onClick={handleSignUpModal}>회원가입</p>
-          </div>
+
+          {LogIn ? (
+            <>
+              <div className="relative flex w-auto items-center ">
+                <Toggle
+                  leftText=""
+                  rightText=""
+                  width="small"
+                  circleMove="short"
+                />
+                <div className="ml-3 mr-2 h-9 w-9 rounded-full bg-orange-700"></div>
+                <DownBtn onClick={handleMenuClick} className="cursor-pointer" />
+              </div>
+              {menu && (
+                <div className="absolute right-[8.75rem] top-20 z-20 h-[5.125rem] w-[6.8125rem] rounded-2xl bg-white shadow-light ">
+                  <div className="flex h-full w-full flex-col items-center justify-evenly align-middle">
+                    <p className="cursor-pointer" onClick={handleLogOutClick}>
+                      로그아웃
+                    </p>
+                    <p className="cursor-pointer">마이페이지</p>
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="header-text flex justify-evenly font-inter text-[1.125rem] font-semibold">
+              <p onClick={handleLoginModal}>로그인</p>
+              <p className="cursor-default px-2 text-[#DCDCDC]">|</p>
+              <p onClick={handleSignUpModal}>회원가입</p>
+            </div>
+          )}
         </header>
       )}
     </>
