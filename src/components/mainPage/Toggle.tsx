@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { ToggleWidth } from '../../type/type';
 import { ToggleCircleMove } from '../../type/type';
+// import useToggle from '../../hook/useToggle';
 
 interface ToggleProps {
   leftText: string;
   rightText: string;
   width?: keyof ToggleWidth;
   circleMove?: keyof ToggleCircleMove;
+  onClick?: () => void;
 }
 
 const Toggle = ({
@@ -14,6 +16,7 @@ const Toggle = ({
   rightText,
   width = 'basic',
   circleMove = 'basic',
+  onClick,
 }: ToggleProps) => {
   const [toggleOn, setToggleOn] = useState(false);
 
@@ -30,15 +33,18 @@ const Toggle = ({
    * toggleOn의 값(true, false)에 따라서 className이 달라지게 설정함
    */
   const handleToggle = () => {
+    console.log('toggleOn', toggleOn);
+    if (onClick) onClick();
     setToggleOn(!toggleOn);
   };
 
   return (
     <div
       onClick={handleToggle}
-      className={`${
-        toggleOn ? 'toggle-container' : 'toggle-container-checked'
-      } ${ToggleWidths[width]}`}
+      className={`
+      ${ToggleWidths[width]}
+      ${toggleOn ? 'toggle-container' : 'toggle-container-checked'} 
+      `}
     >
       <div
         className={
