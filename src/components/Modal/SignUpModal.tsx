@@ -6,8 +6,9 @@ import TermsOfUse from './TermsOfUse';
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
 import { RegisterProps } from '../../type/type';
 import useWidthResize from '../../hook/useWidthResize';
-import { publicApi } from '../../axios/axois';
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { onSignUpSubmitHandler } from '../../api/reactQueryApis';
 
 export interface SignUpModalProps {
   title?: string;
@@ -18,6 +19,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
   const [profilePreview, setProfilePreview] = useState<string>('');
   const [profileImgFile, setProfileImgFile] = useState<File | null>(null);
 
+  const navigate = useNavigate();
   const windowWidth = useWidthResize();
   const { hideModal } = useModal();
 
@@ -29,60 +31,26 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     formState: { errors },
   } = useForm<RegisterProps>({
     mode: 'onChange',
-    // defaultValues: {
-    //   image: null,
-    //   email: '',
-    //   password: '',
-    //   // passwordCheck: '',
-    //   nickName: '',
-    //   option1: true,
-    //   option2: false,
-    // },
   });
 
   const onClose = () => {
     hideModal();
   };
 
-  const onSubmitHandler = async (data: RegisterProps) => {
-    console.log('data', data);
-
-    const signupRequest = {
-      email: data.email,
-      password: data.password,
-      nickName: data.nickName,
-      // passwordCheck: data.passwordCheck,
-      option1: true,
-      option2: false,
-    };
-
-    const formData = new FormData();
-
-    if (profileImgFile) {
-      formData.append('image', profileImgFile);
-
-      for (const item of formData) {
-        console.log(item);
-      }
-    }
-
-    formData.append(
-      'user',
-      new Blob([JSON.stringify(signupRequest)], { type: 'application/json' }),
-    );
-    for (const entry of formData) {
-      console.log('entries', entry);
-    }
-
-    try {
-      const response = await publicApi.post('/api/auth/sign-up', formData);
-      console.log('res', response);
+  const signUpMutation = useMutation(onSignUpSubmitHandler, {
+    onError: (error) => {
+      console.log('error', error);
+    },
+    onSuccess: (res) => {
+      console.log('res', res);
       console.log('성공');
       hideModal();
-      redirect('/');
-    } catch (error) {
-      console.log('error', error);
-    }
+      navigate('/');
+    },
+  });
+
+  const signUpSubmitHandler = (data: RegisterProps) => {
+    signUpMutation.mutate({ ...data, profileImgFile });
   };
 
   // 패스워드 입력과 패스워드 더블체크를 위해 패스워드 입력값을 계속 추적하는 것.
@@ -129,7 +97,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
         <h1 className="pt-[1rem]">{title}</h1>
         {/* <FormProvider {...methods}> */}
         <form
-          onSubmit={handleSubmit(onSubmitHandler)}
+          onSubmit={handleSubmit(signUpSubmitHandler)}
           className="flex flex-col "
         >
           <div className="flex justify-center bg-no-repeat py-[1rem]">

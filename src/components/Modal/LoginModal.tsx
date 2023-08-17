@@ -1,4 +1,3 @@
-import React from 'react';
 import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
 import Button from '../../UI/Button';
@@ -6,17 +5,18 @@ import { ReactComponent as GoogleLogin } from '../../assets/googleIcon.svg';
 import { ReactComponent as GitHubLogin } from '../../assets/githubIcon.svg';
 import useWidthResize from '../../hook/useWidthResize';
 import { useForm } from 'react-hook-form';
-import { privateApi } from '../../axios/axois';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import isLoggedInState from '../../store/isLoggedInState';
+import { useMutation } from '@tanstack/react-query';
+import { onSubmitHandler } from '../../api/reactQueryApis';
 
 export interface LoginModalProps {
   title?: string;
   confirmText?: string;
 }
 
-interface LoginProps {
+export interface LoginProps {
   email: string;
   password: string;
 }
@@ -25,7 +25,7 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
   const { hideModal } = useModal();
   const windowsWIdth = useWidthResize();
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -43,28 +43,27 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
     hideModal();
   };
 
-  // form 태그의 특성에 따라 새로고침을 막기 위해 e.preventDefault 설정함
-  const onSubmitHandler = async (data: LoginProps) => {
-    const user = {
-      email: data.email,
-      password: data.password,
-    };
-    await privateApi
-      .post('/api/auth/sign-in', user)
-      .then((res) => {
-        console.log('로그인 성공', res);
-        const userToken = {
-          authorization: res.headers.authorization,
-          'authorization-refresh': res.headers['authorization-refresh'],
-        };
-        if (res.status === 200) {
-          localStorage.setItem('userToken', JSON.stringify(userToken));
-          setIsLoggedIn(true);
-          hideModal();
-          redirect('/');
-        }
-      })
-      .catch((error) => console.log('error', error));
+  const signInMutation = useMutation(onSubmitHandler, {
+    onSuccess: (res) => {
+      console.log('로그인 성공', res);
+      const userToken = {
+        authorization: res.headers.authorization,
+        'authorization-refresh': res.headers['authorization-refresh'],
+      };
+      if (res.status === 200) {
+        localStorage.setItem('userToken', JSON.stringify(userToken));
+        setIsLoggedIn(true);
+        hideModal();
+        navigate('/');
+      }
+    },
+    onError: (error) => {
+      console.log('error', error);
+    },
+  });
+
+  const submitHandler = (data: LoginProps) => {
+    signInMutation.mutate(data);
   };
 
   return (
@@ -87,10 +86,7 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
           />
         </div>
         <h1 className="pt-[1.25rem]">{title}</h1>
-        <form
-          onSubmit={handleSubmit(onSubmitHandler)}
-          className="flex flex-col"
-        >
+        <form onSubmit={handleSubmit(submitHandler)} className="flex flex-col">
           <input
             type="email"
             className="placeholder:placeholder:text=[#909090] my-3 border-b-[.0625rem] border-[#909090] p-4 text-sm outline-none focus:border-[#9664FF]"

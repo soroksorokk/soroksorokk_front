@@ -9,11 +9,14 @@ import { ReactComponent as DownBtn } from '../../assets/triangleDownBtn.svg';
 import Toggle from './Toggle';
 import isLoggedInState from '../../store/isLoggedInState';
 import { useRecoilState } from 'recoil';
+import { darkModeState } from '../../store/isDarkModeState';
 
 function Header() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [menu, setMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
+
+  const [darkMode, setDarkMode] = useRecoilState(darkModeState);
 
   const navigate = useNavigate();
   const windowWidth = useWidthResize();
@@ -76,6 +79,11 @@ function Header() {
     navigate('/');
   };
 
+  const handleToggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    console.log('darkMode', darkMode);
+  };
+
   return (
     <>
       {windowWidth.width < 768 ? (
@@ -115,6 +123,7 @@ function Header() {
                   rightText=""
                   width="small"
                   circleMove="short"
+                  onClick={handleToggleDarkMode}
                 />
                 <div className="ml-3 mr-2 h-9 w-9 rounded-full bg-orange-700"></div>
                 <DownBtn onClick={handleMenuClick} className="cursor-pointer" />
