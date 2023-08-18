@@ -8,7 +8,8 @@ interface ToggleProps {
   rightText: string;
   width?: keyof ToggleWidth;
   circleMove?: keyof ToggleCircleMove;
-  onClick?: () => void;
+  onClick: () => void;
+  isActive: boolean;
 }
 
 const Toggle = ({
@@ -17,9 +18,8 @@ const Toggle = ({
   width = 'basic',
   circleMove = 'basic',
   onClick,
+  isActive,
 }: ToggleProps) => {
-  const [toggleOn, setToggleOn] = useState(false);
-
   const ToggleWidths: ToggleWidth = {
     basic: 'w-[4.25]',
     small: 'w-[2.5rem]',
@@ -29,31 +29,23 @@ const Toggle = ({
     basic: 'left-[2.75rem]',
     short: 'left-[1rem]',
   };
-  /**
-   * toggleOn의 값(true, false)에 따라서 className이 달라지게 설정함
-   */
-  const handleToggle = () => {
-    console.log('toggleOn', toggleOn);
-    if (onClick) onClick();
-    setToggleOn(!toggleOn);
-  };
 
   return (
     <div
-      onClick={handleToggle}
+      onClick={onClick}
       className={`
       ${ToggleWidths[width]}
-      ${toggleOn ? 'toggle-container' : 'toggle-container-checked'} 
+      ${isActive ? 'toggle-container' : 'toggle-container-checked'} 
       `}
     >
       <div
         className={
-          toggleOn
+          isActive
             ? 'toggle-circle'
             : `toggle-circle-checked ${ToggleCircleMoves[circleMove]}`
         }
       ></div>
-      {toggleOn ? (
+      {isActive ? (
         <span className="absolute right-[.125rem] py-0.5 pr-1 text-xs">
           {leftText}
         </span>
