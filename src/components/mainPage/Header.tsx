@@ -1,22 +1,21 @@
-import react, { useState } from 'react';
+import react, { useLayoutEffect, useState } from 'react';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import useModal from '../../hook/useModal';
 import useWidthResize from '../../hook/useWidthResize';
 import { ReactComponent as HamburgerMenu } from '../../assets/menu-hamburger-Icon.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useLoggedIn from '../../hook/useLoggedIn';
 import { ReactComponent as DownBtn } from '../../assets/triangleDownBtn.svg';
 import Toggle from './Toggle';
 import isLoggedInState from '../../store/isLoggedInState';
 import { useRecoilState } from 'recoil';
-import { darkModeState } from '../../store/isDarkModeState';
+import useDarkMode from '../../hook/useDarkMode';
 
 function Header() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [menu, setMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
-
-  const [darkMode, setDarkMode] = useRecoilState(darkModeState);
+  const { isDark, setIsDark, handleToggleDarkMode } = useDarkMode();
 
   const navigate = useNavigate();
   const windowWidth = useWidthResize();
@@ -32,6 +31,10 @@ function Header() {
    */
 
   const LogIn = useLoggedIn();
+
+  const moveHomeHandler = () => {
+    navigate('/');
+  };
 
   const handleLoginModal = () => {
     showModal({
@@ -79,10 +82,15 @@ function Header() {
     navigate('/');
   };
 
-  const handleToggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    console.log('darkMode', darkMode);
-  };
+  useLayoutEffect(() => {
+    if (localStorage.getItem('theme') === 'dark') {
+      setIsDark(true);
+      document.documentElement.classList.add('theme', 'dark');
+    } else {
+      setIsDark(false);
+      document.documentElement.classList.remove('theme');
+    }
+  }, []);
 
   return (
     <>
@@ -97,28 +105,38 @@ function Header() {
             />
           </div>
           <div className="flex cursor-pointer justify-between">
-            <Link to={'/'}>
-              <span className="ml-[.75rem] font-noto text-[1.3125rem] font-semibold">
-                소록소록
-              </span>
-            </Link>
+            <span
+              onClick={moveHomeHandler}
+              className="ml-[.75rem] font-noto text-[1.3125rem] font-semibold"
+            >
+              소록소록
+            </span>
           </div>
         </header>
       ) : (
-        <header className="flex h-[7.1875rem] w-full flex-row items-center justify-between bg-beige px-[10.0625rem] py-[2.2188rem] tablet:px-[4rem] notebook:px-[7rem]">
+        <header
+          className={`flex h-[7.1875rem] w-full flex-row items-center justify-between bg-beige px-[10.0625rem] py-[2.2188rem] dark:bg-darkModeBG tablet:px-[4rem] notebook:px-[7rem] `}
+        >
           <div className="flex cursor-pointer justify-between">
-            <Logo width={19} height={22} />
-            <Link to={'/'}>
-              <span className="ml-[.75rem] font-inter text-[1.3125rem] font-semibold">
-                소록소록
-              </span>
-            </Link>
+            <Logo
+              width={19}
+              height={22}
+              fill={isDark ? '#9EAFC7' : '#292D32'}
+              onClick={moveHomeHandler}
+            />
+            <span
+              onClick={moveHomeHandler}
+              className="ml-[.75rem] font-inter text-[1.3125rem] font-semibold"
+            >
+              소록소록
+            </span>
           </div>
 
           {LogIn ? (
             <>
               <div className="relative flex w-auto items-center ">
                 <Toggle
+                  isActive={isDark}
                   leftText=""
                   rightText=""
                   width="small"
@@ -126,7 +144,11 @@ function Header() {
                   onClick={handleToggleDarkMode}
                 />
                 <div className="ml-3 mr-2 h-9 w-9 rounded-full bg-orange-700"></div>
-                <DownBtn onClick={handleMenuClick} className="cursor-pointer" />
+                <DownBtn
+                  fill={isDark ? '#9EAFC7' : '#fffff'}
+                  onClick={handleMenuClick}
+                  className="cursor-pointer"
+                />
               </div>
               {menu && (
                 <div className="absolute right-[8.75rem] top-20 z-20 h-[5.125rem] w-[6.8125rem] rounded-2xl bg-white shadow-light ">
