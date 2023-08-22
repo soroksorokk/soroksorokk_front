@@ -18,7 +18,7 @@ const Toggle = ({
   width = 'basic',
   circleMove = 'basic',
   onClick,
-  isActive,
+  isActive = false,
 }: ToggleProps) => {
   const ToggleWidths: ToggleWidth = {
     basic: 'w-[4.25]',
