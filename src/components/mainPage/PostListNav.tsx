@@ -8,6 +8,8 @@ const PostListNav = ({
   setIsCategoryShow,
   categoryEmojis,
   setCategoryEmojis,
+  toggleOn,
+  setToggleOn,
 }: isCategoryShowProps) => {
   const handleCategoryClick = () => {
     setIsCategoryShow(!isCategoryShow);
@@ -31,8 +33,12 @@ const PostListNav = ({
     }
   };
 
+  const handleToggle = () => {
+    setToggleOn(!toggleOn);
+  };
+
   return (
-    <div className="relative flex w-full justify-between py-[1.0625rem] mobile_xs:py-3">
+    <div className="relative flex w-full justify-between py-[1.0625rem] dark:bg-darkModeBG2 mobile_xs:py-3">
       <div
         onClick={handleCategoryClick}
         className="flex h-[2.25rem] w-auto cursor-pointer items-center justify-center rounded-[1.5rem] bg-beige px-[8px] mobile_xs:text-xs"
@@ -112,7 +118,12 @@ const PostListNav = ({
         </div>
       )}
       <div className="flex items-center">
-        <Toggle leftText="최신글" rightText="인기글" />
+        <Toggle
+          isActive={toggleOn}
+          leftText="최신글"
+          rightText="인기글"
+          onClick={handleToggle}
+        />
       </div>
     </div>
   );
