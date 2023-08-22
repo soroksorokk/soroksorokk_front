@@ -37,7 +37,7 @@ const PostCard = () => {
   };
 
   return (
-    <div className="h-[24.5rem] w-full overflow-hidden rounded-2xl shadow-basic hover:shadow-[0px_0px_10px_3px_rgba(150,100,255,0.8)]">
+    <div className="h-[24.5rem] w-full overflow-hidden rounded-2xl shadow-basic hover:shadow-[0px_0px_10px_3px_rgba(150,100,255,0.8)] dark:bg-darkModeBG3">
       <img
         className="h-2/5 w-full cursor-pointer"
         src="https://i.namu.wiki/i/w11dbZZeomJI4bD3_KItw3vq7tgglcM1YQA_xHULxMsixPpY1S7KcB8WrEFhJNuSuejiiQkicGKMH12JvpUqBQ.webp"
@@ -54,19 +54,19 @@ const PostCard = () => {
             />
             <div className="absolute left-7 w-[12.5rem] font-noto text-sm ">
               <span className="px-1 text-[#B4B4B4]">by</span>
-              <span className=" font-medium -tracking-[.0437rem] text-[#292929]">
+              <span className="dark:text-[#9BA3AF font-medium -tracking-[.0437rem] text-darkModeText">
                 닉네임여덟글자야
               </span>
             </div>
           </div>
           <div className="text-[1.25rem]">🥰</div>
         </div>
-        <h1 className="post-title w-7/8 truncate text-[#292929]">
+        <h1 className="post-title w-7/8 truncate text-[#292929] dark:text-darkModeTitle">
           용기가 필요할 땐 이노래를 추천
         </h1>
         <p
           onClick={handleDetailPostClick}
-          className="line-clamp-3 max-h-[5rem] w-full cursor-pointer break-words font-noto text-xs leading-normal text-[#292929]"
+          className="line-clamp-3 max-h-[5rem] w-full cursor-pointer break-words font-noto text-xs leading-normal text-[#292929] dark:text-darkModeText"
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam totam
           harum accusamus eveniet beatae, porro esse vitae a doloribus sit
@@ -74,20 +74,20 @@ const PostCard = () => {
           pariatur ducimus.
         </p>
         <div className="flex items-center justify-between py-[1rem]">
-          <div className="flex w-[80%] gap-x-1 overflow-x-scroll whitespace-nowrap scrollbar-hide">
-            <div className="flex h-[1.5rem] w-auto items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
+          <div className="flex w-[80%] gap-x-1 overflow-x-scroll whitespace-nowrap scrollbar-hide ">
+            <div className="flex h-[1.5rem] w-auto items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple dark:bg-darkModeTagBG dark:text-darkModeTagText">
               <span>#태그dsdasasdsa</span>
             </div>
-            <div className="flex h-[1.5rem] w-auto items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
+            <div className="flex h-[1.5rem] w-auto items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple dark:bg-darkModeTagBG dark:text-darkModeTagText">
               <span>#태그sdsad</span>
             </div>
-            <div className="flex h-[1.5rem] w-auto items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple">
+            <div className="flex h-[1.5rem] w-auto items-center justify-center rounded-[1.25rem] bg-tag px-[.5rem] py-[.25rem] text-sm text-purple dark:bg-darkModeTagBG dark:text-darkModeTagText">
               <span>#태그</span>
             </div>
           </div>
         </div>
         <div className="flex flex-row items-center justify-between">
-          <span className="font-inter text-xs font-medium text-[#000]">{`${postingDate.day} ${postingDate.month}`}</span>
+          <span className="font-inter text-xs font-medium text-[#000] dark:text-darkModeText">{`${postingDate.day} ${postingDate.month}`}</span>
           <div className="flex items-center gap-x-1">
             <Scrap
               onClick={handleScrapClick}
