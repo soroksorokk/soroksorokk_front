@@ -4,9 +4,6 @@ import Root from './routes/Root';
 import ErrorPage from './routes/ErrorPage';
 import Main from './routes/Main';
 import NewPostPage from './routes/NewPostPage';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
-const queryClient = new QueryClient();
 
 function App() {
   const router = createBrowserRouter([
@@ -28,11 +25,7 @@ function App() {
     },
   ]);
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
