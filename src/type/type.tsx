@@ -3,6 +3,8 @@ import React from 'react';
 // type
 
 export type isCategoryShowProps = {
+  toggleOn: boolean;
+  setToggleOn: React.Dispatch<React.SetStateAction<boolean>>;
   isCategoryShow: boolean;
   setIsCategoryShow: React.Dispatch<React.SetStateAction<boolean>>;
   categoryEmojis?: {
