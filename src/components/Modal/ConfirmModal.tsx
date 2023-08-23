@@ -1,19 +1,21 @@
 import useModal from '../../hook/useModal';
-import ModalBackgound from '../../UI/ModalBackground';
+import ModalBackground from '../../UI/ModalBackground';
 
 export interface ConfirmModalProps {
   title?: string;
   message?: string;
   cancelText?: string;
   confirmText?: string;
-  onClick: () => void;
+  onCancelClick?: () => void;
+  onConfirmClick?: () => void;
 }
 
 const ConfirmModal = ({
   title,
   cancelText = '취소',
   confirmText = '확인',
-  onClick,
+  onCancelClick,
+  onConfirmClick,
 }: ConfirmModalProps) => {
   const { hideModal } = useModal();
 
@@ -22,15 +24,15 @@ const ConfirmModal = ({
   };
 
   return (
-    <ModalBackgound onClose={onClose}>
+    <ModalBackground onClose={onClose}>
       <div className="modal-box">
         <div>{title}</div>
         <div>
-          <button>{cancelText}</button>
-          <button onClick={onClick}>{confirmText}</button>
+          <button onClick={onCancelClick}>{cancelText}</button>
+          <button onClick={onConfirmClick}>{confirmText}</button>
         </div>
       </div>
-    </ModalBackgound>
+    </ModalBackground>
   );
 };
 
