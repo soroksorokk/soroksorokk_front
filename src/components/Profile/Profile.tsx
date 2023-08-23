@@ -27,7 +27,7 @@ const Profile = () => {
       modalType: 'ConfirmModal',
       modalProps: {
         message: '변경 사항을 저장하시겠습니까?',
-        confirmText: handleSaveEditedProfile,
+        onClick: handleSaveEditedProfile,
       },
     });
   const handleChangeImage = (

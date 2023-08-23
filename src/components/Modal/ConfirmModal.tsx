@@ -1,4 +1,3 @@
-
 import useModal from '../../hook/useModal';
 import ModalBackgound from '../../UI/ModalBackground';
 
@@ -22,16 +21,12 @@ const ConfirmModal = ({
     hideModal();
   };
 
-  // const onConfirm = () => {
-  //   console.log('확인쓰');
-  // };
-
   return (
     <ModalBackgound onClose={onClose}>
       <div className="modal-box">
         <div>{title}</div>
         <div>
-          <button onClick={onClick}>{cancelText}</button>
+          <button>{cancelText}</button>
           <button onClick={onClick}>{confirmText}</button>
         </div>
       </div>
