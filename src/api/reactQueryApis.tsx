@@ -1,6 +1,6 @@
 import { LoginProps } from '../components/Modal/LoginModal';
 import { RegisterProps } from '../type/type';
-import { privateApi, publicApi } from './axios';
+import { privateApi, signUpApi } from './axios';
 
 // login 할 때 post 요청 함수
 const onSubmitHandler = async (data: LoginProps) => {
@@ -21,7 +21,7 @@ interface SignUpRequestProps extends RegisterProps {
 const onSignUpSubmitHandler = async (data: SignUpRequestProps) => {
   console.log('data', data);
 
-  const signupRequest = {
+  const signUpRequest = {
     email: data.email,
     password: data.password,
     nickName: data.nickName,
@@ -33,21 +33,15 @@ const onSignUpSubmitHandler = async (data: SignUpRequestProps) => {
 
   if (data.profileImgFile) {
     formData.append('image', data.profileImgFile);
-
-    for (const item of formData) {
-      console.log(item);
-    }
   }
 
-  formData.append(
-    'user',
-    new Blob([JSON.stringify(signupRequest)], { type: 'application/json' }),
-  );
+  formData.append('user', new Blob([JSON.stringify(signUpRequest)]));
+
   for (const entry of formData) {
     console.log('entries', entry);
   }
 
-  const response = await publicApi.post('/api/auth/sign-up', formData);
+  const response = await signUpApi.post('/api/auth/sign-up', formData);
 
   return response;
 };
