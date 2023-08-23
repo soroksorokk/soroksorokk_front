@@ -3,16 +3,16 @@ import useModal from '../../hook/useModal';
 import Button from '../../UI/Button';
 import useLoggedIn from '../../hook/useLoggedIn';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import isLoggedInState from '../../store/isLoggedInState';
 
 export interface MobileMenuModalProps {
-  onClick: () => void;
+  onClick?: () => void;
 }
-const MobileMenuModal = ({ onClick }: MobileMenuModalProps) => {
+const MobileMenuModal = () => {
   const { hideModal, showModal } = useModal();
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
+  const setIsLoggedIn = useSetRecoilState(isLoggedInState);
 
   const onClose = () => {
     hideModal();
