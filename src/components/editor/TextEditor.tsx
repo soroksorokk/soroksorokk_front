@@ -182,7 +182,7 @@ function TextEditor() {
         <input
           name="title"
           value={title}
-          className="w-full  text-2xl font-bold"
+          className="w-full  text-2xl font-bold dark:placeholder:bg-darkModeBG3"
           placeholder="제목을 입력하세요."
           onChange={handleChange}
           onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {

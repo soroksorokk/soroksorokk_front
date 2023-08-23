@@ -20,6 +20,13 @@ export default {
         'beige-dark': '#F6F4F1',
         tag: '#F1EEEA',
         red: '#FF4040',
+        darkModeBG: 'hsl(220.91,39.29%,10.98%)',
+        darkModeBG2: 'hsl(215,27.91%,16.86%)',
+        darkModeBG3: 'hsl(216.92,19.12%,26.67%)',
+        darkModeTagBG: '#261379',
+        darkModeTagText: '#9664FE',
+        darkModeText: '#9BA3AF',
+        darkModeTitle: '#ededed',
       },
       backgroundImage: {
         upward: 'url("/assets/upArrow.svg")',

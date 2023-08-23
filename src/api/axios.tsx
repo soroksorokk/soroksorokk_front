@@ -8,6 +8,7 @@ export const publicApi = axios.create({
 export const privateApi = axios.create({
   baseURL: import.meta.env.VITE_APP_PUBLIC_KEY,
   headers: { 'Content-Type': 'application/json' },
+  withCredentials: true,
 });
 
 privateApi.interceptors.request.use(

@@ -60,7 +60,7 @@ const PostItem = ({ ...post }: PostItemProps) => {
         <Button className="btn-unfollow text-xs">팔로우</Button>
       </div>
       <div className="mt-5">
-        <h4 className="post-title">{postTitle}</h4>
+        <h4 className="post-title dark:text-darkModeTitle">{postTitle}</h4>
         <p className="mt-4">{postContent}</p>
       </div>
       <div className="mt-5">

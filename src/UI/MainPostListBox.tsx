@@ -36,7 +36,7 @@ const MainPostListBox = ({ children }: ChildrenProps) => {
   ];
 
   return (
-    <div className="flex w-full justify-center bg-beige">
+    <div className="flex w-full justify-center bg-beige dark:bg-darkModeBG">
       <div className="desktop:main-left-iconbar mobile_xs:hidden mobile_sm:hidden tablet:hidden notebook:hidden">
         <div className="mt-5 flex h-[4.3125rem] w-[4.3125rem] cursor-pointer items-center justify-center rounded-full bg-purple shadow-light desktop:h-[4.3125rem] desktop:w-[4rem]">
           <Link to={'/'}>
@@ -48,7 +48,7 @@ const MainPostListBox = ({ children }: ChildrenProps) => {
         </div>
       </div>
       <div
-        className={`mx-5 flex h-screen mobile_xs:mx-[10px] mobile_sm:mx-[10px] tablet:mx-5 ${
+        className={`mx-5 flex h-screen dark:bg-darkModeBG2 mobile_xs:mx-[10px] mobile_sm:mx-[10px] tablet:mx-5 ${
           isDetailPostOpen
             ? 'tablet:w-[50%] notebook:w-[50%] desktop:w-[50%]'
             : 'w-auto notebook:w-[80%] desktop:w-[70%]'
