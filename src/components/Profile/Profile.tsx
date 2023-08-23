@@ -10,6 +10,9 @@ const Profile = () => {
   const [tag, setTag] = useState<string>('tag');
   const [introduction, setIntroduction] =
     useState<string>('난 슬플때 노래를 듣지');
+  console.log(setNickName);
+  console.log(setTag);
+  console.log(setIntroduction);
   const { showModal } = useModal();
   const nickNameRef = useRef<HTMLInputElement>(null);
   const tagRef = useRef<HTMLInputElement>(null);
@@ -27,7 +30,7 @@ const Profile = () => {
       modalType: 'ConfirmModal',
       modalProps: {
         message: '변경 사항을 저장하시겠습니까?',
-        confirmText: handleSaveEditedProfile,
+        onClick: handleSaveEditedProfile,
       },
     });
   const handleChangeImage = (

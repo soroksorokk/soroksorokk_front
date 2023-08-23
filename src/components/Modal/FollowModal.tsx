@@ -1,11 +1,11 @@
-
 import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
+import Follow from '../Profile/Follow';
 
 interface FollowModalProps {
   title?: string;
 }
-const FollowModal = (title: FollowModalProps) => {
+const FollowModal = ({ title }: FollowModalProps) => {
   const { hideModal } = useModal();
 
   const onClose = () => {
@@ -15,7 +15,7 @@ const FollowModal = (title: FollowModalProps) => {
     <ModalBackground onClose={onClose}>
       <div className="modal-follow-box" onClick={(e) => e.stopPropagation()}>
         <header className="m-4 flex flex-row justify-between">
-          <h1 className="text-2xl font-bold">팔로워</h1>
+          <h1 className="text-2xl font-bold">{title}</h1>
           <img
             src="/assets/closeBtn.svg"
             width={23}
@@ -24,49 +24,7 @@ const FollowModal = (title: FollowModalProps) => {
             className="cursor-pointer"
           />
         </header>
-
-        <div className=" my-2 flex flex-row justify-between">
-          <div className="flew-row flex">
-            <img
-              src="/images/sample/soondoo.jpeg"
-              className="m-2 h-9 w-9 rounded-full"
-            />
-            <div className="flex flex-col">
-              <p
-                className=" font-extrabold
-        "
-              >
-                test@naver.com
-              </p>
-              <p>닉네임</p>
-            </div>
-          </div>
-          <div>
-            <button className="btn-follow">팔로우</button>
-          </div>
-        </div>
-        <div className="my-2 flex flex-row justify-between ">
-          <div className="flew-row flex">
-            <img
-              src="/images/sample/soondoo.jpeg"
-              className="m-2 h-9 w-9 rounded-full"
-            />
-            <div className="flex flex-col">
-              <p
-                className=" font-extrabold
-        "
-              >
-                test@naver.com
-              </p>
-              <p>닉네임</p>
-            </div>
-          </div>
-          <div>
-            <button className="btn-follow bg-beige-dark text-purple">
-              팔로우
-            </button>
-          </div>
-        </div>
+        <Follow />
       </div>
     </ModalBackground>
   );
