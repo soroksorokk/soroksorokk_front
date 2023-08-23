@@ -10,15 +10,15 @@ const Profile = () => {
   const [tag, setTag] = useState<string>('tag');
   const [introduction, setIntroduction] =
     useState<string>('난 슬플때 노래를 듣지');
-  console.log(setNickName);
-  console.log(setTag);
-  console.log(setIntroduction);
+  // console.log(setNickName);
+  // console.log(setTag);
+  // console.log(setIntroduction);
   const { showModal } = useModal();
   const nickNameRef = useRef<HTMLInputElement>(null);
   const tagRef = useRef<HTMLInputElement>(null);
   const introductionRef = useRef<HTMLInputElement>(null);
 
-  const handleFollwModal = () => {
+  const handleFollowModal = () => {
     showModal({
       modalType: 'FollowModal',
       modalProps: { title: '팔로우' },
@@ -30,9 +30,11 @@ const Profile = () => {
       modalType: 'ConfirmModal',
       modalProps: {
         message: '변경 사항을 저장하시겠습니까?',
-        onClick: handleSaveEditedProfile,
+        onCancelClick: handleCancelClick,
+        onConfirmClick: handleSaveEditedProfile,
       },
     });
+
   const handleChangeImage = (
     event: React.ChangeEvent<EventTarget & HTMLInputElement>,
   ) => {
@@ -49,11 +51,24 @@ const Profile = () => {
       };
     }
   };
+
+  const handleCancelClick = () => {
+    console.log('취소취소');
+  };
+
   const handleEditButton = () => {
     setIsEdit(!isEdit);
   };
+
   const handleSaveEditedProfile = () => {
-    setIsEdit(!isEdit);
+    setIsEdit((prev: boolean) => {
+      const prevState = !prev;
+
+      if (prevState && nickNameRef.current !== null)
+        setNickName(nickNameRef.current.value);
+
+      return prevState;
+    });
   };
 
   const handleRemoveImage = () => {
@@ -107,10 +122,10 @@ const Profile = () => {
             )}
           </div>
           <div>
-            <button className="m-3" onClick={handleFollwModal}>
+            <button className="m-3" onClick={handleFollowModal}>
               팔로우20
             </button>
-            <button onClick={handleFollwModal} className="text-purple">
+            <button onClick={handleFollowModal} className="text-purple">
               팔로워10
             </button>
           </div>
