@@ -3,6 +3,7 @@ import ReplyComment from './ReplyComment';
 import { getTodayDate } from '../../utils/utils';
 const Comment = () => {
   const [isComment, setIsComment] = useState(true);
+  console.log(setIsComment);
 
   const replyDate = getTodayDate();
   return (

@@ -10,6 +10,9 @@ const Profile = () => {
   const [tag, setTag] = useState<string>('tag');
   const [introduction, setIntroduction] =
     useState<string>('난 슬플때 노래를 듣지');
+  console.log(setNickName);
+  console.log(setTag);
+  console.log(setIntroduction);
   const { showModal } = useModal();
   const nickNameRef = useRef<HTMLInputElement>(null);
   const tagRef = useRef<HTMLInputElement>(null);
