@@ -1,11 +1,11 @@
-import React from 'react';
+
 import { getTodayDate } from '../../utils/utils';
 import { ReactComponent as PostBtn } from '../../assets/writeBtn.svg';
 import { useRecoilState } from 'recoil';
 import { isDetailPostOpenState } from '../../store/isDetailPostOpenState';
 import { isNewPostState } from '../../store/isNewPostState';
-import { Link, useNavigate } from 'react-router-dom';
-import isLoggedInState from '../../store/isLoggedInState';
+import { useNavigate } from 'react-router-dom';
+// import isLoggedInState from '../../store/isLoggedInState';
 import useLoggedIn from '../../hook/useLoggedIn';
 import useModal from '../../hook/useModal';
 

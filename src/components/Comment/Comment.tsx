@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ReplyComment from './ReplyComment';
 import { getTodayDate } from '../../utils/utils';
 const Comment = () => {

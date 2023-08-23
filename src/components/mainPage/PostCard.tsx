@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { getTodayDate } from '../../utils/utils';
 import { ReactComponent as Scrap } from '../../assets/scrapIcon.svg';
 import { useRecoilState } from 'recoil';

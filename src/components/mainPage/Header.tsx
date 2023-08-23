@@ -1,4 +1,4 @@
-import react, { useLayoutEffect, useState } from 'react';
+import  { useLayoutEffect, useState } from 'react';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import useModal from '../../hook/useModal';
 import useWidthResize from '../../hook/useWidthResize';

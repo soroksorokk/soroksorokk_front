@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import Toggle from './Toggle';
 import { isCategoryShowProps } from '../../type/type';
 import { CategoryEmoji } from '../../type/type';

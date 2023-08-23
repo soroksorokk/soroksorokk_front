@@ -3,7 +3,7 @@ import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
 import Button from '../../UI/Button';
 import TermsOfUse from './TermsOfUse';
-import { useForm, FormProvider, SubmitHandler } from 'react-hook-form';
+import { useForm} from 'react-hook-form';
 import { RegisterProps } from '../../type/type';
 import useWidthResize from '../../hook/useWidthResize';
 import { useNavigate } from 'react-router-dom';

@@ -1,4 +1,3 @@
-import React, { ReactNode } from 'react';
 import { ChildrenProps } from '../type/type';
 
 function MainLayout({ children }: ChildrenProps) {

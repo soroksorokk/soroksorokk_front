@@ -1,4 +1,4 @@
-import React from 'react';
+
 import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
 
