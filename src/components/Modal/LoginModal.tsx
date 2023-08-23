@@ -6,7 +6,7 @@ import { ReactComponent as GitHubLogin } from '../../assets/githubIcon.svg';
 import useWidthResize from '../../hook/useWidthResize';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import isLoggedInState from '../../store/isLoggedInState';
 import { useMutation } from '@tanstack/react-query';
 import { onSubmitHandler } from '../../api/reactQueryApis';
@@ -24,14 +24,10 @@ export interface LoginProps {
 const LoginModal = ({ title, confirmText }: LoginModalProps) => {
   const { hideModal } = useModal();
   const windowsWIdth = useWidthResize();
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
+  const setIsLoggedIn = useSetRecoilState(isLoggedInState);
   const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginProps>({
+  const { register, handleSubmit } = useForm<LoginProps>({
     defaultValues: {
       email: '',
       password: '',
