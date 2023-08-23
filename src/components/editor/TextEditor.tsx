@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import {  useRef, useState } from 'react';
 import { ReactComponent as Picture } from '../../assets/picture-icon.svg';
 import { CategoryEmoji, EditorDataType, feelDataType } from '../../type/type';
 import Emoji from './Emoji';

@@ -7,10 +7,6 @@ import NewPostPage from './routes/NewPostPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
 } from 'recoil';
 
 const queryClient = new QueryClient();

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PostListHeader from '../components/mainPage/PostListHeader';
 import PostListNav from '../components/mainPage/PostListNav';
 import PostCardBox from '../components/mainPage/PostCardBox';

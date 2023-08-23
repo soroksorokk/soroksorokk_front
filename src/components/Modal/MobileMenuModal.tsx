@@ -1,4 +1,3 @@
-import React from 'react';
 import ModalBackground from '../../UI/ModalBackground';
 import useModal from '../../hook/useModal';
 import Button from '../../UI/Button';

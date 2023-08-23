@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRouteError } from 'react-router-dom';
 import { ReactComponent as Error } from '../assets/error-icon.svg';
 import MainPageBox from '../UI/MainPostListBox';

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Button from '../../UI/Button';
 import { ReactComponent as AgreeSign } from '../../assets/AgreeSign.svg';
 // import { useFormContext } from 'react-hook-form';
 

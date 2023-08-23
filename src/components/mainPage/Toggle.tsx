@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import { ToggleWidth } from '../../type/type';
 import { ToggleCircleMove } from '../../type/type';
 // import useToggle from '../../hook/useToggle';

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import useModal from '../../hook/useModal';
 import ModalBackgound from '../../UI/ModalBackground';
 
@@ -12,7 +12,6 @@ export interface ConfirmModalProps {
 
 const ConfirmModal = ({
   title,
-  message,
   cancelText = '취소',
   confirmText = '확인',
   onClick,

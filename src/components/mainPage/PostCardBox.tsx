@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChildrenProps } from '../../type/type';
 import { isDetailPostOpenState } from '../../store/isDetailPostOpenState';
 import { useRecoilState } from 'recoil';

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Header from '../components/mainPage/Header';
 import MainLayout from '../UI/MainLayout';
 import { Outlet } from 'react-router-dom';
