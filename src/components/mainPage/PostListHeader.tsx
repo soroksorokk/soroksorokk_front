@@ -1,11 +1,9 @@
-
 import { getTodayDate } from '../../utils/utils';
 import { ReactComponent as PostBtn } from '../../assets/writeBtn.svg';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { isDetailPostOpenState } from '../../store/isDetailPostOpenState';
 import { isNewPostState } from '../../store/isNewPostState';
 import { useNavigate } from 'react-router-dom';
-// import isLoggedInState from '../../store/isLoggedInState';
 import useLoggedIn from '../../hook/useLoggedIn';
 import useModal from '../../hook/useModal';
 
@@ -15,10 +13,8 @@ const PostListHeader = () => {
    */
   const currentDate = getTodayDate();
 
-  const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
-    isDetailPostOpenState,
-  );
-  const [isNewPost, setIsNewPost] = useRecoilState(isNewPostState);
+  const setIsDetailPostOpen = useSetRecoilState(isDetailPostOpenState);
+  const setIsNewPost = useSetRecoilState(isNewPostState);
   const { showModal } = useModal();
   const isLoggedIn = useLoggedIn();
   const navigate = useNavigate();
