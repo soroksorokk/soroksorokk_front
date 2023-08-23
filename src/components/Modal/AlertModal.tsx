@@ -1,6 +1,5 @@
-
 import useModal from '../../hook/useModal';
-import ModalBackgound from '../../UI/ModalBackground';
+import ModalBackground from '../../UI/ModalBackground';
 
 export interface AlertModalProps {
   message?: string;
@@ -19,14 +18,14 @@ const AlertModal = ({ message, confirmText }: AlertModalProps) => {
   };
 
   return (
-    <ModalBackgound onClose={onClose}>
+    <ModalBackground onClose={onClose}>
       <div className="modal-box">
         <div>{message}</div>
       </div>
       <div>
         <button onClick={onConfirm}>{confirmText}</button>
       </div>
-    </ModalBackgound>
+    </ModalBackground>
   );
 };
 
