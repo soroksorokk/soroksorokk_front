@@ -41,7 +41,9 @@ const onSignUpSubmitHandler = async (data: SignUpRequestProps) => {
     console.log('entries', entry);
   }
 
-  const response = await signUpApi.post('/api/auth/sign-up', formData);
+  const response = await signUpApi.post('/api/auth/sign-up', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
 
   return response;
 };
