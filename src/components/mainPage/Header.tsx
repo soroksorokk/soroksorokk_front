@@ -1,4 +1,4 @@
-import  { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import useModal from '../../hook/useModal';
 import useWidthResize from '../../hook/useWidthResize';
@@ -8,13 +8,13 @@ import useLoggedIn from '../../hook/useLoggedIn';
 import { ReactComponent as DownBtn } from '../../assets/triangleDownBtn.svg';
 import Toggle from './Toggle';
 import isLoggedInState from '../../store/isLoggedInState';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import useDarkMode from '../../hook/useDarkMode';
 
 function Header() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [menu, setMenu] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState);
+  const setIsLoggedIn = useSetRecoilState(isLoggedInState);
   const { isDark, setIsDark, handleToggleDarkMode } = useDarkMode();
 
   const navigate = useNavigate();
@@ -95,13 +95,14 @@ function Header() {
   return (
     <>
       {windowWidth.width < 768 ? (
-        <header className="flex h-[5rem] w-full flex-row items-center justify-between bg-beige px-10">
+        <header className="flex h-[5rem] w-full flex-row items-center justify-between bg-beige px-10 dark:bg-darkModeBG">
           <div>
             <HamburgerMenu
               width={50}
               height={50}
               onClick={handleMobileMenuClick}
               className="cursor-pointer"
+              stroke={`${isDark ? '#9EAFC7' : '#000000'}`}
             />
           </div>
           <div className="flex cursor-pointer justify-between">
