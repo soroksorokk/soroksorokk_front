@@ -12,7 +12,6 @@ import { useSetRecoilState } from 'recoil';
 import useDarkMode from '../../hook/useDarkMode';
 
 function Header() {
-  const [mobileMenu, setMobileMenu] = useState(false);
   const [menu, setMenu] = useState(false);
   const setIsLoggedIn = useSetRecoilState(isLoggedInState);
   const { isDark, setIsDark, handleToggleDarkMode } = useDarkMode();
@@ -59,12 +58,10 @@ function Header() {
   /**
    * 모바일의 경우에 적용되는 메뉴 모달 핸들러
    */
-  const handleMobileMenuClick = () => {
+  const handleMobileMenuModal = () => {
     showModal({
       modalType: 'MobileMenuModal',
-      modalProps: {
-        onClick: () => setMobileMenu(!mobileMenu),
-      },
+      modalProps: null,
     });
   };
 
@@ -100,7 +97,7 @@ function Header() {
             <HamburgerMenu
               width={50}
               height={50}
-              onClick={handleMobileMenuClick}
+              onClick={handleMobileMenuModal}
               className="cursor-pointer"
               stroke={`${isDark ? '#9EAFC7' : '#000000'}`}
             />
