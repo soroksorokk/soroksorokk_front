@@ -1,5 +1,4 @@
-
-import Header from '../components/mainPage/Header';
+import Header from '../components/MainPage/Header';
 import MainLayout from '../UI/MainLayout';
 import { Outlet } from 'react-router-dom';
 import GlobalModal from '../components/Modal/GlobalModal';
