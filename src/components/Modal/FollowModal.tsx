@@ -2,7 +2,7 @@ import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
 import Follow from '../Profile/Follow';
 
-interface FollowModalProps {
+export interface FollowModalProps {
   title?: string;
 }
 const FollowModal = ({ title }: FollowModalProps) => {
