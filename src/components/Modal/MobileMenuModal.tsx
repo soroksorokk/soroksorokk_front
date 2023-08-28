@@ -6,9 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import isLoggedInState from '../../store/isLoggedInState';
 
-export interface MobileMenuModalProps {
-  onClick?: () => void;
-}
 const MobileMenuModal = () => {
   const { hideModal, showModal } = useModal();
   const navigate = useNavigate();
