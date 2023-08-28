@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import { modalState } from '../../store/modalState';
+import { modalStates } from '../../store/modalState';
 import AlertModal from './AlertModal';
 import ConfirmModal from './ConfirmModal';
 import LoginModal from './LoginModal';
@@ -30,13 +30,11 @@ const GlobalModal = () => {
    * 전역에서 modalState를 구독함
    */
 
-  const { modalType, modalProps } = useRecoilState(modalState)[0] || {};
+  const { modalType, modalProps } = useRecoilState(modalStates)[0] || {};
 
   const renderComponent = () => {
     // 모달 타입이 없다면 null을 리턴함(모달이 없는 상태))
-    if (!modalType) {
-      return null;
-    }
+    if (!modalType || modalProps === null) return null;
 
     /**
      * 만약 모달 타입이 있다면 해당 컴포넌트를 return 하라는 뜻임
