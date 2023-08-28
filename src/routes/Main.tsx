@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import PostListHeader from '../components/mainPage/PostListHeader';
-import PostListNav from '../components/mainPage/PostListNav';
-import PostCardBox from '../components/mainPage/PostCardBox';
-import PostCard from '../components/mainPage/PostCard';
+import PostListHeader from '../components/MainPage/PostListHeader';
+import PostListNav from '../components/MainPage/PostListNav';
+import PostCardBox from '../components/MainPage/PostCardBox';
+import PostCard from '../components/MainPage/PostCard';
 import { CategoryEmoji } from '../type/type';
 
 const Main = () => {
