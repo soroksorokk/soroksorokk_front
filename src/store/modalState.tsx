@@ -4,7 +4,6 @@ import { AlertModalProps } from '../components/Modal/AlertModal';
 import { ConfirmModalProps } from '../components/Modal/ConfirmModal';
 import { SignUpModalProps } from '../components/Modal/SignUpModal';
 import { LoginModalProps } from '../components/Modal/LoginModal';
-import { MobileMenuModalProps } from '../components/Modal/MobileMenuModal';
 
 export interface ConfirmModalType {
   modalType: typeof MODAL_TYPES.ConfirmModal;
@@ -27,17 +26,18 @@ export interface SingUpModalType {
 }
 
 export interface MobileMenuModalType {
-  modaltype: typeof MODAL_TYPES.MobileMenuModal;
-  modalProps: MobileMenuModalProps;
+  modalType: typeof MODAL_TYPES.MobileMenuModal;
+  modalProps: null;
 }
 
 export type ModalType =
   | ConfirmModalType
   | AlertModalType
   | SingUpModalType
-  | LoginModalType;
+  | LoginModalType
+  | MobileMenuModalType;
 
-export const modalState = atom<ModalType | null>({
+export const modalStates = atom<ModalType | null>({
   key: 'modalState',
   default: null,
 });
