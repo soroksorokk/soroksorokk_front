@@ -34,7 +34,7 @@ const GlobalModal = () => {
 
   const renderComponent = () => {
     // 모달 타입이 없다면 null을 리턴함(모달이 없는 상태))
-    if (!modalType || modalProps === null) return null;
+    if (!modalType) return null;
 
     /**
      * 만약 모달 타입이 있다면 해당 컴포넌트를 return 하라는 뜻임
