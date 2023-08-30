@@ -2,7 +2,6 @@ import { useLayoutEffect, useState } from 'react';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import useModal from '../../hook/useModal';
 import useWidthResize from '../../hook/useWidthResize';
-import { ReactComponent as HamburgerMenu } from '../../assets/menu-hamburger-Icon.svg';
 import { useNavigate } from 'react-router-dom';
 import useLoggedIn from '../../hook/useLoggedIn';
 import { ReactComponent as DownBtn } from '../../assets/triangleDownBtn.svg';
@@ -92,30 +91,29 @@ function Header() {
   return (
     <>
       {windowWidth.width < 768 ? (
-        <header className="flex h-[5rem] w-full flex-row items-center justify-between bg-beige px-10 dark:bg-darkModeBG">
-          <div>
-            <HamburgerMenu
-              width={50}
-              height={50}
+        <header className="flex h-[5rem] w-full flex-row bg-beige px-10 dark:bg-darkModeBG">
+          <nav className="flex w-full items-center justify-between">
+            <div
               onClick={handleMobileMenuModal}
-              className="cursor-pointer"
-              stroke={`${isDark ? '#9EAFC7' : '#000000'}`}
-            />
-          </div>
-          <div className="flex cursor-pointer justify-between">
+              className="flex w-[3.125rem] cursor-pointer flex-col justify-around p-3"
+            >
+              <div className="my-1 h-[.0625rem] w-full bg-[#000000] dark:bg-[#9EAFC7]"></div>
+              <div className="my-1 h-[.0625rem] w-full bg-[#000000] dark:bg-[#9EAFC7]"></div>
+              <div className="my-1 h-[.0625rem] w-full bg-[#000000] dark:bg-[#9EAFC7]"></div>
+            </div>
             <span
               onClick={moveHomeHandler}
-              className="ml-[.75rem] font-noto text-[1.3125rem] font-semibold"
+              className="ml-[.75rem] block cursor-pointer font-noto text-[1.3125rem] font-semibold"
             >
               소록소록
             </span>
-          </div>
+          </nav>
         </header>
       ) : (
         <header
           className={`flex h-[7.1875rem] w-full flex-row items-center justify-between bg-beige px-[10.0625rem] py-[2.2188rem] dark:bg-darkModeBG tablet:px-[4rem] notebook:px-[7rem] `}
         >
-          <div className="flex cursor-pointer justify-between">
+          <nav className="flex cursor-pointer justify-between">
             <Logo
               width={19}
               height={22}
@@ -128,11 +126,11 @@ function Header() {
             >
               소록소록
             </span>
-          </div>
+          </nav>
 
           {LogIn ? (
             <>
-              <div className="relative flex w-auto items-center ">
+              <nav className="relative flex w-auto items-center ">
                 <Toggle
                   isActive={isDark}
                   leftText=""
@@ -147,24 +145,24 @@ function Header() {
                   onClick={handleMenuClick}
                   className="cursor-pointer"
                 />
-              </div>
+              </nav>
               {menu && (
-                <div className="absolute right-[8.75rem] top-20 z-20 h-[5.125rem] w-[6.8125rem] rounded-2xl bg-white shadow-light ">
+                <nav className="absolute right-[8.75rem] top-20 z-20 h-[5.125rem] w-[6.8125rem] rounded-2xl bg-white shadow-light ">
                   <div className="flex h-full w-full flex-col items-center justify-evenly align-middle">
                     <p className="cursor-pointer" onClick={handleLogOutClick}>
                       로그아웃
                     </p>
                     <p className="cursor-pointer">마이페이지</p>
                   </div>
-                </div>
+                </nav>
               )}
             </>
           ) : (
-            <div className="header-text flex justify-evenly font-inter text-[1.125rem] font-semibold">
+            <nav className="header-text flex justify-evenly font-inter text-[1.125rem] font-semibold">
               <p onClick={handleLoginModal}>로그인</p>
               <p className="cursor-default px-2 text-[#DCDCDC]">|</p>
               <p onClick={handleSignUpModal}>회원가입</p>
-            </div>
+            </nav>
           )}
         </header>
       )}
