@@ -5,9 +5,7 @@ import ErrorPage from './routes/ErrorPage';
 import Main from './routes/Main';
 import NewPostPage from './routes/NewPostPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import {
-  RecoilRoot,
-} from 'recoil';
+import { RecoilRoot } from 'recoil';
 
 const queryClient = new QueryClient();
 
@@ -21,6 +19,7 @@ function App() {
         {
           index: true,
           element: <Main />,
+          errorElement: <ErrorPage />,
         },
         {
           path: '/newPost/:postId',
