@@ -9,6 +9,7 @@ import useWidthResize from '../../hook/useWidthResize';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { onSignUpSubmitHandler } from '../../api/reactQueryApis';
+import { publicApi } from '../../api/axios';
 
 export interface SignUpModalProps {
   title?: string;
@@ -28,6 +29,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     handleSubmit,
     setValue,
     watch,
+    getValues,
     formState: { errors },
   } = useForm<RegisterProps>({
     mode: 'onChange',
@@ -73,6 +75,32 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
   const handleRemoveProfile = () => {
     setProfileImgFile(null);
     setProfilePreview('');
+  };
+
+  const handleDuplicateEmailCheck = async () => {
+    const value = getValues('email');
+    // currentEmailValue
+
+    const response = await publicApi.post(
+      `/api/auth/validations/email?value=${value}`,
+    );
+
+    if (response.status === 200) {
+      console.log('check complete');
+    }
+  };
+
+  const hadleDuplicateNickNameCheck = async () => {
+    const value = getValues('nickName');
+    const response = await publicApi.post(
+      `/api/auth/validations/nickname?value=${value}`,
+    );
+    if (response.status == 200) {
+      console.log(response);
+      console.log('닉네임 중복 체크 -> 중복되는 거 없어염');
+    } else {
+      console.log('닉네임 중복이다요');
+    }
   };
 
   return (
@@ -148,7 +176,10 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
                 },
               })}
             />
-            <Button className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]">
+            <Button
+              onClick={handleDuplicateEmailCheck}
+              className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]"
+            >
               중복확인
             </Button>
           </div>
@@ -227,7 +258,10 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
                 maxLength: { value: 10, message: '10글자 이하만 가능합니다' },
               })}
             />
-            <Button className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]">
+            <Button
+              onClick={hadleDuplicateNickNameCheck}
+              className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]"
+            >
               중복확인
             </Button>
             <p className="text-xs text-red">{errors.nickName?.message}</p>
