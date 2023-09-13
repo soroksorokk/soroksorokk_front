@@ -12,20 +12,20 @@ const onSubmitHandler = async (data: LoginProps) => {
   return response;
 };
 
-// signUp 할 때 post 함수
 interface SignUpRequestProps extends RegisterProps {
   profileImgFile: File | null;
 }
 
+// signUp 할 때 post 함수
 const onSignUpSubmitHandler = async (data: SignUpRequestProps) => {
   console.log('data', data);
 
   const signUpRequest = {
     email: data.email,
-    password: data.password,
     nickName: data.nickName,
     option1: true,
     option2: false,
+    password: data.password,
   };
 
   const formData = new FormData();
