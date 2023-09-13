@@ -7,7 +7,7 @@ export const publicApi = axios.create({
 
 export const signUpApi = axios.create({
   baseURL: import.meta.env.VITE_APP_PUBLIC_KEY,
-  headers: { 'Content-Type': 'multipart/form-data', charset: 'utf-8' },
+  headers: { 'Content-Type': 'multipart/form-data' },
 });
 
 export const privateApi = axios.create({
