@@ -29,6 +29,7 @@ export interface ChildrenProps {
 export interface ButtonProps extends ChildrenProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export interface RegisterProps {
