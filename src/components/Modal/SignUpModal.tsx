@@ -55,7 +55,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     signUpMutation.mutate({ ...data, profileImgFile });
   };
 
-  // 패스워드 입력과 패스워드 더블체크를 위해 패스워드 입력값을 계속 추적하는 것.
+  // 패스워드 입력과 패스워드 더블체크를 위해 패스워드 입력값을 계속 추적하는 api(watch) 적용
   const pwd = watch('password', '');
   const pwdCheck = watch('passwordCheck', '');
 
@@ -79,7 +79,6 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
 
   const handleDuplicateEmailCheck = async () => {
     const value = getValues('email');
-    // currentEmailValue
 
     const response = await publicApi.post(
       `/api/auth/validations/email?value=${value}`,
@@ -90,13 +89,12 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     }
   };
 
-  const hadleDuplicateNickNameCheck = async () => {
+  const handleDuplicateNickNameCheck = async () => {
     const value = getValues('nickName');
     const response = await publicApi.post(
       `/api/auth/validations/nickname?value=${value}`,
     );
     if (response.status == 200) {
-      console.log(response);
       console.log('닉네임 중복 체크 -> 중복되는 거 없어염');
     } else {
       console.log('닉네임 중복이다요');
@@ -178,6 +176,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
             />
             <Button
               onClick={handleDuplicateEmailCheck}
+              type="button"
               className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]"
             >
               중복확인
@@ -259,7 +258,8 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
               })}
             />
             <Button
-              onClick={hadleDuplicateNickNameCheck}
+              onClick={handleDuplicateNickNameCheck}
+              type="button"
               className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]"
             >
               중복확인
