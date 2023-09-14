@@ -32,6 +32,8 @@ const onSignUpSubmitHandler = async (data: SignUpRequestProps) => {
 
   if (data.profileImgFile) {
     formData.append('image', data.profileImgFile);
+  } else {
+    formData.append('image', '');
   }
 
   formData.append(
