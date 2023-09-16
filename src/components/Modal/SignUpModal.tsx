@@ -3,7 +3,7 @@ import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
 import Button from '../../UI/Button';
 import TermsOfUse from './TermsOfUse';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch, useFormState } from 'react-hook-form';
 import { RegisterProps } from '../../type/type';
 import useWidthResize from '../../hook/useWidthResize';
 import { useNavigate } from 'react-router-dom';
@@ -28,12 +28,16 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     register,
     handleSubmit,
     setValue,
-    watch,
+    control,
     getValues,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm<RegisterProps>({
     mode: 'onChange',
   });
+
+  const { isDirty, isSubmitting } = useFormState({ control });
 
   const onClose = () => {
     hideModal();
@@ -55,9 +59,23 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     signUpMutation.mutate({ ...data, profileImgFile });
   };
 
-  // 패스워드 입력과 패스워드 더블체크를 위해 패스워드 입력값을 계속 추적하는 api(watch) 적용
-  const pwd = watch('password', '');
-  const pwdCheck = watch('passwordCheck', '');
+  // 패스워드 입력과 패스워드 더블체크를 위해 패스워드 입력값을 계속 추적하는 api(useWatch) 적용
+  const pwd = useWatch({ control, name: 'password', defaultValue: '' });
+  const pwdCheck = useWatch({
+    control,
+    name: 'passwordCheck',
+    defaultValue: '',
+  });
+  const emailCheck = useWatch({
+    control,
+    name: 'emailCheck',
+    defaultValue: false,
+  });
+  const nickNameCheck = useWatch({
+    control,
+    name: 'nickNameCheck',
+    defaultValue: false,
+  });
 
   // 이미지 업로드 및 이미지 미리보기 함수
   const handleProfileImg = (e: any) => {
@@ -77,27 +95,60 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     setProfilePreview('');
   };
 
+  // 이메일 중복 확인 핸들러
   const handleDuplicateEmailCheck = async () => {
     const value = getValues('email');
 
-    const response = await publicApi.post(
-      `/api/auth/validations/email?value=${value}`,
-    );
+    if (isDirty) {
+      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-    if (response.status === 200) {
-      console.log('check complete');
+      if (!emailRegex.test(value)) {
+        setError('email', {
+          type: 'manual',
+          message: '이메일 형식에 맞게 작성해주세요',
+        });
+      }
+    }
+
+    try {
+      const response = await publicApi.post(
+        `/api/auth/validations/email?value=${value}`,
+      );
+
+      if (response.status === 200) {
+        console.log('check complete');
+        setValue('emailCheck', true);
+        clearErrors('emailCheck');
+      } else if (response.status === 500) {
+        setError('email', {
+          type: 'manual',
+          message: '다른 이메일을 입력해주세요',
+        });
+      }
+    } catch (error) {
+      console.log('error', error);
     }
   };
 
+  // 닉네임 중복확인 핸들러
   const handleDuplicateNickNameCheck = async () => {
     const value = getValues('nickName');
-    const response = await publicApi.post(
-      `/api/auth/validations/nickname?value=${value}`,
-    );
-    if (response.status == 200) {
-      console.log('닉네임 중복 체크 -> 중복되는 거 없어염');
-    } else {
+    try {
+      const response = await publicApi.post(
+        `/api/auth/validations/nickname?value=${value}`,
+      );
+      if (response.status == 200) {
+        console.log('닉네임 중복 체크 -> 중복되는 거 없어염');
+        setValue('nickNameCheck', true);
+        clearErrors('nickName');
+      }
+    } catch (error) {
+      console.log(error);
       console.log('닉네임 중복이다요');
+      setError('nickName', {
+        type: 'manual',
+        message: '다른 닉네임을 입력해주세요',
+      });
     }
   };
 
@@ -145,7 +196,6 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
               accept="image/*"
               className="hidden"
               onChange={handleProfileImg}
-              // {...register('img')}
             />
           </div>
 
@@ -164,8 +214,10 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
             <input
               id="email"
               type="email"
-              className="placeholder:placeholder:text=[#909090] w-full border-b-[.0625rem] border-[#909090] p-4 text-sm outline-none focus:border-[#9664FF]"
-              placeholder="이메일을 입력해주세요"
+              className={`placeholder:placeholder:text=[#909090] w-full border-b-[.0625rem] border-[#909090] p-4 text-sm outline-none focus:border-[#9664FF] ${
+                getValues('emailCheck') ? 'bg-inherit' : 'bg-inherit'
+              }`}
+              placeholder="example@email.com"
               {...register('email', {
                 required: '이메일을 입력해주세요',
                 pattern: {
@@ -173,16 +225,23 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
                   message: '이메일 형식에 맞지 않습니다',
                 },
               })}
+              disabled={getValues('emailCheck') === true}
             />
             <Button
               onClick={handleDuplicateEmailCheck}
+              disabled={getValues('emailCheck') === true}
               type="button"
-              className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]"
+              className={`absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] px-2 py-1 text-sm ${
+                !isDirty || getValues('emailCheck')
+                  ? 'bg-gray text-white'
+                  : 'bg-[#9664FF] text-white'
+              }`}
             >
               중복확인
             </Button>
           </div>
           <p className="text-sm text-red">{errors.email?.message}</p>
+          {emailCheck === true && <p>사용할 수 있는 이메일 입니다</p>}
           <label htmlFor="password" className="pt-[1rem]">
             비밀번호
           </label>
@@ -271,7 +330,9 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
             <TermsOfUse />
           </div>
           <div className="flex flex-col items-center justify-center">
-            <Button className={'btn-purple' + ' mb-6'}>{confirmText}</Button>
+            <Button disabled={isSubmitting} className={'btn-purple' + ' mb-6'}>
+              {isSubmitting ? '제출 중' : confirmText}
+            </Button>
           </div>
         </form>
         {/* </FormProvider> */}
