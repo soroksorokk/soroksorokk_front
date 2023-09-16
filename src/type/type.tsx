@@ -30,14 +30,17 @@ export interface ButtonProps extends ChildrenProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 export interface RegisterProps {
   image: File | null;
   email: string;
+  emailCheck?: boolean | string;
   password: string;
   passwordCheck: string;
   nickName: string;
+  nickNameCheck?: boolean | string;
   option1?: boolean;
   option2?: boolean;
 }
