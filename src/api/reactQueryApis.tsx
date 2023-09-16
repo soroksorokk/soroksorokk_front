@@ -54,4 +54,24 @@ const onSignUpSubmitHandler = async (data: SignUpRequestProps) => {
   return response;
 };
 
-export { onSubmitHandler, onSignUpSubmitHandler };
+// const handleCommentPost = async(data:any) => {
+
+// };
+const postComment = async ({ comment, params }: any) => {
+  const formData = new FormData();
+  formData.append('comment', comment);
+
+  try {
+    const response = await signUpApi.post(
+      `/api/feeds/${params.feedId}/comments`,
+      formData,
+    );
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getComment = async () => {};
+export { onSubmitHandler, onSignUpSubmitHandler, postComment, getComment };
