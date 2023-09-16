@@ -45,6 +45,11 @@ const onSignUpSubmitHandler = async (data: SignUpRequestProps) => {
     console.log('entries', entry);
   }
 
+  if (data.emailCheck !== true) {
+    return console.log('이메일 중복체크 안 됐다');
+  } else if (data.nickNameCheck !== true) {
+    return console.log('닉네임 중복확인 안 했다');
+  }
   const response = await signUpApi.post('/api/auth/sign-up', formData);
   return response;
 };
