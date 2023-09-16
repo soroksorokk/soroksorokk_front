@@ -7,7 +7,7 @@ import { ChildrenProps } from '../type/type';
 import Subtitle from './Subtitle';
 import { Link } from 'react-router-dom';
 import PostItem from '../components/post/PostItem';
-import Comment from '../components/Comment/Comment';
+import CommentList from '../components/Comment/CommentList';
 
 const MainPostListBox = ({ children }: ChildrenProps) => {
   const [isDetailPostOpen, setIsDetailPostOpen] = useRecoilState(
@@ -83,7 +83,7 @@ const MainPostListBox = ({ children }: ChildrenProps) => {
                 ))}
               </section>
             </div>
-            <Comment />
+            <CommentList />
           </PostDetailPage>
         </div>
       )}
