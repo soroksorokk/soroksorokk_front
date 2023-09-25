@@ -22,7 +22,7 @@ function App() {
           errorElement: <ErrorPage />,
         },
         {
-          path: '/newPost/:postId',
+          path: '/newPost/:feedId',
           element: <NewPostPage />,
           errorElement: <ErrorPage />,
         },
