@@ -1,4 +1,5 @@
 import React from 'react';
+import { FieldError } from 'react-hook-form';
 
 // type
 
@@ -30,7 +31,7 @@ export interface ButtonProps extends ChildrenProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
-  disabled?: boolean;
+  disabled?: FieldError | boolean | string;
 }
 
 export interface RegisterProps {
