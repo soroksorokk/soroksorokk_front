@@ -32,12 +32,11 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     getValues,
     setError,
     clearErrors,
-    formState: { errors },
+    getFieldState,
+    formState: { errors, isSubmitting },
   } = useForm<RegisterProps>({
     mode: 'onChange',
   });
-
-  const { isDirty, isSubmitting } = useFormState({ control });
 
   const onClose = () => {
     hideModal();
@@ -66,16 +65,6 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     name: 'passwordCheck',
     defaultValue: '',
   });
-  const emailCheck = useWatch({
-    control,
-    name: 'emailCheck',
-    defaultValue: false,
-  });
-  const nickNameCheck = useWatch({
-    control,
-    name: 'nickNameCheck',
-    defaultValue: false,
-  });
 
   // 이미지 업로드 및 이미지 미리보기 함수
   const handleProfileImg = (e: any) => {
@@ -97,16 +86,16 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
 
   // 이메일 중복 확인 핸들러
   const handleDuplicateEmailCheck = async () => {
+    const emailState = getFieldState('email');
     const value = getValues('email');
 
-    if (isDirty) {
-      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-
-      if (!emailRegex.test(value)) {
+    if (emailState.isDirty) {
+      if (emailState.invalid) {
         setError('email', {
           type: 'manual',
           message: '이메일 형식에 맞게 작성해주세요',
         });
+        setValue('emailCheck', false);
       }
     }
 
@@ -116,7 +105,6 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
       );
 
       if (response.status === 200) {
-        console.log('check complete');
         setValue('emailCheck', true);
         clearErrors('emailCheck');
       } else if (response.status === 500) {
@@ -133,18 +121,22 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
   // 닉네임 중복확인 핸들러
   const handleDuplicateNickNameCheck = async () => {
     const value = getValues('nickName');
+
+    if (value.length < 2) {
+      setError('nickName', {
+        type: 'manual',
+        message: '1글자 이상 입력해주세요',
+      });
+    }
     try {
       const response = await publicApi.post(
         `/api/auth/validations/nickname?value=${value}`,
       );
       if (response.status == 200) {
-        console.log('닉네임 중복 체크 -> 중복되는 거 없어염');
         setValue('nickNameCheck', true);
-        clearErrors('nickName');
+        clearErrors('nickNameCheck');
       }
     } catch (error) {
-      console.log(error);
-      console.log('닉네임 중복이다요');
       setError('nickName', {
         type: 'manual',
         message: '다른 닉네임을 입력해주세요',
@@ -229,10 +221,16 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
             />
             <Button
               onClick={handleDuplicateEmailCheck}
-              disabled={getValues('emailCheck') === true}
+              disabled={
+                getValues('emailCheck') ||
+                getFieldState('email').error ||
+                !getFieldState('email').isDirty
+              }
               type="button"
               className={`absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] px-2 py-1 text-sm ${
-                !isDirty || getValues('emailCheck')
+                !getFieldState('email').isDirty ||
+                getValues('emailCheck') ||
+                getFieldState('email').error
                   ? 'bg-gray text-white'
                   : 'bg-[#9664FF] text-white'
               }`}
@@ -241,7 +239,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
             </Button>
           </div>
           <p className="text-sm text-red">{errors.email?.message}</p>
-          {emailCheck === true && <p>사용할 수 있는 이메일 입니다</p>}
+          {getValues('emailCheck') && <p>사용할 수 있는 이메일 입니다</p>}
           <label htmlFor="password" className="pt-[1rem]">
             비밀번호
           </label>
@@ -285,6 +283,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
               maxLength: 15,
             })}
           />
+
           {errors.passwordCheck && (
             <p className="text-xs text-red">{errors.passwordCheck?.message}</p>
           )}
@@ -315,15 +314,29 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
                 },
                 maxLength: { value: 10, message: '10글자 이하만 가능합니다' },
               })}
+              disabled={getValues('nickNameCheck') === true}
             />
             <Button
               onClick={handleDuplicateNickNameCheck}
               type="button"
-              className="absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] border-[#9664FF] bg-white px-2 py-1 text-sm text-[#9664FF]"
+              disabled={
+                getValues('nickNameCheck') ||
+                errors.nickName ||
+                !getFieldState('nickName').isDirty
+              }
+              className={`absolute bottom-6 right-0 top-[5%] h-[2.8125rem] w-[5rem] rounded-3xl border-[.0625rem] ${
+                !getFieldState('nickName').isDirty ||
+                getValues('nickNameCheck') ||
+                errors.nickName
+                  ? 'bg-gray text-white'
+                  : 'bg-[#9664FF] text-white'
+              }`}
             >
               중복확인
             </Button>
             <p className="text-xs text-red">{errors.nickName?.message}</p>
+
+            {getValues('nickNameCheck') && <p>사용할 수 있는 닉네임입니다</p>}
           </div>
           <div className="flex flex-col">
             <label className="pt-[1rem] ">이용약관 동의</label>
