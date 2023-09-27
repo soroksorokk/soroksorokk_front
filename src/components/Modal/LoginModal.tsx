@@ -1,8 +1,6 @@
 import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
 import Button from '../../UI/Button';
-import { ReactComponent as GoogleLogin } from '../../assets/googleIcon.svg';
-import { ReactComponent as GitHubLogin } from '../../assets/githubIcon.svg';
 import useWidthResize from '../../hook/useWidthResize';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +8,8 @@ import { useSetRecoilState } from 'recoil';
 import isLoggedInState from '../../store/isLoggedInState';
 import { useMutation } from '@tanstack/react-query';
 import { onSubmitHandler } from '../../api/reactQueryApis';
+import GithubLogin from '../SocialLogin/GithubLogin';
+import GoogleLogin from '../SocialLogin/GoogleLogin';
 
 export interface LoginModalProps {
   title?: string;
@@ -105,9 +105,9 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
               {confirmText}
             </Button>
           </div>
-          <div className="flex items-center justify-center ">
-            <GoogleLogin width={40} height={40} className="mx-2" />
-            <GitHubLogin width={40} height={40} className="mx-2" />
+          <div className="flex items-center justify-center gap-x-4 ">
+            <GithubLogin />
+            <GoogleLogin />
           </div>
         </form>
       </div>
