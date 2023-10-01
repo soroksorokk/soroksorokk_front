@@ -22,7 +22,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
 
   const navigate = useNavigate();
   const windowWidth = useWidthResize();
-  const { hideModal } = useModal();
+  const { hideModal, showModal } = useModal();
 
   const {
     register,
@@ -42,6 +42,16 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
     hideModal();
   };
 
+  const handleShowLoginModal = () => {
+    showModal({
+      modalType: 'LoginModal',
+      modalProps: {
+        title: '로그인',
+        confirmText: '완료',
+      },
+    });
+  };
+
   const signUpMutation = useMutation(onSignUpSubmitHandler, {
     onError: (error) => {
       console.log('error', error);
@@ -51,6 +61,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
       console.log('성공');
       hideModal();
       navigate('/');
+      handleShowLoginModal();
     },
   });
 
