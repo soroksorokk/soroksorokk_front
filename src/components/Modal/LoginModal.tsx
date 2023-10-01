@@ -62,6 +62,18 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
     signInMutation.mutate(data);
   };
 
+  const { showModal } = useModal();
+
+  const handleSignUpModalClick = () => {
+    showModal({
+      modalType: 'SignUpModal',
+      modalProps: {
+        title: '회원가입',
+        confirmText: '완료',
+      },
+    });
+  };
+
   return (
     <ModalBackground onClose={onClose}>
       <div
@@ -98,7 +110,11 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
             {...register('password')}
           />
           <div className="flex flex-col items-center justify-center">
-            <Button className={'btn-purple' + ' mb-2 bg-white text-[#838383]'}>
+            <Button
+              onClick={handleSignUpModalClick}
+              type="button"
+              className={'btn-purple' + ' mb-2 bg-white text-[#838383]'}
+            >
               회원가입
             </Button>
             <Button className={'btn-purple' + ' mb-6 text-white'}>
