@@ -32,11 +32,11 @@
   }
 
   .btn-purple {
-    @apply h-[2.8125rem] w-full rounded-[2.5rem] bg-purple py-3 font-noto text-sm text-white;
+    @apply h-[2.8125rem] w-auto rounded-[2.5rem] bg-purple py-3 font-noto text-sm text-white;
   }
 
   .btn-beige {
-    @apply h-[2.8125rem] w-full rounded-[2.5rem] bg-beige py-3 font-noto text-sm text-purple;
+    @apply h-[2.8125rem] w-auto rounded-[2.5rem] bg-beige py-3 font-noto text-sm text-purple;
   }
 
   .btn-white {
