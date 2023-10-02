@@ -5,7 +5,7 @@ export const publicApi = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-export const signUpApi = axios.create({
+export const formDataApi = axios.create({
   baseURL: import.meta.env.VITE_APP_PUBLIC_KEY,
   headers: { 'Content-Type': 'multipart/form-data' },
 });
