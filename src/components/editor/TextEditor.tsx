@@ -49,8 +49,6 @@ function TextEditor() {
   const navigate = useNavigate();
   const { showModal, hideModal } = useModal();
 
-  console.log('mood', mood);
-
   const newPostMutation = useMutation(onSubmitNewPost, {
     onSuccess: (res) => {
       console.log('성공');
