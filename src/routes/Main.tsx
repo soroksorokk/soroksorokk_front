@@ -11,7 +11,7 @@ const Main = () => {
     feel: CategoryEmoji;
     desc: string;
   }>({
-    feel: CategoryEmoji.happy,
+    feel: CategoryEmoji.HAPPY,
     desc: '듣기 좋은 노래',
   });
   const [toggleOn, setToggleOn] = useState(false);
