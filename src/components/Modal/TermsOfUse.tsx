@@ -105,6 +105,7 @@ const TermsOfUse = () => {
         </label>
       </div>
       <p className="text-xs text-gray">{allAgreeCheckDescText}</p>
+
       <div className="my-6 text-sm text-[#292929]">
         <input
           type="checkbox"
