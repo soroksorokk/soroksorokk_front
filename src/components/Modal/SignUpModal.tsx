@@ -3,7 +3,7 @@ import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
 import Button from '../../UI/Button';
 import TermsOfUse from './TermsOfUse';
-import { useForm, useWatch, useFormState } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { RegisterProps } from '../../type/type';
 import useWidthResize from '../../hook/useWidthResize';
 import { useNavigate } from 'react-router-dom';
@@ -354,7 +354,7 @@ const SignUpModal = ({ title, confirmText }: SignUpModalProps) => {
             <TermsOfUse />
           </div>
           <div className="flex flex-col items-center justify-center">
-            <Button disabled={isSubmitting} className={'btn-purple' + ' mb-6'}>
+            <Button disabled={isSubmitting} className="btn-purple mb-6 w-full">
               {isSubmitting ? '제출 중' : confirmText}
             </Button>
           </div>

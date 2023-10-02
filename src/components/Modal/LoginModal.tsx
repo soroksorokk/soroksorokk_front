@@ -117,7 +117,7 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
             >
               회원가입
             </Button>
-            <Button className={'btn-purple' + ' mb-6 text-white'}>
+            <Button className="btn-purple mb-6 w-full text-white">
               {confirmText}
             </Button>
           </div>
