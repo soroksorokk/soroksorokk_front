@@ -1,4 +1,3 @@
-
 import Toggle from './Toggle';
 import { isCategoryShowProps } from '../../type/type';
 import { CategoryEmoji } from '../../type/type';
@@ -63,7 +62,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.angry, '화날 떄 듣기 좋은 노래')
+                handleChangeEmoji(CategoryEmoji.ANGRY, '화날 떄 듣기 좋은 노래')
               }
             >
               😠
@@ -71,7 +70,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.happy, '기쁠 때 듣기 좋은 노래')
+                handleChangeEmoji(CategoryEmoji.HAPPY, '기쁠 때 듣기 좋은 노래')
               }
             >
               🥰
@@ -79,7 +78,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.sad, '슬플 때 듣기 좋은 노래')
+                handleChangeEmoji(CategoryEmoji.SAD, '슬플 때 듣기 좋은 노래')
               }
             >
               😭
@@ -87,7 +86,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(CategoryEmoji.calm, '평온한 듣기 좋은 노래')
+                handleChangeEmoji(CategoryEmoji.CALM, '평온한 듣기 좋은 노래')
               }
             >
               😌
@@ -96,7 +95,7 @@ const PostListNav = ({
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
                 handleChangeEmoji(
-                  CategoryEmoji.exciting,
+                  CategoryEmoji.EXCITED,
                   '신나는 듣기 좋은 노래',
                 )
               }
@@ -106,10 +105,7 @@ const PostListNav = ({
             <span
               className="main-category hover:main-category-hover"
               onMouseOver={() =>
-                handleChangeEmoji(
-                  CategoryEmoji.depressed,
-                  '감동적 듣기 좋은 노래',
-                )
+                handleChangeEmoji(CategoryEmoji.MOVED, '감동적 듣기 좋은 노래')
               }
             >
               🥺
