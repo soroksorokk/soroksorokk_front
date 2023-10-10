@@ -1,8 +1,6 @@
 import useModal from '../../hook/useModal';
 import ModalBackground from '../../UI/ModalBackground';
 import Button from '../../UI/Button';
-import { ReactComponent as GoogleLogin } from '../../assets/googleIcon.svg';
-import { ReactComponent as GitHubLogin } from '../../assets/githubIcon.svg';
 import useWidthResize from '../../hook/useWidthResize';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +8,8 @@ import { useSetRecoilState } from 'recoil';
 import isLoggedInState from '../../store/isLoggedInState';
 import { useMutation } from '@tanstack/react-query';
 import { onSubmitHandler } from '../../api/reactQueryApis';
+import GithubLogin from '../SocialLogin/GithubLogin';
+import GoogleLogin from '../SocialLogin/GoogleLogin';
 
 export interface LoginModalProps {
   title?: string;
@@ -62,6 +62,18 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
     signInMutation.mutate(data);
   };
 
+  const { showModal } = useModal();
+
+  const handleSignUpModalClick = () => {
+    showModal({
+      modalType: 'SignUpModal',
+      modalProps: {
+        title: '회원가입',
+        confirmText: '완료',
+      },
+    });
+  };
+
   return (
     <ModalBackground onClose={onClose}>
       <div
@@ -98,16 +110,20 @@ const LoginModal = ({ title, confirmText }: LoginModalProps) => {
             {...register('password')}
           />
           <div className="flex flex-col items-center justify-center">
-            <Button className={'btn-purple' + ' mb-2 bg-white text-[#838383]'}>
+            <Button
+              onClick={handleSignUpModalClick}
+              type="button"
+              className={'btn-purple' + ' mb-2 bg-white text-[#838383]'}
+            >
               회원가입
             </Button>
-            <Button className={'btn-purple' + ' mb-6 text-white'}>
+            <Button className="btn-purple mb-6 w-full text-white">
               {confirmText}
             </Button>
           </div>
-          <div className="flex items-center justify-center ">
-            <GoogleLogin width={40} height={40} className="mx-2" />
-            <GitHubLogin width={40} height={40} className="mx-2" />
+          <div className="flex items-center justify-center gap-x-4 ">
+            <GithubLogin />
+            <GoogleLogin />
           </div>
         </form>
       </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import _ from 'lodash';
+import debounce from 'lodash/debounce';
 
 type WidthSize = {
   width: number;
@@ -13,7 +13,7 @@ const useWidthResize = (): WidthSize => {
     setWidth({ width: newWidth });
   };
 
-  const handleWidthDebounce = useCallback(_.debounce(handleWidthSize, 200), []);
+  const handleWidthDebounce = useCallback(debounce(handleWidthSize, 200), []);
 
   useEffect(() => {
     window.addEventListener('resize', handleWidthDebounce);

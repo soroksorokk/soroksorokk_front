@@ -28,7 +28,7 @@ const PostListHeader = () => {
     if (isLoggedIn) {
       setIsNewPost(false);
       setIsDetailPostOpen(false);
-      navigate('newPost/:postId');
+      navigate('newPost/:feedId');
     } else {
       setIsDetailPostOpen(false);
       setIsNewPost(false);

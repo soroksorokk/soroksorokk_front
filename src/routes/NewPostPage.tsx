@@ -1,6 +1,6 @@
 import Subtitle from '../UI/Subtitle';
-import TextEditor from '../components/editor/TextEditor';
 import { getTodayDate } from '../utils/utils';
+import TextEditor from '../components/editor/TextEditor';
 
 const NewPostPage = () => {
   const dayText = getTodayDate();
