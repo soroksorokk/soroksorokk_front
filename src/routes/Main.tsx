@@ -14,6 +14,7 @@ const Main = () => {
     feel: CategoryEmoji.HAPPY,
     desc: '듣기 좋은 노래',
   });
+  //
   const [toggleOn, setToggleOn] = useState(false);
 
   console.log(import.meta.env.VITE_APP_PUBLIC_KEY);

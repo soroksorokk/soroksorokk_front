@@ -8,6 +8,7 @@ interface ErrorType {
 }
 const ErrorPage = (): JSX.Element => {
   const error = useRouteError() as ErrorType;
+
   return (
     <MainPageBox>
       <div className="flex w-full flex-col items-center justify-center">

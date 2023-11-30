@@ -4,7 +4,6 @@ import TextEditor from '../components/editor/TextEditor';
 
 const NewPostPage = () => {
   const dayText = getTodayDate();
-
   return (
     <>
       <Subtitle
