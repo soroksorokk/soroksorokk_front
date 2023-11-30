@@ -1,14 +1,41 @@
-import React from 'react';
 import './App.css';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Root from './routes/Root';
+import ErrorPage from './routes/ErrorPage';
+import Main from './routes/Main';
+import NewPostPage from './routes/NewPostPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { RecoilRoot } from 'recoil';
+
+const queryClient = new QueryClient();
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Root />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          index: true,
+          element: <Main />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: '/newPost/:feedId',
+          element: <NewPostPage />,
+          errorElement: <ErrorPage />,
+        },
+      ],
+    },
+  ]);
+
   return (
-    <div className="m-3 h-full w-full bg-beige underline">
-      베이지 부분은 커스텀 theme이랑 일반 tailwind 적용한거임
-      <button className="btn-purple">
-        보라 부분은 커스텀 클래스 적용한거임
-      </button>
-    </div>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />;
+      </QueryClientProvider>
+    </RecoilRoot>
   );
 }
 
