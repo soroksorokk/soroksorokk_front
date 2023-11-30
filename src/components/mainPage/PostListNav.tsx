@@ -1,4 +1,4 @@
-import Toggle from './Toggle';
+import Toggle from '../MainPage/Toggle';
 import { isCategoryShowProps } from '../../type/type';
 import { CategoryEmoji } from '../../type/type';
 
