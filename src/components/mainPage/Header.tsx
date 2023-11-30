@@ -5,7 +5,7 @@ import useWidthResize from '../../hook/useWidthResize';
 import { useNavigate } from 'react-router-dom';
 import useLoggedIn from '../../hook/useLoggedIn';
 import { ReactComponent as DownBtn } from '../../assets/triangleDownBtn.svg';
-import Toggle from '../MainPage/Toggle';
+import Toggle from './Toggle';
 import isLoggedInState from '../../store/isLoggedInState';
 import { useSetRecoilState } from 'recoil';
 import useDarkMode from '../../hook/useDarkMode';
